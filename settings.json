@@ -1,4 +1,16 @@
 {
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/bash_logger.py"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Read",
@@ -11,6 +23,7 @@
       "Bash(cut:*)",
       "Bash(date:*)",
       "Bash(diff:*)",
+      "Bash(done)",
       "Bash(echo:*)",
       "Bash(env)",
       "Bash(find:*)",
