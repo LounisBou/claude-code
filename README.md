@@ -28,10 +28,52 @@ This repository contains a production-ready `.claude` configuration that provide
 - Performance issue identification
 - Pattern compliance verification
 
+**Test Generator**: Creates comprehensive test suites following project patterns
+- Auto-detects test framework (pytest, Jest, PHPUnit, etc.)
+- Generates tests for happy paths, edge cases, and error conditions
+- Follows existing test conventions
+
+**Debugging Assistant**: Investigates bugs and provides root cause analysis
+- Traces execution flow and identifies issues
+- Analyzes error messages and stack traces
+- Proposes specific fixes with explanations
+
+**Refactoring Advisor**: Identifies code smells and technical debt
+- Detects complexity, duplication, and coupling issues
+- Proposes refactoring strategies with trade-off analysis
+- Prioritizes improvements by impact and effort
+
+**Dependency Auditor**: Audits dependencies for security and compatibility
+- Scans for security vulnerabilities
+- Identifies outdated packages
+- Recommends update strategies with risk assessment
+
+**API Designer**: Designs REST/GraphQL APIs following best practices
+- Discovers existing API patterns in your project
+- Creates consistent endpoint structures
+- Generates OpenAPI/Swagger documentation
+
+**Migration Planner**: Plans framework and language version upgrades
+- Identifies breaking changes and affected code
+- Creates phased migration strategies
+- Assesses risks and provides rollback plans
+
+**Documentation Generator**: Creates technical documentation from code
+- Generates README files and API documentation
+- Extracts information from docstrings and comments
+- Creates architecture and user guides
+
 ### ⚡ Quick Commands
 
 - `/find-pattern [type] [feature]` - Instantly find code pattern examples in your project
 - `/check-norms` - Analyze all changes in current branch for pattern compliance
+- `/generate-tests [file]` - Generate comprehensive tests for specified code
+- `/debug [issue]` - Investigate bugs and provide root cause analysis
+- `/refactor [code]` - Identify code smells and suggest refactoring strategies
+- `/audit-deps` - Audit dependencies for security vulnerabilities and updates
+- `/design-api [resource]` - Design REST/GraphQL APIs following best practices
+- `/plan-migration [version]` - Plan framework or language version upgrades
+- `/generate-docs` - Generate technical documentation from code
 
 ### 🎯 Specialized Skills
 
@@ -211,12 +253,26 @@ Hooks are defined in `settings.json` and can execute commands or scripts:
 
 ```
 .claude/
-├── agents/              # Autonomous specialist agents
+├── agents/              # Autonomous specialist agents (9 total)
 │   ├── code-norms-checker.md
-│   └── code-review.md
-├── commands/            # Slash commands
+│   ├── code-review.md
+│   ├── test-generator.md
+│   ├── debugging-assistant.md
+│   ├── refactoring-advisor.md
+│   ├── dependency-auditor.md
+│   ├── api-designer.md
+│   ├── migration-planner.md
+│   └── documentation-generator.md
+├── commands/            # Slash commands (9 total)
 │   ├── find-pattern.md
-│   └── check-norms.md
+│   ├── check-norms.md
+│   ├── generate-tests.md
+│   ├── debug.md
+│   ├── refactor.md
+│   ├── audit-deps.md
+│   ├── design-api.md
+│   ├── plan-migration.md
+│   └── generate-docs.md
 ├── skills/              # 31 specialized knowledge modules
 │   ├── python-*/
 │   ├── php-symfony-*, php-laravel-specialist/
