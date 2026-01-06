@@ -1,6 +1,16 @@
 ---
 name: code-norms-checker
 description: Comprehensive analysis of code against project patterns. Automatically detects language and framework, finds similar files, extracts established patterns, and reports violations with actionable suggestions.
+color: purple
+model: sonnet
+tools:
+  - All tools
+when_to_use: |
+  Use this agent when:
+  - New code has been added or modified in the current git branch
+  - You need to ensure code follows established project patterns and conventions
+  - You want a detailed report of violations and suggestions for fixes
+  - DO NOT use proactively
 ---
 
 # Code Norms Checker Agent

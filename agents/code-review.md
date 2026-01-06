@@ -1,7 +1,17 @@
 ---
 name: code-review
-description: Use ONLY when explicitly requested by user or when invoked by a protocol in sessions/protocols/. DO NOT use proactively. Reviews code for security vulnerabilities, bugs, performance issues, and adherence to project patterns during context compaction or pre-commit reviews. When using this agent, you must provide files and line ranges where code has been implemented along with the task file the code changes were made to satisfy. You may also give additional notes as necessary.
-tools: Read, Grep, Glob, Bash
+description: Use ONLY when explicitly requested by user or when invoked by a protocol in sessions/protocols/. DO NOT use proactively. Reviews code for security vulnerabilities, bugs, performance issues, and adherence to project patterns during context compaction or pre-commit reviews.
+color: orange
+model: sonnet
+tools: 
+  - All tools
+when_to_use: |
+  Use this agent when:
+  - User explicitly requests "code review", "review my code", "check for bugs", "audit for security issues"
+  - During context compaction to verify code correctness and safety
+  - Before committing code changes to catch potential issues
+  - When provided with modified files and a task file to review against
+  - DO NOT use proactively
 ---
 
 # Code Review Agent
