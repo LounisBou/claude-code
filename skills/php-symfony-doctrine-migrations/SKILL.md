@@ -1,5 +1,5 @@
 ---
-name: symfony:doctrine-migrations
+name: php-symfony-doctrine-migrations
 description: Create and manage Doctrine migrations for schema versioning; handle migration dependencies, rollbacks, and production deployment. Use when building Symfony applications that require database schema version control and migration management using Doctrine ORM.
 ---
 

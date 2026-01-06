@@ -1,5 +1,5 @@
 ---
-name: symfony:api-platform-state-providers
+name: php-symfony-api-platform-state-providers
 description: Master API Platform State Providers and Processors to decouple data retrieval and persistence from entities, enabling clean architecture and custom data sources. Use when building Symfony APIs with API Platform that require custom data fetching, transformation, or storage logic beyond default Doctrine integration.
 ---
 

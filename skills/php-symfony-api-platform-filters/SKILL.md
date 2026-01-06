@@ -1,5 +1,5 @@
 ---
-name: symfony:api-platform-filters
+name: php-symfony-api-platform-filters
 description: Implement API Platform filters for search, date ranges, boolean, and custom filtering with proper indexing. Use when building Symfony APIs with API Platform that require advanced filtering capabilities on resources.
 ---
 

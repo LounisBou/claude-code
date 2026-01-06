@@ -1,5 +1,5 @@
 ---
-name: symfony:api-platform-security
+name: php-symfony-api-platform-security
 description: Secure API Platform resources with security expressions, voters, and operation-level access control. Use when building Symfony APIs with API Platform that require fine-grained security controls on resources and operations.
 ---
 
