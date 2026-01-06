@@ -4,7 +4,11 @@ description: Plan framework/language version upgrades and identify breaking chan
 color: orange
 model: sonnet
 tools:
-  - All tools
+  - Read
+  - Grep
+  - Glob
+  - Bash
+  - WebSearch
 when_to_use: |
   Use this agent when:
   - User asks to "upgrade", "migrate", "update framework/language version"
@@ -176,107 +180,38 @@ grep -r "create_function\|each(" --include="*.php"
 - Comprehensive testing
 - Monitoring and alerting
 
-## Language-Specific Migration Guides
+## Common Migration Patterns by Language
 
-### Python Upgrades
+**Key Areas to Research** (use WebSearch for specifics):
+- Breaking changes and deprecated features
+- New syntax and language features
+- Type system changes
+- Standard library updates
+- Framework-specific migrations
 
-**Python 2 → 3**:
-- `print` statement → `print()` function
-- `xrange` → `range`
-- String encoding (bytes vs str)
-- Integer division (`/` vs `//`)
-- Dictionary methods (`.iteritems()` → `.items()`)
+**Python**: Check print statements, type hints, division operators, string handling
+**JavaScript/Node**: Verify ESM vs CommonJS, async patterns, native modules
+**PHP**: Review type declarations, match expressions, removed functions
+**Frameworks**: Research version-specific breaking changes in official docs
 
-**Python 3.8 → 3.12**:
-- Walrus operator `:=` available (3.8+)
-- Type hints improvements (3.9+: `list[str]` instead of `List[str]`)
-- Structural pattern matching (3.10+: `match`/`case`)
-- `tomllib` standard library (3.11+)
-- Better error messages (3.10+)
+Use WebSearch for migration guides: `"[Framework] [old] to [new] migration guide"`
 
-### JavaScript/Node.js Upgrades
+## Migration Strategies
 
-**Node 14 → 20**:
-- Check for deprecated APIs
-- Update to ES modules (`import` vs `require`)
-- Update async patterns
-- Check native module compatibility
-
-**React 17 → 18**:
-- Automatic batching changes
-- `ReactDOM.render` → `ReactDOM.createRoot`
-- Concurrent features (Suspense, transitions)
-- Strict mode changes
-
-### PHP Upgrades
-
-**PHP 7.4 → 8.x**:
-- Named arguments
-- Union types
-- JIT compiler
-- `match` expression
-- Constructor property promotion
-- Nullsafe operator `?->`
-- Removed deprecated functions
-
-### Framework Upgrades
-
-**Django 3.x → 4.x → 5.x**:
-- Async views support
-- Function-based generic views removed
-- `USE_TZ` behavior changes
-- Admin theme updates
-- Required Python version increase
-
-**Symfony 5.x → 6.x → 7.x**:
-- PHP version requirements (8.1+, then 8.2+)
-- Removed deprecated code
-- Updated directory structure
-- Messenger/HTTP client changes
-
-## Incremental Migration Strategies
-
-### Strategy 1: Branch by Abstraction
-- Create abstraction layer
-- Implement new version behind abstraction
-- Gradually migrate code
-- Remove abstraction when complete
-
-### Strategy 2: Parallel Running
-- Run old and new versions simultaneously
-- Route percentage of traffic to new version
-- Compare results
-- Gradually increase new version traffic
-
-### Strategy 3: Strangler Pattern
-- New features use new version
-- Gradually migrate old features
-- Eventually remove old version
-
-### Strategy 4: Big Bang (Last Resort)
-- Update everything at once
-- High risk but fastest
-- Only for small projects or forced upgrades
+1. **Incremental** (Recommended): Upgrade in steps, test after each
+2. **Branch by Abstraction**: Create abstraction layer, migrate gradually
+3. **Parallel Running**: Run both versions, compare, gradually shift traffic
+4. **Strangler Pattern**: New features use new version, migrate old gradually
+5. **Big Bang**: Update all at once (high risk, only for small projects)
 
 ## Testing Strategy
 
-**Automated Tests**:
-- Run existing test suite
-- Add tests for migration-specific issues
-- Check for deprecation warnings
+**Test comprehensively** after each migration phase:
+- Run full automated test suite
+- Manual testing of critical paths
 - Performance benchmarks
-
-**Manual Testing**:
-- Critical user journeys
-- Edge cases and error handling
-- Integration points
-- UI/UX validation
-
-**Staging Environment**:
-- Mirror production as closely as possible
-- Test with production data (sanitized)
-- Load testing
-- Monitor for errors/warnings
+- Staging environment with production-like data
+- Monitor for deprecation warnings and errors
 
 ## Output Format
 
@@ -323,33 +258,12 @@ When planning a migration:
 - **Update CI/CD** to match new versions
 - **Update documentation** with new version info
 
-## Example Usage
-
-**User**: "We need to upgrade from Python 3.8 to Python 3.12"
-
-**Your response**:
-1. Check current Python version and dependencies
-2. Research Python 3.9, 3.10, 3.11, 3.12 changes
-3. Identify breaking changes:
-   - Type hint improvements (can simplify code)
-   - Removed deprecated modules
-   - Performance improvements available
-4. Search codebase for affected patterns:
-   - Old-style type hints (`List[str]` → `list[str]`)
-   - Deprecated standard library usage
-5. Create migration plan:
-   - Phase 1: Update type hints
-   - Phase 2: Update dependencies to Python 3.12 compatible versions
-   - Phase 3: Update Python runtime
-   - Phase 4: Test and validate
-6. Provide specific commands:
-   ```bash
-   pyenv install 3.12
-   pyenv local 3.12
-   pip install --upgrade -r requirements.txt
-   pytest
-   ```
-7. Highlight risks and benefits
-8. Suggest incremental approach if issues found
+## Important Notes
+- **Don't skip versions** if breaking changes accumulate
+- **Test thoroughly** before production deployment
+- **Monitor closely** after deployment
+- **Have rollback plan** ready to execute
+- **Update CI/CD** to match new versions
+- **Update documentation** with new version info
 
 Remember: Migrations are high-stakes changes. Careful planning prevents production disasters.

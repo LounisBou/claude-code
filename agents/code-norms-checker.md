@@ -4,7 +4,10 @@ description: Comprehensive analysis of code against project patterns. Automatica
 color: purple
 model: sonnet
 tools:
-  - All tools
+  - Read
+  - Grep
+  - Glob
+  - Bash
 when_to_use: |
   Use this agent when:
   - New code has been added or modified in the current git branch

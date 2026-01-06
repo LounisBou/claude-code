@@ -4,7 +4,9 @@ description: Audit dependencies for security vulnerabilities, outdated versions,
 color: purple
 model: sonnet
 tools:
-  - All tools
+  - Read
+  - Glob
+  - Bash
 when_to_use: |
   Use this agent when:
   - User asks to "audit dependencies", "check for vulnerabilities", "update packages"

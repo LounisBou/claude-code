@@ -3,8 +3,11 @@ name: code-review
 description: Use ONLY when explicitly requested by user or when invoked by a protocol in sessions/protocols/. DO NOT use proactively. Reviews code for security vulnerabilities, bugs, performance issues, and adherence to project patterns during context compaction or pre-commit reviews.
 color: orange
 model: sonnet
-tools: 
-  - All tools
+tools:
+  - Read
+  - Grep
+  - Glob
+  - Bash
 when_to_use: |
   Use this agent when:
   - User explicitly requests "code review", "review my code", "check for bugs", "audit for security issues"

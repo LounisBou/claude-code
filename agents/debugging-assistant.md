@@ -4,7 +4,10 @@ description: Investigate bugs, trace execution flow, and provide root cause anal
 color: red
 model: sonnet
 tools:
-  - All tools
+  - Read
+  - Grep
+  - Glob
+  - Bash
 when_to_use: |
   Use this agent when:
   - User reports "bug", "error", "broken", "not working", "failing"

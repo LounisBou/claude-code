@@ -4,7 +4,14 @@ description: Generate comprehensive tests following project patterns and convent
 color: green
 model: sonnet
 tools:
-  - All tools
+  - Read
+  - Grep
+  - Glob
+  - Edit
+  - Write
+  - Skill
+skills:
+  - python-testing-patterns
 when_to_use: |
   Use this agent when:
   - User explicitly requests "generate tests", "write tests", "add test coverage"

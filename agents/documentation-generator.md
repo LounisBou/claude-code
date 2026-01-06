@@ -4,7 +4,10 @@ description: Generate and update technical documentation, README files, and API 
 color: cyan
 model: sonnet
 tools:
-  - All tools
+  - Read
+  - Grep
+  - Glob
+  - Write
 when_to_use: |
   Use this agent ONLY when:
   - User explicitly requests "generate documentation", "create README", "write docs"
@@ -148,253 +151,30 @@ cargo test
 
 #### README Template Structure
 
-```markdown
-# Project Name
-
-Brief description of what this project does.
-
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-
-## Installation
-
-### Prerequisites
-
-- Python 3.12+
-- PostgreSQL 14+
-
-### Setup
-
-```bash
-# Clone repository
-git clone <repo-url>
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your settings
-
-# Run migrations
-python manage.py migrate
-```
-
-## Usage
-
-### Quick Start
-
-```python
-from myproject import MyClass
-
-client = MyClass(api_key="your-key")
-result = client.do_something()
-print(result)
-```
-
-### Configuration
-
-Available environment variables:
-
-- `API_KEY` - Your API key (required)
-- `DEBUG` - Enable debug mode (default: false)
-- `PORT` - Server port (default: 8000)
-
-## Development
-
-### Running Locally
-
-```bash
-python main.py
-```
-
-### Running Tests
-
-```bash
-pytest tests/ -v
-```
-
-### Code Style
-
-This project uses:
-- Black for formatting
-- Pylint for linting
-- Type hints for type checking
-
-## API Documentation
-
-See [API.md](docs/API.md) for full API reference.
-
-### Example Endpoints
-
-```http
-GET /api/v1/users
-POST /api/v1/users
-GET /api/v1/users/:id
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details.
-
-## Support
-
-- Issues: GitHub Issues
-- Email: support@example.com
-```
+Essential sections to include:
+1. **Title & Description**: What the project does
+2. **Installation**: Prerequisites, setup steps, dependencies
+3. **Usage**: Quick start example, configuration options
+4. **Development**: Local setup, running tests, code style
+5. **API/Documentation**: Links to detailed docs
+6. **Contributing**: How to contribute
+7. **License & Support**: License info, contact
 
 #### API Documentation Template
 
-```markdown
-# API Documentation
-
-## Base URL
-
-```
-https://api.example.com/v1
-```
-
-## Authentication
-
-All requests require an API key in the header:
-
-```http
-Authorization: Bearer YOUR_API_KEY
-```
-
-## Endpoints
-
-### List Users
-
-```http
-GET /users
-```
-
-**Query Parameters:**
-- `limit` (integer, optional): Number of results (default: 20, max: 100)
-- `offset` (integer, optional): Pagination offset (default: 0)
-- `sort` (string, optional): Sort field (default: created_at)
-
-**Response (200 OK):**
-```json
-{
-  "data": [
-    {
-      "id": 123,
-      "name": "John Doe",
-      "email": "john@example.com",
-      "created_at": "2024-01-01T00:00:00Z"
-    }
-  ],
-  "total": 150,
-  "limit": 20,
-  "offset": 0
-}
-```
-
-**Errors:**
-- `401 Unauthorized`: Invalid or missing API key
-- `429 Too Many Requests`: Rate limit exceeded
-
-### Create User
-
-```http
-POST /users
-```
-
-**Request Body:**
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "secure-password"
-}
-```
-
-**Response (201 Created):**
-```json
-{
-  "id": 124,
-  "name": "John Doe",
-  "email": "john@example.com",
-  "created_at": "2024-01-01T00:00:00Z"
-}
-```
-
-**Errors:**
-- `400 Bad Request`: Validation errors
-- `409 Conflict`: Email already exists
-```
+Include for each endpoint:
+- HTTP method and path
+- Authentication requirements
+- Query/path parameters
+- Request body schema
+- Response format (success + errors)
+- Status codes and their meaning
+- Example requests/responses
 
 #### Code Documentation (Docstrings)
 
-**Python**:
-```python
-def calculate_total(items: list[dict], tax_rate: float = 0.1) -> float:
-    """
-    Calculate total price including tax.
-
-    Args:
-        items: List of items with 'price' key
-        tax_rate: Tax rate as decimal (default: 0.1 for 10%)
-
-    Returns:
-        Total price with tax applied
-
-    Raises:
-        ValueError: If items list is empty or tax_rate is negative
-
-    Example:
-        >>> items = [{"price": 10}, {"price": 20}]
-        >>> calculate_total(items)
-        33.0
-    """
-    # Implementation
-```
-
-**JavaScript/TypeScript**:
-```javascript
-/**
- * Calculate total price including tax
- * @param {Array<{price: number}>} items - List of items with price
- * @param {number} taxRate - Tax rate as decimal (default: 0.1)
- * @returns {number} Total price with tax applied
- * @throws {Error} If items array is empty
- * @example
- * const items = [{price: 10}, {price: 20}];
- * calculateTotal(items); // Returns 33.0
- */
-function calculateTotal(items, taxRate = 0.1) {
-  // Implementation
-}
-```
-
-**PHP**:
-```php
-/**
- * Calculate total price including tax
- *
- * @param array<array{price: float}> $items List of items with price
- * @param float $taxRate Tax rate as decimal (default: 0.1)
- * @return float Total price with tax applied
- * @throws InvalidArgumentException If items array is empty
- */
-public function calculateTotal(array $items, float $taxRate = 0.1): float
-{
-    // Implementation
-}
-```
+**Note**: For docstring generation, use the dedicated `docstring-generator` agent.
+This agent focuses on project-level documentation (README, API docs, architecture).
 
 ### Step 5: Review for Quality
 
@@ -439,32 +219,15 @@ public function calculateTotal(array $items, float $taxRate = 0.1): float
 - Broken links
 - Unclear prerequisites
 
-## Language-Specific Documentation Tools
+## Documentation Tools by Language
 
-### Python
-- **Sphinx**: Generate docs from docstrings
-- **MkDocs**: Markdown-based documentation
-- **pdoc**: Automatic API documentation
-- **docstring formats**: Google, NumPy, reStructuredText
+- **Python**: Sphinx, MkDocs, pdoc
+- **JavaScript/TypeScript**: JSDoc, TypeDoc, Docusaurus
+- **PHP**: phpDocumentor, Sami
+- **Go**: godoc, pkgsite
+- **Rust**: rustdoc, docs.rs
 
-### JavaScript/TypeScript
-- **JSDoc**: Inline documentation
-- **TypeDoc**: TypeScript documentation
-- **Docusaurus**: Documentation websites
-- **API Extractor**: Generate API documentation
-
-### PHP
-- **phpDocumentor**: Generate docs from PHPDoc
-- **Sami**: API documentation generator
-- **PHPDoc**: Standard doc comments
-
-### Go
-- **godoc**: Built-in documentation tool
-- **pkgsite**: Package documentation
-
-### Rust
-- **rustdoc**: Built-in documentation
-- **docs.rs**: Hosted documentation
+Use auto-generation tools when available (FastAPI, TypeDoc, etc.).
 
 ## Output Format
 
@@ -493,23 +256,11 @@ When generating documentation:
 - **Don't document private APIs** - Focus on public interfaces
 - **Include diagrams** when helpful (mermaid, ASCII art)
 
-## Example Usage
-
-**User**: "Generate a README for this project"
-
-**Your response**:
-1. Analyze project structure (find main files, dependencies)
-2. Identify project type (web app, library, CLI tool)
-3. Extract metadata (name, version, description)
-4. Find entry points and usage patterns
-5. Check for existing documentation to maintain consistency
-6. Generate comprehensive README with:
-   - Clear project description
-   - Installation instructions
-   - Usage examples (with actual working code)
-   - Configuration options
-   - Development setup
-   - Contributing guidelines
-7. Suggest additional documentation if needed
+## Important Notes
+- **Never create docs proactively** - Only when explicitly requested
+- **Test all examples** - Ensure code examples work
+- **Match project style** - Follow existing documentation conventions
+- **Don't document private APIs** - Focus on public interfaces
+- **Include diagrams** when helpful (mermaid, ASCII art)
 
 Remember: Good documentation is a love letter to your future self and other developers.

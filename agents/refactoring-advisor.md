@@ -4,7 +4,11 @@ description: Identify code smells, technical debt, and propose refactoring strat
 color: yellow
 model: sonnet
 tools:
-  - All tools
+  - Read
+  - Grep
+  - Glob
+  - Edit
+  - Write
 when_to_use: |
   Use this agent when:
   - User asks to "refactor", "improve code quality", "clean up code"
