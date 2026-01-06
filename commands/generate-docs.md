@@ -1,0 +1,153 @@
+---
+name: generate-docs
+description: Generate technical documentation, README files, and API docs from code
+user_invocable: true
+---
+
+# Generate Documentation Command
+
+Launches the documentation-generator agent to create comprehensive documentation from your code.
+
+## Usage
+
+```bash
+/generate-docs [documentation_type]
+```
+
+## Examples
+
+```bash
+# Generate README
+/generate-docs "README for this project"
+
+# Generate API documentation
+/generate-docs "API documentation"
+
+# Generate docstrings
+/generate-docs "add docstrings to the UserService class"
+
+# Generate architecture docs
+/generate-docs "architecture documentation"
+
+# Generate full documentation
+/generate-docs "complete project documentation"
+
+# Just ask for docs
+/generate-docs
+```
+
+## What It Does
+
+1. Analyzes project structure and code
+2. Extracts information from existing code
+3. Discovers project patterns and conventions
+4. Generates clear, comprehensive documentation
+5. Includes working code examples
+6. Creates proper markdown formatting
+7. Follows documentation best practices
+
+## Documentation Types
+
+### README.md
+- Project description
+- Installation instructions
+- Quick start guide
+- Usage examples
+- Configuration options
+- Development setup
+- Contributing guidelines
+
+### API Documentation
+- Endpoint specifications
+- Request/response schemas
+- Authentication details
+- Error codes
+- Rate limiting
+- Example requests
+
+### Code Documentation
+- Function/method docstrings
+- Class documentation
+- Module descriptions
+- Type annotations
+- Usage examples
+
+### Architecture Documentation
+- System overview
+- Component relationships
+- Data flow diagrams
+- Technology stack
+- Design decisions
+
+### User Guides
+- How-to guides
+- Tutorials
+- Troubleshooting
+- FAQ
+
+## Output Includes
+
+- Well-structured markdown
+- Working code examples
+- Clear installation steps
+- Configuration details
+- Usage examples
+- Proper formatting
+- Links and references
+
+## Documentation Standards
+
+- **Clarity**: Easy to understand for target audience
+- **Completeness**: All public APIs documented
+- **Accuracy**: Examples actually work
+- **Consistency**: Same style throughout
+- **Maintainability**: Easy to update
+
+## Language-Specific Formats
+
+### Python
+- Google/NumPy/Sphinx docstring formats
+- Type hints documentation
+- Sphinx/MkDocs generation
+
+### JavaScript/TypeScript
+- JSDoc comments
+- TypeDoc generation
+- API documentation
+
+### PHP
+- PHPDoc comments
+- phpDocumentor generation
+- API Platform documentation
+
+### Go
+- godoc format
+- Package documentation
+
+### Rust
+- rustdoc format
+- Markdown in doc comments
+
+## When to Use
+
+- Starting a new project
+- Before release/deployment
+- When onboarding new developers
+- After major feature additions
+- Updating outdated documentation
+- Creating public-facing documentation
+
+## Important Note
+
+This command only generates documentation when explicitly requested. It will never create documentation proactively.
+
+---
+
+You are launching the documentation-generator agent. Use the Task tool with subagent_type='documentation-generator'.
+
+Pass the user's documentation request to the agent as the prompt. If the user just said "/generate-docs" without specifics, the agent will ask what type of documentation they want.
+
+Example:
+```
+Task(subagent_type='documentation-generator', prompt='Generate a comprehensive README.md file for this project. Include project description, installation instructions, usage examples, configuration options, and development setup.', description='Generate project README')
+```
