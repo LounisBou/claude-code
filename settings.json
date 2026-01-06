@@ -1,0 +1,45 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"\\(.tool_input.command) - \\(.tool_input.description // \"No description\")\"' >> ~/.claude/logs/bash-command.log"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(black:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(jobs)",
+      "Bash(isort:*)",
+      "Bash(killall pytest:*)",
+      "Bash(ls:*)",
+      "Bash(pylint:*)",
+      "Bash(pytest:*)",
+      "Bash(time:*)",
+      "Bash(tree:*)",
+      "Bash(wc:*)",
+      "WebSearch",
+      "SlashCommand(/check-quality)"
+    ],
+    "ask": [
+      "Bash(cp:*)",
+      "Bash(dd:*)",
+      "Bash(mv:*)",
+      "Bash(python:*)",
+      "VBash(python3:*)",
+      "Bash(pip install:*)"
+    ],
+    "deny": [
+      "Bash(rm:*)"
+    ]
+  }
+}
