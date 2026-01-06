@@ -44,9 +44,10 @@ This repository contains a production-ready `.claude` configuration that provide
 - Data transformation (pandas, numpy)
 - Performance optimization
 
-**PHP/Symfony** (7 skills):
-- API Platform (filters, serialization, security, state providers)
-- Doctrine ORM (migrations, fetch modes, batch processing)
+**PHP/Symfony/Laravel** (8 skills):
+- Symfony API Platform (filters, serialization, security, state providers, resources)
+- Symfony Doctrine ORM (migrations, fetch modes, batch processing)
+- Laravel specialist (Laravel 10+ patterns)
 
 **Claude Code Development** (7 skills):
 - Plugin architecture and structure
@@ -55,7 +56,6 @@ This repository contains a production-ready `.claude` configuration that provide
 
 **Additional**:
 - Frontend design (production-grade UI)
-- Laravel specialist
 - SQL optimization patterns
 
 ### 🔧 Automation Hooks
@@ -96,8 +96,11 @@ Copy only what you need:
 # Just the agents
 cp -r .claude/agents /path/to/project/.claude/
 
-# Just specific skills
+# Just specific skills (e.g., Python skills)
 cp -r .claude/skills/python-* /path/to/project/.claude/skills/
+
+# Or PHP/Symfony skills
+cp -r .claude/skills/php-symfony-* /path/to/project/.claude/skills/
 
 # Just the commands
 cp -r .claude/commands /path/to/project/.claude/
@@ -216,7 +219,7 @@ Hooks are defined in `settings.json` and can execute commands or scripts:
 │   └── check-norms.md
 ├── skills/              # 31 specialized knowledge modules
 │   ├── python-*/
-│   ├── symfony*/
+│   ├── php-symfony-*, php-laravel-specialist/
 │   ├── claude-*/
 │   └── .../
 ├── hooks/               # Event-driven scripts
