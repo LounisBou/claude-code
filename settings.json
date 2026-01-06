@@ -1,32 +1,47 @@
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "jq -r '\"\\(.tool_input.command) - \\(.tool_input.description // \"No description\")\"' >> ~/.claude/logs/bash-command.log"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "MultiEdit",
+      "Bash(awk:*)",
       "Bash(black:*)",
       "Bash(cat:*)",
+      "Bash(cut:*)",
+      "Bash(date:*)",
+      "Bash(diff:*)",
+      "Bash(echo:*)",
+      "Bash(env)",
+      "Bash(find:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git branch:*)",
+      "Bash(git show:*)",
+      "Bash(git blame:*)",
+      "Bash(git stash list:*)",
       "Bash(grep:*)",
       "Bash(head:*)",
       "Bash(jobs)",
       "Bash(isort:*)",
       "Bash(killall pytest:*)",
+      "Bash(less:*)",
       "Bash(ls:*)",
+      "Bash(pwd)",
       "Bash(pylint:*)",
       "Bash(pytest:*)",
+      "Bash(sort:*)",
+      "Bash(tail:*)",
       "Bash(time:*)",
       "Bash(tree:*)",
+      "Bash(uniq:*)",
+      "Bash(vendor/bin/phpunit:*)",
+      "Bash(vendor/bin/phpstan:*)",
+      "Bash(vendor/bin/php-cs-fixer:*)",
+      "Bash(vendor/bin/pest:*)",
       "Bash(wc:*)",
+      "Bash(which:*)",
       "Bash(yarn dev)",
       "mcp__chrome-devtools__list_pages",
       "mcp__chrome-devtools__navigate_page",
@@ -40,15 +55,40 @@
       "SlashCommand(/check-quality)"
     ],
     "ask": [
+      "Bash(./bin/console:*)",
+      "Bash(bin/console:*)",
+      "Bash(composer:*)",
       "Bash(cp:*)",
       "Bash(dd:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git reset:*)",
+      "Bash(git stash:*)",
+      "Bash(git pull:*)",
       "Bash(mv:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(php:*)",
       "Bash(python:*)",
       "Bash(python3:*)",
-      "Bash(pip install:*)"
+      "Bash(pip install:*)",
+      "Bash(pip uninstall:*)",
+      "Bash(pip3 install:*)",
+      "Bash(pip3 uninstall:*)",
+      "Bash(py:*)",
+      "Bash(redis-cli:*)",
+      "Bash(sed:*)",
+      "Bash(symfony:*)",
+      "Bash(uv:*)",
+      "Bash(yarn:*)"
     ],
     "deny": [
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(sudo:*)"
     ]
   }
 }
