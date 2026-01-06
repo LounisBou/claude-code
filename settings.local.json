@@ -5,7 +5,9 @@
       "Bash(do if head -1 \"$file\")",
       "Bash(then echo \"$file: HAS\")",
       "Bash(else echo \"$file: NO\")",
-      "Bash(fi)"
+      "Bash(fi)",
+      "Bash(while read f)",
+      "Bash(then echo \"$f\")"
     ]
   }
 }
