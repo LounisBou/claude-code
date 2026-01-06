@@ -2,7 +2,7 @@
 name: docstring-generator
 description: Generate or improve docstrings for functions, methods, and classes by analyzing code structure and following language-specific standards
 color: blue
-model: sonnet
+model: haiku
 tools:
   - Read
   - Grep
