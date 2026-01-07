@@ -15,7 +15,6 @@
     "allow": [
       "Read",
       "Edit",
-      "Write",
       "MultiEdit",
       "Bash(awk:*)",
       "Bash(black:*)",
@@ -68,6 +67,7 @@
       "SlashCommand(/check-quality)"
     ],
     "ask": [
+      "Write",
       "Bash(./bin/console:*)",
       "Bash(bin/console:*)",
       "Bash(composer:*)",
