@@ -6,7 +6,7 @@ description: >
   composables, and Vue-specific patterns. Triggers on Vue component creation,
   modification, analysis, or any Vue.js development task.
 tools: Read, Write, Edit, Glob, Grep, Bash, MultiEdit
-skills: vuejs-dev, js-dev, ts-dev, tailwind-css-dev, html-dev, vue-apex-charts, vuejs-chadcn
+skills: vuejs-dev, js-dev, ts-dev, tailwind-css-dev, html-dev, vue-apex-charts, vuejs-shadcn
 ---
 
 You are a specialized VueJS developer agent focused on Vue component creation, understanding, analysis, and modification.
