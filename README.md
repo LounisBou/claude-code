@@ -213,7 +213,7 @@ Use the workflow commands for test-driven development:
 # 1. Brainstorm and refine your idea
 /brainstorm
 # → Socratic dialogue to clarify requirements
-# → Design document saved to docs/plans/
+# → Design document saved to plans/
 
 # 2. Create implementation plan
 /write-plan
