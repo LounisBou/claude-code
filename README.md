@@ -8,8 +8,8 @@ This repository contains a production-ready `.claude` configuration that provide
 
 - **Language-agnostic code pattern analysis** for Python, JavaScript/TypeScript, PHP, Go, Rust, and more
 - **Automated code quality checks** that learn from your codebase
-- **31 specialized skills** covering Python, Symfony, Laravel, frontend development, and Claude Code plugin development
-- **Custom commands** for rapid pattern discovery and compliance checking
+- **54 specialized skills** covering Python, Symfony, Laravel, frontend development, workflow/TDD, and Claude Code plugin development
+- **Custom commands** for rapid pattern discovery, compliance checking, and TDD workflows
 - **Event-driven hooks** for automation and formatting
 
 ## Features
@@ -74,10 +74,13 @@ This repository contains a production-ready `.claude` configuration that provide
 - `/design-api [resource]` - Design REST/GraphQL APIs following best practices
 - `/plan-migration [version]` - Plan framework or language version upgrades
 - `/generate-docs` - Generate technical documentation from code
+- `/brainstorm` - Refine ideas into validated designs through Socratic dialogue
+- `/write-plan` - Create comprehensive implementation plans with bite-sized tasks
+- `/execute-plan` - Execute plans in batches with human review checkpoints
 
 ### 🎯 Specialized Skills
 
-**Python Ecosystem** (8 skills):
+**Python Ecosystem** (10 skills):
 - Document manipulation (Excel, Word, PDF)
 - Testing patterns (pytest, fixtures, mocking)
 - Packaging and distribution
@@ -85,20 +88,38 @@ This repository contains a production-ready `.claude` configuration that provide
 - Backend development (FastAPI, Django, Flask)
 - Data transformation (pandas, numpy)
 - Performance optimization
+- Docstring standards (PEP 257)
 
-**PHP/Symfony/Laravel** (8 skills):
+**PHP/Symfony/Laravel** (9 skills):
 - Symfony API Platform (filters, serialization, security, state providers, resources)
 - Symfony Doctrine ORM (migrations, fetch modes, batch processing)
 - Laravel specialist (Laravel 10+ patterns)
+- Docstring standards (PSR-5)
 
-**Claude Code Development** (7 skills):
+**Claude Code Development** (9 skills):
 - Plugin architecture and structure
 - Command, agent, hook, and skill development
-- MCP server integration
+- MCP server integration and building
+
+**Frontend Development** (8 skills):
+- Vue.js (Composition API, Options API, ApexCharts, Shadcn)
+- Tailwind CSS utilities and patterns
+- JavaScript/TypeScript/HTML development
+- Production-grade UI design
+
+**Workflow & Process** (12 skills):
+- Brainstorming and design refinement
+- Implementation planning with bite-sized tasks
+- Test-driven development (RED-GREEN-REFACTOR)
+- Systematic debugging with root cause analysis
+- Subagent-driven development with two-stage review
+- Git worktrees for parallel development
+- Code review workflows (requesting and receiving)
+- Verification before completion
 
 **Additional**:
-- Frontend design (production-grade UI)
 - SQL optimization patterns
+- Documentation standards (JSDoc, TSDoc)
 
 ### 🔧 Automation Hooks
 
@@ -184,6 +205,27 @@ Need to implement something new? Find existing examples:
 /find-pattern test auth
 ```
 
+### TDD Feature Development
+
+Use the workflow commands for test-driven development:
+
+```bash
+# 1. Brainstorm and refine your idea
+/brainstorm
+# → Socratic dialogue to clarify requirements
+# → Design document saved to docs/plans/
+
+# 2. Create implementation plan
+/write-plan
+# → Bite-sized tasks (2-5 minutes each)
+# → TDD cycle: RED → GREEN → REFACTOR → COMMIT
+
+# 3. Execute with checkpoints
+/execute-plan
+# → Batch execution with human review
+# → Clear progress tracking
+```
+
 ### Use Specialized Skills
 
 Skills are automatically available. Reference them when needed:
@@ -253,7 +295,7 @@ Hooks are defined in `settings.json` and can execute commands or scripts:
 
 ```
 .claude/
-├── agents/              # Autonomous specialist agents (9 total)
+├── agents/              # Autonomous specialist agents (11 total)
 │   ├── code-norms-checker.md
 │   ├── code-review.md
 │   ├── test-generator.md
@@ -262,8 +304,10 @@ Hooks are defined in `settings.json` and can execute commands or scripts:
 │   ├── dependency-auditor.md
 │   ├── api-designer.md
 │   ├── migration-planner.md
-│   └── documentation-generator.md
-├── commands/            # Slash commands (9 total)
+│   ├── documentation-generator.md
+│   ├── docstring-generator.md
+│   └── vuejs-developper.md
+├── commands/            # Slash commands (14 total)
 │   ├── find-pattern.md
 │   ├── check-norms.md
 │   ├── generate-tests.md
@@ -272,13 +316,26 @@ Hooks are defined in `settings.json` and can execute commands or scripts:
 │   ├── audit-deps.md
 │   ├── design-api.md
 │   ├── plan-migration.md
-│   └── generate-docs.md
-├── skills/              # 31 specialized knowledge modules
-│   ├── python-*/
-│   ├── php-symfony-*, php-laravel-specialist/
-│   ├── claude-*/
+│   ├── generate-docs.md
+│   ├── generate-docstring.md
+│   ├── brainstorm.md
+│   ├── write-plan.md
+│   └── execute-plan.md
+├── skills/              # 54 specialized knowledge modules
+│   ├── python-*/        # Python ecosystem
+│   ├── php-symfony-*/   # Symfony/Laravel patterns
+│   ├── claude-*/        # Claude Code development
+│   ├── vuejs-*/         # Vue.js development
+│   ├── *-docstring/     # Documentation standards
+│   ├── brainstorming/   # Design refinement
+│   ├── writing-plans/   # Implementation planning
+│   ├── test-driven-development/  # TDD enforcement
+│   ├── systematic-debugging/     # Root cause analysis
 │   └── .../
 ├── hooks/               # Event-driven scripts
+│   ├── bash_logger.py
+│   ├── agent_logger.py
+│   ├── skill_logger.py
 │   └── markdown_formatter.py
 ├── logs/                # Execution logs
 ├── settings.json        # Configuration and permissions
