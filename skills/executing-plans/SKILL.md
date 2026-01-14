@@ -16,19 +16,23 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 ## The Process
 
 ### Step 1: Load and Review Plan
-1. Read plan file
-2. Review critically - identify any questions or concerns about the plan
-3. If concerns: Raise them with your human partner before starting
-4. If no concerns: Create TodoWrite and proceed
+1. Read plan file for high-level context
+2. List inline TODOs: `python hooks/list_todos.py feature-name`
+3. Review critically - identify any questions or concerns
+4. If concerns: Raise them with your human partner before starting
+5. If no concerns: Create TodoWrite from inline TODOs and proceed
 
 ### Step 2: Execute Batch
 **Default: First 3 tasks**
 
 For each task:
 1. Mark as in_progress
-2. Follow each step exactly (plan has bite-sized steps)
-3. Run verifications as specified
-4. Mark as completed
+2. Implement the code at the TODO location
+3. Remove the TODO comment once implemented
+4. Run verifications as specified
+5. Mark as completed
+
+**Verify progress:** `python hooks/list_todos.py feature-name` should show fewer TODOs
 
 ### Step 3: Report
 When batch complete:

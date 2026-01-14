@@ -94,6 +94,57 @@ git commit -m "feat: add specific feature"
 - Reference relevant skills with @ syntax
 - DRY, YAGNI, TDD, frequent commits
 
+## Phase 2: Insert Inline TODOs
+
+After saving the high-level plan, insert TODOs directly into code files:
+
+1. **Identify touch points** - All files that need changes
+2. **Insert scoped TODOs** at exact locations using language-appropriate syntax:
+   ```python
+   # TODO(feature-name): Validate input against schema
+   ```
+   ```php
+   // TODO(feature-name): Add rate limiting check here
+   ```
+   ```html
+   <!-- TODO(feature-name): Add loading spinner -->
+   ```
+   ```css
+   /* TODO(feature-name): Add dark mode variables */
+   ```
+3. **Format:** `[comment-prefix] TODO(scope): action-verb description`
+4. **Granularity:** Each TODO = 2-15 minutes of work
+5. **Commit:** `prepare(feature): add implementation TODOs`
+
+**TODO Placement:**
+- Entry points (where feature starts)
+- Integration points (connections to existing code)
+- Data flow points (transformations between layers)
+- Error handling gaps
+- Test files (what tests to write)
+
+**Good TODOs (explicit & scoped):**
+```javascript
+// TODO(cart): Calculate shipping cost based on user.address.country
+// TODO(cart): Apply discount code if cart.discountCode is set
+```
+
+**Bad TODOs (vague):**
+```javascript
+// TODO: fix this later
+// TODO: needs work
+```
+
+**Comment syntax by language:**
+| Language | Syntax |
+|----------|--------|
+| Python, Ruby, Bash | `# TODO(scope): description` |
+| JS, TS, PHP, Java, Go, Rust, C, C++ | `// TODO(scope): description` |
+| HTML, Vue template | `<!-- TODO(scope): description -->` |
+| CSS, SCSS | `/* TODO(scope): description */` |
+
+**List TODOs:** `python hooks/list_todos.py feature-name`
+
 ## Execution Handoff
 
 After saving the plan, offer execution choice:
