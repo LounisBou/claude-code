@@ -1,4 +1,10 @@
- # Check Code Norms
+---
+name: check-norms
+description: Launch code-norms-checker agent to analyze modified files for pattern compliance
+user_invocable: true
+---
+
+# Check Code Norms
 
 Launch the code-norms-checker agent to analyze all files created or modified in the current feature branch and ensure they follow established project patterns and conventions.
 

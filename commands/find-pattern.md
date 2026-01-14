@@ -1,3 +1,9 @@
+---
+name: find-pattern
+description: Find and analyze existing code patterns in the project for a specific type or feature
+user_invocable: true
+---
+
 # Find Pattern Examples
 
 Quickly find and analyze existing code patterns in the project for a specific type of file or feature. **Works with any language** - automatically detects and finds patterns.
