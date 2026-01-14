@@ -24,6 +24,7 @@
       "Read",
       "Edit",
       "MultiEdit",
+      "Write",
       "Bash(awk:*)",
       "Bash(black:*)",
       "Bash(cat:*)",
@@ -71,11 +72,9 @@
       "mcp__chrome-devtools__click",
       "mcp__chrome-devtools__wait_for",
       "mcp__chrome-devtools__take_screenshot",
-      "WebSearch",
-      "SlashCommand(/check-quality)"
+      "WebSearch"
     ],
     "ask": [
-      "Write",
       "Bash(./bin/console:*)",
       "Bash(bin/console:*)",
       "Bash(composer:*)",
