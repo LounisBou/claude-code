@@ -36,7 +36,7 @@ Start by understanding the current project context, then ask questions one at a 
 
 **Documentation:**
 - Write the validated design to `plans/YYYY-MM-DD-<topic>-design.md`
-- Use elements-of-style:writing-clearly-and-concisely skill if available
+- Write clearly and concisely - focus on decisions made, not alternatives rejected
 - Commit the design document to git
 
 **Implementation (if continuing):**

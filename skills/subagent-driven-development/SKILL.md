@@ -217,10 +217,12 @@ Done!
 - Don't rush them into implementation
 
 **If reviewer finds issues:**
-- Implementer (same subagent) fixes them
+- Use superpowers:receiving-code-review to evaluate feedback objectively
+- Implementer (same subagent) fixes critical/important issues
 - Reviewer reviews again
 - Repeat until approved
 - Don't skip the re-review
+- Don't blindly implement all suggestions - verify feedback is correct first
 
 **If subagent fails task:**
 - Dispatch fix subagent with specific instructions

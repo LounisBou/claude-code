@@ -106,11 +106,4 @@ Launches the api-designer agent to create well-structured API designs following 
 
 ---
 
-You are launching the api-designer agent. Use the Task tool with subagent_type='api-designer'.
-
-Pass the user's API design request to the agent as the prompt. If the user just said "/design-api" without specifics, the agent will ask for more details about what API needs to be designed.
-
-Example:
-```
-Task(subagent_type='api-designer', prompt='Design a RESTful API for a blog platform with posts, comments, and authors. Include authentication, pagination, and filtering capabilities.', description='Design blog platform API')
-```
+When this command is invoked, design the API following best practices above. If the user specified what API they need, start designing immediately. If not, ask what API needs to be designed.

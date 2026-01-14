@@ -63,11 +63,4 @@ The agent will:
 
 ---
 
-You are launching the debugging-assistant agent. Use the Task tool with subagent_type='debugging-assistant'.
-
-Pass the user's bug description to the agent as the prompt. If the user just said "/debug" without details, the agent will ask for more information about the issue.
-
-Example:
-```
-Task(subagent_type='debugging-assistant', prompt='Investigate why the API returns 500 error when creating users. The error message is: "TypeError: Cannot read property email of undefined"', description='Debug user creation error')
-```
+When this command is invoked, investigate the bug using the systematic-debugging approach. If the user provided a bug description, start investigating immediately. If not, ask for details about the issue.

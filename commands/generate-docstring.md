@@ -82,11 +82,4 @@ Launches the docstring-generator agent to create or improve documentation for yo
 
 ---
 
-You are launching the docstring-generator agent. Use the Task tool with subagent_type='docstring-generator'.
-
-Pass the user's request to the agent as the prompt. If the user provided a file name, function name, or class name, include that in the prompt. If they just said "/generate-docstring", ask them what they want to document.
-
-Example:
-```
-Task(subagent_type='docstring-generator', prompt='Generate docstrings for the calculateTotalPrice function in src/utils/pricing.py', description='Generate docstring for calculateTotalPrice')
-```
+When this command is invoked, generate docstrings following language-specific standards. If the user specified a file, function, or class, start generating immediately. If not, ask what code they want documented.

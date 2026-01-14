@@ -165,3 +165,17 @@ After saving the plan, offer execution choice:
 **If Parallel Session chosen:**
 - Guide them to open new session in worktree
 - **REQUIRED SUB-SKILL:** New session uses superpowers:executing-plans
+
+## Plan Revision
+
+**When to revise this plan:**
+- Execution reveals 3+ tasks blocked by same issue
+- Fundamental assumption was wrong
+- New requirements emerge mid-execution
+
+**How to revise:**
+1. Read feedback from executing session
+2. Identify root cause (scope creep, missing context, wrong approach)
+3. Update plan document with corrections
+4. Re-insert/update inline TODOs as needed
+5. Commit revised plan before resuming execution

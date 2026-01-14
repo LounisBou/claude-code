@@ -143,11 +143,4 @@ This command only generates documentation when explicitly requested. It will nev
 
 ---
 
-You are launching the documentation-generator agent. Use the Task tool with subagent_type='documentation-generator'.
-
-Pass the user's documentation request to the agent as the prompt. If the user just said "/generate-docs" without specifics, the agent will ask what type of documentation they want.
-
-Example:
-```
-Task(subagent_type='documentation-generator', prompt='Generate a comprehensive README.md file for this project. Include project description, installation instructions, usage examples, configuration options, and development setup.', description='Generate project README')
-```
+When this command is invoked, generate documentation following the guidelines above. If the user specified what documentation they want, start generating immediately. If not, ask what type of documentation they need.

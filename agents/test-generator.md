@@ -13,11 +13,11 @@ tools:
 skills:
   - python-testing-patterns
 when_to_use: |
-  Use this agent when:
-  - User explicitly requests "generate tests", "write tests", "add test coverage"
+  Use this agent PROACTIVELY when:
+  - User requests "generate tests", "write tests", "add test coverage"
   - After implementing new features that need test coverage
   - When filling gaps in existing test suites
-  - DO NOT use proactively - only when explicitly requested
+  - When code is written without corresponding tests
 ---
 
 # Test Generator Agent

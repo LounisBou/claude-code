@@ -8,13 +8,15 @@ tools:
   - Grep
   - Glob
   - Bash
+skills:
+  - systematic-debugging
 when_to_use: |
-  Use this agent when:
+  Use this agent PROACTIVELY when:
   - User reports "bug", "error", "broken", "not working", "failing"
   - User asks "why is X happening?"
   - User shares error messages or stack traces
   - User requests "debug this", "investigate", "find the issue"
-  - DO NOT use proactively
+  - Code throws exceptions or unexpected behavior is observed
 ---
 
 # Debugging Assistant Agent

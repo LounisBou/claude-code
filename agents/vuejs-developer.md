@@ -1,16 +1,13 @@
 ---
-name: vuejs-developper
-description: >
-  Use this agent when working on VueJS components, including .vue files,
-  Vue 3 Composition API, Options API, component props/emits, state management,
-  composables, and Vue-specific patterns. Triggers on Vue component creation,
-  modification, analysis, or any Vue.js development task.
+name: vuejs-developer
+description: Vue.js component development specialist for .vue files, Vue 3 Composition API, Options API, props/emits, state management, and composables
 model: sonnet
 color: green
-when_to_use: >
-  Use ONLY when explicitly requested or when working with Vue.js components.
-  DO NOT use proactively. Triggers: .vue files, Vue 3 Composition API, Options API,
+when_to_use: |
+  Use this agent when working with Vue.js components or .vue files.
+  Triggers: .vue files, Vue 3 Composition API, Options API,
   component props/emits, state management, composables, Vue Router, Pinia.
+  DO NOT use proactively unless user is working on Vue files.
 tools:
   - Read
   - Write
@@ -18,7 +15,6 @@ tools:
   - Glob
   - Grep
   - Bash
-  - MultiEdit
 skills:
   - vuejs-dev
   - js-dev

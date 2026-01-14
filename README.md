@@ -306,7 +306,7 @@ Hooks are defined in `settings.json` and can execute commands or scripts:
 │   ├── migration-planner.md
 │   ├── documentation-generator.md
 │   ├── docstring-generator.md
-│   └── vuejs-developper.md
+│   └── vuejs-developer.md
 ├── commands/            # Slash commands (14 total)
 │   ├── find-pattern.md
 │   ├── check-norms.md

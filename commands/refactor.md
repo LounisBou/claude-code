@@ -74,11 +74,4 @@ Launches the refactoring-advisor agent to analyze code quality and propose impro
 
 ---
 
-You are launching the refactoring-advisor agent. Use the Task tool with subagent_type='refactoring-advisor'.
-
-Pass the user's refactoring request to the agent as the prompt. If the user just said "/refactor" without specifying what to refactor, the agent will ask for clarification.
-
-Example:
-```
-Task(subagent_type='refactoring-advisor', prompt='Analyze and propose refactoring strategies for the OrderProcessor class in src/services/order_processor.py. It has become unwieldy with 450 lines.', description='Refactor OrderProcessor class')
-```
+When this command is invoked, analyze the code and propose refactoring strategies. If the user specified what to refactor, start analyzing immediately. If not, ask what code they want refactored.

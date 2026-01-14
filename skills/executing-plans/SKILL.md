@@ -34,6 +34,12 @@ For each task:
 
 **Verify progress:** `python hooks/list_todos.py feature-name` should show fewer TODOs
 
+**If verification fails:**
+- Use superpowers:systematic-debugging to investigate root cause
+- Fix issue before proceeding to next task
+- Do not skip failed verifications
+- If debugging reveals design flaw, stop and consult plan
+
 ### Step 3: Report
 When batch complete:
 - Show what was implemented
@@ -70,6 +76,21 @@ After all tasks complete and verified:
 - Fundamental approach needs rethinking
 
 **Don't force through blockers** - stop and ask.
+
+## Failure Recovery
+
+**If 3+ tasks hit blockers:**
+- Stop execution
+- Return to superpowers:writing-plans for plan revision
+- Don't continue with a broken plan
+
+**If debugging reveals design flaw:**
+- Return to superpowers:brainstorming to reconsider approach
+- Document what was learned
+
+**If architectural issues span multiple tasks:**
+- Escalate to human partner immediately
+- Don't attempt piecemeal fixes
 
 ## Remember
 - Review plan critically first

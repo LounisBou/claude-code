@@ -129,11 +129,4 @@ Launches the migration-planner agent to create comprehensive upgrade strategies 
 
 ---
 
-You are launching the migration-planner agent. Use the Task tool with subagent_type='migration-planner'.
-
-Pass the user's migration request to the agent as the prompt. If the user just said "/plan-migration" without specifying what to migrate, the agent will ask for details.
-
-Example:
-```
-Task(subagent_type='migration-planner', prompt='Plan the migration from Python 3.8 to Python 3.12. Identify all breaking changes, affected code, and create a phase-by-phase upgrade strategy.', description='Plan Python 3.8→3.12 migration')
-```
+When this command is invoked, create a comprehensive migration plan following the strategy above. If the user specified the migration (e.g., "Python 3.8 to 3.12"), start planning immediately. If not, ask what they want to migrate.

@@ -52,11 +52,4 @@ Launches the test-generator agent to create comprehensive test coverage for your
 
 ---
 
-You are launching the test-generator agent. Use the Task tool with subagent_type='test-generator'.
-
-Pass the user's request to the agent as the prompt. If the user provided a file name or class name, include that in the prompt. If they just said "/generate-tests", ask them what they want to generate tests for.
-
-Example:
-```
-Task(subagent_type='test-generator', prompt='Generate comprehensive tests for the UserService class in src/services/user_service.py', description='Generate tests for UserService')
-```
+When this command is invoked, generate comprehensive tests following project patterns. If the user specified a file or component, start generating tests immediately. If not, ask what code they want tests for.

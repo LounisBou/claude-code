@@ -90,11 +90,4 @@ Launches the dependency-auditor agent to scan dependencies for security vulnerab
 
 ---
 
-You are launching the dependency-auditor agent. Use the Task tool with subagent_type='dependency-auditor'.
-
-Pass the user's audit request to the agent as the prompt. If the user just said "/audit-deps", use a general prompt to audit all dependencies.
-
-Example:
-```
-Task(subagent_type='dependency-auditor', prompt='Perform a comprehensive security and version audit of all project dependencies. Check for vulnerabilities, outdated packages, and compatibility issues.', description='Audit project dependencies')
-```
+When this command is invoked, perform a comprehensive dependency audit following the checks above. Discover dependency files, run security audits, check for outdated packages, and provide a prioritized update plan with exact commands to fix issues.

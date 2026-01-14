@@ -202,10 +202,98 @@ Accept: application/vnd.myapi.v1+json
 - Whitelist specific domains for production
 
 ## GraphQL Design (if applicable)
-- Define clear schema with types, queries, mutations
-- Use DataLoader to avoid N+1 queries
-- Implement cursor-based pagination with connections
-- Leverage fragments for reusable field sets
+
+### Schema Design Principles
+- **Types first**: Define clear, well-named types before queries/mutations
+- **Nullable by default**: Fields should be nullable unless guaranteed
+- **Input types**: Use dedicated input types for mutations
+- **Descriptions**: Add descriptions to all types and fields
+
+### Type Definitions
+```graphql
+"""User account in the system"""
+type User {
+  id: ID!
+  email: String!
+  name: String
+  createdAt: DateTime!
+  posts(first: Int, after: String): PostConnection!
+}
+
+"""Input for creating a new user"""
+input CreateUserInput {
+  email: String!
+  name: String
+  password: String!
+}
+```
+
+### Queries and Mutations
+```graphql
+type Query {
+  """Get user by ID"""
+  user(id: ID!): User
+
+  """List users with pagination"""
+  users(first: Int, after: String, filter: UserFilter): UserConnection!
+}
+
+type Mutation {
+  """Create a new user"""
+  createUser(input: CreateUserInput!): CreateUserPayload!
+
+  """Update existing user"""
+  updateUser(id: ID!, input: UpdateUserInput!): UpdateUserPayload!
+}
+```
+
+### Pagination (Relay Connections)
+```graphql
+type PostConnection {
+  edges: [PostEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type PostEdge {
+  cursor: String!
+  node: Post!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+```
+
+### Error Handling
+```graphql
+type CreateUserPayload {
+  user: User
+  errors: [UserError!]!
+}
+
+type UserError {
+  field: String
+  message: String!
+  code: ErrorCode!
+}
+```
+
+### Best Practices
+- **N+1 Prevention**: Use DataLoader for batching and caching
+- **Depth Limiting**: Limit query depth to prevent abuse
+- **Complexity Analysis**: Calculate and limit query complexity
+- **Persisted Queries**: Use for production performance
+- **Subscriptions**: Use for real-time updates when needed
+
+### Security Considerations
+- Validate all input arguments
+- Implement field-level authorization
+- Rate limit by complexity, not just requests
+- Disable introspection in production (optional)
 
 ## Documentation Generation
 Generate OpenAPI/Swagger specs including endpoints, schemas, auth, examples, and errors.

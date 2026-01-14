@@ -1,5 +1,7 @@
 ---
+name: execute-plan
 description: Execute plan in batches with review checkpoints
+user_invocable: true
 disable-model-invocation: true
 ---
 

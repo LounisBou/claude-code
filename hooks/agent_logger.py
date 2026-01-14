@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Agent usage logger for Claude Code.
-Logs all agent invocations to .claude/logs/agents.log
+Logs all agent invocations to .claude/logs/agent-invocations.log
 """
 import json
 import sys
@@ -65,7 +65,7 @@ def main():
 
         # Determine log file path relative to project root
         project_root = Path.cwd()
-        log_file = project_root / '.claude' / 'logs' / 'agents.log'
+        log_file = project_root / '.claude' / 'logs' / 'agent-invocations.log'
 
         # Log the agent usage
         log_agent_usage(agent_type, description, prompt, log_file)

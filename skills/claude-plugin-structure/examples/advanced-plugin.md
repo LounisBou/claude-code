@@ -313,7 +313,6 @@ await SlackClient.notify({
 ---
 name: Kubernetes Operations
 description: This skill should be used when deploying to Kubernetes, managing K8s resources, troubleshooting cluster issues, configuring ingress/services, scaling deployments, or working with Kubernetes manifests. Provides comprehensive Kubernetes operational knowledge and best practices.
-version: 2.0.0
 ---
 
 # Kubernetes Operations
