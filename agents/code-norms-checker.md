@@ -1,6 +1,37 @@
 ---
 name: code-norms-checker
-description: Comprehensive analysis of code against project patterns. Automatically detects language and framework, finds similar files, extracts established patterns, and reports violations with actionable suggestions.
+description: |
+  Use this agent when user asks to check code against project patterns and conventions. Examples:
+
+  <example>
+  Context: User added new code
+  user: "Does this follow our project patterns?"
+  assistant: "I'll use code-norms-checker to compare against existing patterns in your codebase."
+  <commentary>
+  Explicit pattern check request - norms checker specializes in this
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants consistency check
+  user: "Is this consistent with how we do things elsewhere?"
+  assistant: "Let me use code-norms-checker to find similar files and verify consistency."
+  <commentary>
+  Consistency question - needs pattern extraction and comparison
+  </commentary>
+  </example>
+
+  <example>
+  Context: User mentions conventions
+  user: "Check if this follows our coding conventions"
+  assistant: "I'll analyze this with code-norms-checker against your established project patterns."
+  <commentary>
+  Convention check - explicitly about pattern compliance
+  </commentary>
+  </example>
+
+  DIFFERENT FROM code-review: This focuses on pattern consistency, not bugs/security.
+
 color: purple
 model: sonnet
 tools:
@@ -8,12 +39,6 @@ tools:
   - Grep
   - Glob
   - Bash
-when_to_use: |
-  Use this agent when:
-  - New code has been added or modified in the current git branch
-  - You need to ensure code follows established project patterns and conventions
-  - You want a detailed report of violations and suggestions for fixes
-  - DO NOT use proactively
 ---
 
 # Code Norms Checker Agent

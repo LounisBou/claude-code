@@ -1,6 +1,35 @@
 ---
 name: test-generator
-description: Generate comprehensive tests following project patterns and conventions
+description: |
+  Use this agent PROACTIVELY to generate comprehensive tests following project patterns. Examples:
+
+  <example>
+  Context: User just implemented a new feature
+  user: "Can you write tests for this UserService class?"
+  assistant: "I'll use the test-generator agent to create comprehensive tests following your project's testing patterns."
+  <commentary>
+  Explicit request for tests - direct trigger
+  </commentary>
+  </example>
+
+  <example>
+  Context: User finished implementing code
+  user: "I think I'm done with this feature"
+  assistant: "I notice this code doesn't have tests yet. Let me use test-generator to add coverage."
+  <commentary>
+  Proactive trigger - code without tests should get test suggestions
+  </commentary>
+  </example>
+
+  <example>
+  Context: User asks about coverage
+  user: "Does this have good test coverage?"
+  assistant: "Let me analyze and use test-generator to fill any gaps in test coverage."
+  <commentary>
+  Coverage question triggers test analysis and generation
+  </commentary>
+  </example>
+
 color: green
 model: sonnet
 tools:
@@ -12,12 +41,6 @@ tools:
   - Skill
 skills:
   - python-testing-patterns
-when_to_use: |
-  Use this agent PROACTIVELY when:
-  - User requests "generate tests", "write tests", "add test coverage"
-  - After implementing new features that need test coverage
-  - When filling gaps in existing test suites
-  - When code is written without corresponding tests
 ---
 
 # Test Generator Agent

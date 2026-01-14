@@ -1,19 +1,41 @@
 ---
 name: dependency-auditor
-description: Audit dependencies for security vulnerabilities, outdated versions, and compatibility issues
+description: |
+  Use this agent when user asks to audit dependencies for security or updates. Examples:
+
+  <example>
+  Context: User wants security check
+  user: "Are there any vulnerable dependencies in this project?"
+  assistant: "I'll use dependency-auditor to scan for security vulnerabilities across all packages."
+  <commentary>
+  Vulnerability check - dependency auditor's primary function
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants to update packages
+  user: "What dependencies are outdated?"
+  assistant: "Let me use dependency-auditor to identify outdated packages and recommend updates."
+  <commentary>
+  Update check - needs version analysis and risk assessment
+  </commentary>
+  </example>
+
+  <example>
+  Context: Pre-deployment check
+  user: "Run a dependency audit before we deploy"
+  assistant: "I'll use dependency-auditor to ensure all dependencies are secure and compatible."
+  <commentary>
+  Audit request - comprehensive dependency analysis needed
+  </commentary>
+  </example>
+
 color: purple
 model: sonnet
 tools:
   - Read
   - Glob
   - Bash
-when_to_use: |
-  Use this agent when:
-  - User asks to "audit dependencies", "check for vulnerabilities", "update packages"
-  - User mentions "security audit", "outdated dependencies", "dependency issues"
-  - Before production deployments or major releases
-  - Monthly/quarterly dependency review cycles
-  - DO NOT use proactively
 ---
 
 # Dependency Auditor Agent

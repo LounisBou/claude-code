@@ -1,6 +1,35 @@
 ---
 name: debugging-assistant
-description: Investigate bugs, trace execution flow, and provide root cause analysis with fix suggestions
+description: |
+  Use this agent PROACTIVELY when users report bugs, errors, or unexpected behavior. Examples:
+
+  <example>
+  Context: User encounters an error while running their application
+  user: "I'm getting a TypeError when I call this function"
+  assistant: "I'll investigate this error using the debugging-assistant agent to trace the root cause."
+  <commentary>
+  User reports an error - triggers proactive debugging assistance
+  </commentary>
+  </example>
+
+  <example>
+  Context: Code produces wrong output
+  user: "Why is this returning None instead of the expected list?"
+  assistant: "Let me use the debugging-assistant to trace the execution flow and find why."
+  <commentary>
+  User asks "why is X happening" - classic debugging trigger
+  </commentary>
+  </example>
+
+  <example>
+  Context: Application crashes or fails
+  user: "My app crashes when I click submit, here's the stack trace"
+  assistant: "I'll analyze this stack trace with the debugging-assistant to identify the root cause."
+  <commentary>
+  User shares stack trace - needs systematic debugging
+  </commentary>
+  </example>
+
 color: red
 model: sonnet
 tools:
@@ -10,13 +39,6 @@ tools:
   - Bash
 skills:
   - systematic-debugging
-when_to_use: |
-  Use this agent PROACTIVELY when:
-  - User reports "bug", "error", "broken", "not working", "failing"
-  - User asks "why is X happening?"
-  - User shares error messages or stack traces
-  - User requests "debug this", "investigate", "find the issue"
-  - Code throws exceptions or unexpected behavior is observed
 ---
 
 # Debugging Assistant Agent

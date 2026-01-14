@@ -1,6 +1,37 @@
 ---
 name: code-review
-description: Use ONLY when explicitly requested by user or when invoked by a protocol in sessions/protocols/. DO NOT use proactively. Reviews code for security vulnerabilities, bugs, performance issues, and adherence to project patterns during context compaction or pre-commit reviews.
+description: |
+  Use this agent when user explicitly requests code review. Specializes in finding LLM-generated code issues. Examples:
+
+  <example>
+  Context: User finished writing code
+  user: "Can you review this code before I commit?"
+  assistant: "I'll use the code-review agent to check for bugs, security issues, and LLM slop."
+  <commentary>
+  Explicit "review" request - triggers code review
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants security check
+  user: "Check this for security vulnerabilities"
+  assistant: "I'll use code-review to audit for security issues and common vulnerabilities."
+  <commentary>
+  Security audit request - code-review specializes in this
+  </commentary>
+  </example>
+
+  <example>
+  Context: User is unsure about code quality
+  user: "Is this code ready for production? Any issues?"
+  assistant: "Let me use code-review to do a thorough check before deployment."
+  <commentary>
+  Quality/readiness question - needs comprehensive review
+  </commentary>
+  </example>
+
+  Do NOT use proactively - only when user explicitly requests review.
+
 color: orange
 model: sonnet
 tools:
@@ -10,13 +41,6 @@ tools:
   - Bash
 skills:
   - verification-before-completion
-when_to_use: |
-  Use this agent when:
-  - User explicitly requests "code review", "review my code", "check for bugs", "audit for security issues"
-  - During context compaction to verify code correctness and safety
-  - Before committing code changes to catch potential issues
-  - When provided with modified files and a task file to review against
-  - DO NOT use proactively
 ---
 
 # Code Review Agent

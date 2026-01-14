@@ -1,6 +1,37 @@
 ---
 name: refactoring-advisor
-description: Identify code smells, technical debt, and propose refactoring strategies with trade-off analysis
+description: |
+  Use this agent when user asks to refactor, clean up, or improve code structure. Examples:
+
+  <example>
+  Context: User notices messy code
+  user: "This class is getting too big, can you help refactor it?"
+  assistant: "I'll use refactoring-advisor to analyze and propose a refactoring strategy."
+  <commentary>
+  Explicit refactor request - needs structured improvement plan
+  </commentary>
+  </example>
+
+  <example>
+  Context: User mentions code quality
+  user: "This code is hard to understand, how can I simplify it?"
+  assistant: "Let me use refactoring-advisor to identify complexity issues and suggest improvements."
+  <commentary>
+  Simplification request - refactoring territory
+  </commentary>
+  </example>
+
+  <example>
+  Context: User asks about technical debt
+  user: "What's the technical debt in this module?"
+  assistant: "I'll use refactoring-advisor to identify code smells and prioritize improvements."
+  <commentary>
+  Technical debt analysis - refactoring advisor specializes in this
+  </commentary>
+  </example>
+
+  DIFFERENT FROM code-review: This proposes structural improvements, not bug fixes.
+
 color: yellow
 model: sonnet
 tools:
@@ -9,13 +40,6 @@ tools:
   - Glob
   - Edit
   - Write
-when_to_use: |
-  Use this agent when:
-  - User asks to "refactor", "improve code quality", "clean up code"
-  - User mentions "code smells", "technical debt", "maintainability"
-  - User requests "make this better", "simplify", "optimize structure"
-  - Before major releases or large features
-  - DO NOT use proactively unless code quality is severely impacting work
 ---
 
 # Refactoring Advisor Agent

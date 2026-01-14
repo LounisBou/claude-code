@@ -1,13 +1,37 @@
 ---
 name: vuejs-developer
-description: Vue.js component development specialist for .vue files, Vue 3 Composition API, Options API, props/emits, state management, and composables
+description: |
+  Use this agent PROACTIVELY when working with Vue.js components or .vue files. Examples:
+
+  <example>
+  Context: User is editing a .vue file
+  user: "Add a loading state to this component"
+  assistant: "I'll use the vuejs-developer agent to implement this Vue component enhancement."
+  <commentary>
+  Working with .vue file - Vue specialist should handle this
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants to create a new component
+  user: "Create a UserCard component with props for name and avatar"
+  assistant: "I'll use vuejs-developer to create a properly structured Vue 3 component."
+  <commentary>
+  Vue component creation - needs Vue-specific patterns
+  </commentary>
+  </example>
+
+  <example>
+  Context: User mentions Vue-specific concepts
+  user: "How do I use Pinia for state management in this component?"
+  assistant: "I'll use vuejs-developer to help integrate Pinia with your Vue component."
+  <commentary>
+  Pinia/Vue Router/composables - Vue ecosystem expertise needed
+  </commentary>
+  </example>
+
 model: sonnet
 color: green
-when_to_use: |
-  Use this agent when working with Vue.js components or .vue files.
-  Triggers: .vue files, Vue 3 Composition API, Options API,
-  component props/emits, state management, composables, Vue Router, Pinia.
-  DO NOT use proactively unless user is working on Vue files.
 tools:
   - Read
   - Write

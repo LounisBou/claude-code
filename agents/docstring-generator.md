@@ -1,6 +1,37 @@
 ---
 name: docstring-generator
-description: Generate or improve docstrings for functions, methods, and classes by analyzing code structure and following language-specific standards
+description: |
+  Use this agent when user asks to add or improve docstrings in code. Examples:
+
+  <example>
+  Context: User wants function documented
+  user: "Add a docstring to this function"
+  assistant: "I'll use docstring-generator to create a standards-compliant docstring."
+  <commentary>
+  Explicit docstring request - needs language-specific standards
+  </commentary>
+  </example>
+
+  <example>
+  Context: User mentions JSDoc/TSDoc
+  user: "Add JSDoc comments to these TypeScript functions"
+  assistant: "Let me use docstring-generator to add TSDoc-compliant documentation."
+  <commentary>
+  Specific format request - docstring generator knows standards
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants class documented
+  user: "Document all methods in this class"
+  assistant: "I'll use docstring-generator to add comprehensive docstrings following project conventions."
+  <commentary>
+  Class documentation - code-level docstrings needed
+  </commentary>
+  </example>
+
+  DIFFERENT FROM documentation-generator: This creates code-level docstrings (inline), not project-level docs (files).
+
 color: blue
 model: haiku
 tools:
@@ -15,12 +46,6 @@ skills:
   - php-docstring
   - js-docstring
   - ts-docstring
-when_to_use: |
-  Use this agent when:
-  - User requests "generate docstring", "add docstring", "improve docstring"
-  - User asks to "document this function/class/method"
-  - User wants to "write documentation" for code
-  - DO NOT use proactively - only when explicitly requested
 ---
 
 # Docstring Generator Agent

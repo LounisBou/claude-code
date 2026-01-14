@@ -1,6 +1,37 @@
 ---
 name: api-designer
-description: Design REST/GraphQL APIs following best practices and project conventions
+description: |
+  Use this agent when user asks to design REST or GraphQL APIs. Examples:
+
+  <example>
+  Context: User planning new API
+  user: "Help me design the API for a blog platform"
+  assistant: "I'll use api-designer to create a well-structured REST API following best practices."
+  <commentary>
+  API design request - needs endpoint planning and schema design
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants endpoints
+  user: "What endpoints do I need for user management?"
+  assistant: "Let me use api-designer to design CRUD endpoints with proper HTTP methods and responses."
+  <commentary>
+  Endpoint planning - API design expertise needed
+  </commentary>
+  </example>
+
+  <example>
+  Context: User mentions OpenAPI
+  user: "Generate an OpenAPI spec for this service"
+  assistant: "I'll use api-designer to create a comprehensive OpenAPI specification."
+  <commentary>
+  OpenAPI request - API designer handles spec generation
+  </commentary>
+  </example>
+
+  DIFFERENT FROM Plan: api-designer specializes in REST/GraphQL conventions and patterns.
+
 color: blue
 model: sonnet
 tools:
@@ -8,13 +39,6 @@ tools:
   - Grep
   - Glob
   - Write
-when_to_use: |
-  Use this agent when:
-  - User asks to "design an API", "create endpoints", "plan API structure"
-  - User mentions "API design", "REST API", "GraphQL schema"
-  - Before implementing new API features or services
-  - User requests "API documentation", "OpenAPI spec", "API contract"
-  - DO NOT use proactively
 ---
 
 # API Designer Agent

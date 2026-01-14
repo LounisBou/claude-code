@@ -1,6 +1,37 @@
 ---
 name: migration-planner
-description: Plan framework/language version upgrades and identify breaking changes with migration strategies
+description: |
+  Use this agent when user asks to upgrade frameworks or language versions. Examples:
+
+  <example>
+  Context: User wants to upgrade
+  user: "Help me upgrade from Python 3.8 to 3.12"
+  assistant: "I'll use migration-planner to identify breaking changes and create a migration plan."
+  <commentary>
+  Version upgrade request - needs breaking change analysis
+  </commentary>
+  </example>
+
+  <example>
+  Context: Framework migration
+  user: "We need to migrate from Vue 2 to Vue 3"
+  assistant: "Let me use migration-planner to analyze the codebase and create a phased migration strategy."
+  <commentary>
+  Framework migration - comprehensive planning needed
+  </commentary>
+  </example>
+
+  <example>
+  Context: User asks about breaking changes
+  user: "What will break if we upgrade React to v18?"
+  assistant: "I'll use migration-planner to research breaking changes and identify affected code."
+  <commentary>
+  Breaking changes question - migration planner's specialty
+  </commentary>
+  </example>
+
+  DIFFERENT FROM dependency-auditor: Migration-planner handles framework/language upgrades, auditor handles package security.
+
 color: orange
 model: sonnet
 tools:
@@ -9,13 +40,6 @@ tools:
   - Glob
   - Bash
   - WebSearch
-when_to_use: |
-  Use this agent when:
-  - User asks to "upgrade", "migrate", "update framework/language version"
-  - User mentions "Python 3.x to 3.y", "React 17 to 18", "Node 16 to 20", etc.
-  - Planning major version changes for frameworks or languages
-  - User requests migration strategy or upgrade plan
-  - DO NOT use proactively
 ---
 
 # Migration Planner Agent

@@ -1,6 +1,37 @@
 ---
 name: documentation-generator
-description: Generate and update technical documentation, README files, and API docs from code
+description: |
+  Use this agent ONLY when user explicitly requests project documentation. Examples:
+
+  <example>
+  Context: User wants README
+  user: "Create a README for this project"
+  assistant: "I'll use documentation-generator to create a comprehensive README with installation, usage, and API docs."
+  <commentary>
+  Explicit README request - documentation generator handles project-level docs
+  </commentary>
+  </example>
+
+  <example>
+  Context: User wants API docs
+  user: "Generate API documentation for this service"
+  assistant: "Let me use documentation-generator to create detailed API documentation."
+  <commentary>
+  API docs request - needs extraction from code and endpoints
+  </commentary>
+  </example>
+
+  <example>
+  Context: User asks for architecture docs
+  user: "Document the architecture of this system"
+  assistant: "I'll use documentation-generator to create architecture documentation explaining the system design."
+  <commentary>
+  Architecture docs - high-level documentation needed
+  </commentary>
+  </example>
+
+  NEVER use proactively. DIFFERENT FROM docstring-generator: This creates project-level docs (README, API), not code-level docstrings.
+
 color: cyan
 model: sonnet
 tools:
@@ -8,12 +39,6 @@ tools:
   - Grep
   - Glob
   - Write
-when_to_use: |
-  Use this agent ONLY when:
-  - User explicitly requests "generate documentation", "create README", "write docs"
-  - User asks to "document this code", "add API documentation"
-  - Before major releases when user requests updated documentation
-  - NEVER use proactively - documentation is only created when explicitly requested
 ---
 
 # Documentation Generator Agent
