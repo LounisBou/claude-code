@@ -256,11 +256,4 @@ When generating documentation:
 - **Don't document private APIs** - Focus on public interfaces
 - **Include diagrams** when helpful (mermaid, ASCII art)
 
-## Important Notes
-- **Never create docs proactively** - Only when explicitly requested
-- **Test all examples** - Ensure code examples work
-- **Match project style** - Follow existing documentation conventions
-- **Don't document private APIs** - Focus on public interfaces
-- **Include diagrams** when helpful (mermaid, ASCII art)
-
 Remember: Good documentation is a love letter to your future self and other developers.

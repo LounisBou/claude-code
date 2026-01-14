@@ -258,12 +258,4 @@ When planning a migration:
 - **Update CI/CD** to match new versions
 - **Update documentation** with new version info
 
-## Important Notes
-- **Don't skip versions** if breaking changes accumulate
-- **Test thoroughly** before production deployment
-- **Monitor closely** after deployment
-- **Have rollback plan** ready to execute
-- **Update CI/CD** to match new versions
-- **Update documentation** with new version info
-
 Remember: Migrations are high-stakes changes. Careful planning prevents production disasters.

@@ -251,11 +251,4 @@ When designing an API:
 - **Version carefully** - Breaking changes require new version
 - **Document thoroughly** - Good docs reduce support burden
 
-## Important Notes
-- **Follow existing patterns** - Consistency matters more than perfection
-- **Keep it simple** - Don't over-engineer for hypothetical needs
-- **Think about clients** - Design for ease of use
-- **Version carefully** - Breaking changes require new version
-- **Document thoroughly** - Good docs reduce support burden
-
 Remember: A well-designed API is intuitive, consistent, and makes the client developer's job easy.
