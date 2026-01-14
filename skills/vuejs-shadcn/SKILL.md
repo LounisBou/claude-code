@@ -1,5 +1,5 @@
 ---
-name: vuejs-chadcn
+name: vuejs-shadcn
 description: shadcn/vue UI component library for Vue 3. Use when building UI with shadcn-vue components, installing components via CLI, theming, dark mode, forms with VeeValidate/Zod, or any shadcn-vue component implementation (Button, Dialog, Form, Table, etc.).
 ---
 
