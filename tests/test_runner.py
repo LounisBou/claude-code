@@ -115,7 +115,7 @@ def list_tests(category: str = None, test_type: str = None):
 def check_logs(minutes: int = 30):
     """Check logs for agent and skill invocations."""
     project_root = get_project_root()
-    logs_dir = project_root / "logs"
+    logs_dir = project_root / ".claude" / "logs"
 
     print("=" * 60)
     print(f"LOG CHECK (last {minutes} minutes)")
@@ -142,7 +142,7 @@ def check_logs(minutes: int = 30):
         print("\nNo agent log found.")
 
     # Check skill log
-    skill_log = logs_dir / "skill-invocations.log"
+    skill_log = logs_dir / "skills.log"
     if skill_log.exists():
         print("\n## SKILL INVOCATIONS\n")
         with open(skill_log) as f:
