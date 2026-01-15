@@ -26,7 +26,8 @@ Initializes the project by creating symlinks for skills, agents, and commands ba
    - Includes local/ folder contents
 
 3. **Updates CLAUDE.md**
-   - Copies from CLAUDE.template.md if doesn't exist
+   - Creates minimal CLAUDE.md if doesn't exist
+   - Appends Agent/Skill Guidelines section if markers don't exist
    - Extracts matching sections from AGENTS.md and SKILLS.md
    - Replaces content between markers
 
@@ -53,5 +54,5 @@ When this command is invoked:
    - Use AskUserQuestion to ask about project type (multi-select: PHP, Python, JavaScript/TypeScript, Vue.js)
    - Based on answers, ask follow-up questions about frameworks
    - Create .claude/project.json with selected categories
-4. Run the init-project.py script: `python3 hooks/init-project.py`
+4. Run the init-project.py script: `python3 .claude/hooks/init-project.py`
 5. Report the results to the user

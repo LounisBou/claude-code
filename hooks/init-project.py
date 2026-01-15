@@ -28,10 +28,20 @@ def get_project_root() -> Path:
 
 
 def load_project_config(project_root: Path) -> dict:
-    """Load project configuration from .claude/project.json."""
-    project_json = project_root / ".claude" / "project.json"
+    """Load project configuration from project.json.
+
+    Checks two locations to support both contexts:
+    - Runtime (.claude/hooks/): project.json directly in project_root
+    - Development (root/hooks/): .claude/project.json under project_root
+    """
+    # Try direct path first (runtime context)
+    project_json = project_root / "project.json"
     if not project_json.exists():
-        print("Error: .claude/project.json not found.")
+        # Try .claude subdirectory (development context)
+        project_json = project_root / ".claude" / "project.json"
+
+    if not project_json.exists():
+        print("Error: project.json not found.")
         print("Run /init-project to create one interactively.")
         sys.exit(1)
 
