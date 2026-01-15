@@ -1,5 +1,5 @@
 ---
-name: debug
+name: agent-debug
 description: Investigate bugs, trace execution flow, and provide root cause analysis with fixes
 user_invocable: true
 ---

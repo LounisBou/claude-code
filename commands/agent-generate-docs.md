@@ -1,5 +1,5 @@
 ---
-name: generate-docs
+name: agent-generate-docs
 description: Generate technical documentation, README files, and API docs from code
 user_invocable: true
 ---

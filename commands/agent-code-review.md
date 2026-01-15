@@ -1,5 +1,5 @@
 ---
-name: code-review
+name: agent-code-review
 description: Review code for security vulnerabilities, bugs, performance issues, and adherence to project patterns
 user_invocable: true
 ---

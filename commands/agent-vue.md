@@ -1,5 +1,5 @@
 ---
-name: vue
+name: agent-vue
 description: Create, modify, or analyze Vue.js components with Vue 3 Composition API best practices
 user_invocable: true
 ---

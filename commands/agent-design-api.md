@@ -1,5 +1,5 @@
 ---
-name: design-api
+name: agent-design-api
 description: Design REST/GraphQL APIs following best practices and project conventions
 user_invocable: true
 ---

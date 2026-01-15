@@ -1,5 +1,5 @@
 ---
-name: check-norms
+name: agent-check-norms
 description: Launch code-norms-checker agent to analyze modified files for pattern compliance
 user_invocable: true
 ---

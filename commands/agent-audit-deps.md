@@ -1,5 +1,5 @@
 ---
-name: audit-deps
+name: agent-audit-deps
 description: Audit dependencies for security vulnerabilities, outdated versions, and compatibility issues
 user_invocable: true
 ---

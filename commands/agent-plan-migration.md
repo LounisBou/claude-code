@@ -1,5 +1,5 @@
 ---
-name: plan-migration
+name: agent-plan-migration
 description: Plan framework/language version upgrades and identify breaking changes with migration strategies
 user_invocable: true
 ---

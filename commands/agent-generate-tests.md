@@ -1,5 +1,5 @@
 ---
-name: generate-tests
+name: agent-generate-tests
 description: Generate comprehensive tests for specified code following project patterns
 user_invocable: true
 ---

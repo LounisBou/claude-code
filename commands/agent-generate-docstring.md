@@ -1,5 +1,5 @@
 ---
-name: generate-docstring
+name: agent-generate-docstring
 description: Generate or improve docstrings for functions, methods, and classes following language-specific standards
 user_invocable: true
 ---

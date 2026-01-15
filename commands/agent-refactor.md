@@ -1,5 +1,5 @@
 ---
-name: refactor
+name: agent-refactor
 description: Identify code smells and propose refactoring strategies with trade-off analysis
 user_invocable: true
 ---
