@@ -1,6 +1,9 @@
 ---
 name: tailwind-css-dev
-description: Tailwind CSS utility classes and patterns. Use when styling with Tailwind, including layout (flex, grid), spacing, typography, colors, responsive design, dark mode, animations, and component patterns. Applies to class attributes in Vue/React templates and HTML.
+description: |
+  Tailwind CSS utility classes for layout, spacing, typography, responsive design, and dark mode.
+  WHEN: Styling with Tailwind classes, implementing flex/grid layouts, responsive breakpoints, dark mode variants, animations, component styling patterns.
+  WHEN NOT: Plain CSS/SCSS, CSS-in-JS solutions, HTML structure (use html-dev), JavaScript logic (use js-dev).
 ---
 
 # Tailwind CSS Development

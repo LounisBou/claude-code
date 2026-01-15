@@ -1,6 +1,9 @@
 ---
 name: vuejs-dev
-description: Core Vue.js development patterns and best practices. Use when working with Vue Single File Components (.vue), Vue 3 Composition API, Options API, reactivity system, component lifecycle, props/emits, slots, provide/inject, composables, and Vue Router/Pinia integration.
+description: |
+  Vue 3 development: Composition API, reactivity, components, props/emits, Vue Router, Pinia.
+  WHEN: Creating .vue components, using Composition API (ref, reactive, computed), props/emits, slots, composables, Vue Router navigation, Pinia state management.
+  WHEN NOT: React development, plain HTML/JS (use html-dev, js-dev), ApexCharts (use vuejs-apex-charts), Shadcn components (use vuejs-shadcn).
 ---
 
 # Vue.js Development

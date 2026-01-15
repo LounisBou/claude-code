@@ -1,6 +1,9 @@
 ---
 name: vuejs-apex-charts
-description: Vue 3 ApexCharts integration using vue3-apexcharts. Use when creating charts, dashboards, or data visualizations in Vue 3 applications. Covers all chart types (line, area, bar, pie, donut, radar, heatmap, etc.), real-time updates, API data integration, Tailwind CSS styling, and responsive charts.
+description: |
+  ApexCharts integration for Vue 3 using vue3-apexcharts for data visualization.
+  WHEN: Creating charts in Vue 3 (line, bar, pie, donut, radar, heatmap), building dashboards, real-time chart updates, integrating API data with charts.
+  WHEN NOT: Non-Vue projects, other chart libraries (Chart.js, D3), general Vue development (use vuejs-dev).
 ---
 
 # Vue 3 ApexCharts

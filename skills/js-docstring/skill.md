@@ -1,6 +1,9 @@
 ---
 name: js-docstring
-description: Write correct JavaScript documentation comments following JSDoc standards (jsdoc.app). Use when writing or improving JavaScript documentation for functions, classes, modules, and variables.
+description: |
+  JSDoc documentation standards for JavaScript following jsdoc.app conventions.
+  WHEN: Writing JSDoc comments, documenting JavaScript functions/classes/modules, generating API docs with JSDoc, improving existing JS documentation.
+  WHEN NOT: TypeScript code (use ts-docstring), Python (use python-docstring), PHP (use php-docstring), runtime logic without documentation needs.
 ---
 
 # JavaScript JSDoc Standards

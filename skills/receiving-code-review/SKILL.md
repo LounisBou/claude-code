@@ -1,6 +1,9 @@
 ---
 name: receiving-code-review
-description: Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation
+description: |
+  Handle code review feedback with technical rigor, verification, and appropriate pushback.
+  WHEN: Receiving review feedback from humans or agents, before implementing suggestions, when feedback seems unclear or technically questionable.
+  WHEN NOT: Requesting code review (use requesting-code-review), writing code, debugging issues.
 ---
 
 # Code Review Reception

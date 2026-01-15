@@ -1,6 +1,9 @@
 ---
 name: ts-docstring
-description: Write correct TypeScript documentation comments following TSDoc standards (tsdoc.org). Use when writing or improving TypeScript documentation for functions, classes, interfaces, and types.
+description: |
+  TSDoc documentation standards for TypeScript following tsdoc.org conventions.
+  WHEN: Writing TSDoc comments, documenting TypeScript functions/classes/interfaces/types, generating docs with TypeDoc, improving existing TS documentation.
+  WHEN NOT: JavaScript code (use js-docstring), Python (use python-docstring), PHP (use php-docstring), runtime logic without documentation needs.
 ---
 
 # TypeScript TSDoc Standards

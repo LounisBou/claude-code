@@ -1,6 +1,9 @@
 ---
 name: html-dev
-description: HTML structure, semantics, and accessibility best practices. Use when working with HTML markup, semantic elements, forms, tables, accessibility (ARIA), SEO meta tags, and document structure. Applies to template sections in Vue/React components and HTML files.
+description: |
+  HTML structure, semantics, accessibility, and SEO best practices.
+  WHEN: Writing semantic HTML, implementing ARIA accessibility, creating forms/tables, adding SEO meta tags, structuring HTML documents, template sections in Vue/React.
+  WHEN NOT: CSS styling (use tailwind-css-dev), JavaScript logic (use js-dev), Vue-specific patterns (use vuejs-dev).
 ---
 
 # HTML Development

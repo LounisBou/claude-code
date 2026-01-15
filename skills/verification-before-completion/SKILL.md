@@ -1,6 +1,9 @@
 ---
 name: verification-before-completion
-description: Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always
+description: |
+  Run verification commands and confirm output before claiming success or completion.
+  WHEN: About to claim work complete/fixed/passing, before committing, before creating PRs, before moving to next task. Evidence before assertions always.
+  WHEN NOT: Still implementing, still debugging, exploring codebase.
 ---
 
 # Verification Before Completion

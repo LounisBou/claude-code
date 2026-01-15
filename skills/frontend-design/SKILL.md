@@ -1,6 +1,9 @@
 ---
 name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, Vue components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.
+description: |
+  Create distinctive, production-grade frontend interfaces with high design quality.
+  WHEN: Building landing pages, dashboards, web components, beautifying UI, creating polished designs, avoiding generic AI aesthetics.
+  WHEN NOT: Backend development, API design, database work, using specific frameworks without design focus (use vuejs-dev, tailwind-css-dev instead).
 license: Complete terms in LICENSE.txt
 ---
 

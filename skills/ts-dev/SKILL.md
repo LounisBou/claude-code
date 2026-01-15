@@ -1,6 +1,9 @@
 ---
 name: ts-dev
-description: TypeScript development patterns and best practices. Use when working with .ts/.tsx files, type definitions, interfaces, generics, type guards, utility types, and TypeScript configuration. Applies to TypeScript sections in Vue components (script lang="ts").
+description: |
+  TypeScript patterns: type definitions, interfaces, generics, type guards, and utility types.
+  WHEN: Writing .ts/.tsx files, defining interfaces/types, using generics, implementing type guards, configuring tsconfig.json, Vue script lang="ts".
+  WHEN NOT: Plain JavaScript (use js-dev), runtime code without types, Python/PHP backend code.
 ---
 
 # TypeScript Development

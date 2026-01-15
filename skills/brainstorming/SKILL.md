@@ -1,6 +1,9 @@
 ---
 name: brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: |
+  Collaborative design refinement through Socratic dialogue to turn ideas into validated specs.
+  WHEN: Before implementing new features, building components, adding functionality, or making behavior changes. Use when requirements need clarification or multiple approaches exist.
+  WHEN NOT: Executing existing plans (use executing-plans), debugging (use systematic-debugging), simple single-file changes with clear requirements.
 ---
 
 # Brainstorming Ideas Into Designs

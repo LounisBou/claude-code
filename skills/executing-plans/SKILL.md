@@ -1,6 +1,9 @@
 ---
 name: executing-plans
-description: Use when you have a written implementation plan to execute in a separate session with review checkpoints
+description: |
+  Execute written implementation plans with batch tasks and human checkpoints between batches.
+  WHEN: Have a written plan file to execute in a separate/parallel session, need human checkpoints between batches, executing plans created by writing-plans skill.
+  WHEN NOT: Same-session execution (use subagent-driven-development), no plan exists yet (use writing-plans), design phase (use brainstorming).
 ---
 
 # Executing Plans

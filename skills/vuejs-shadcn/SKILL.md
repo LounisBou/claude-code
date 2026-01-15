@@ -1,6 +1,9 @@
 ---
 name: vuejs-shadcn
-description: shadcn/vue UI component library for Vue 3. Use when building UI with shadcn-vue components, installing components via CLI, theming, dark mode, forms with VeeValidate/Zod, or any shadcn-vue component implementation (Button, Dialog, Form, Table, etc.).
+description: |
+  shadcn/vue UI components for Vue 3: Button, Dialog, Form, Table, and theming.
+  WHEN: Using shadcn-vue components, installing components via CLI, theming/dark mode, forms with VeeValidate/Zod, implementing shadcn patterns.
+  WHEN NOT: Other UI libraries (Vuetify, PrimeVue), general Vue development (use vuejs-dev), charts (use vuejs-apex-charts).
 ---
 
 # shadcn/vue

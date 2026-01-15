@@ -1,6 +1,9 @@
 ---
 name: test-driven-development
-description: Use when implementing any feature or bugfix, before writing implementation code
+description: |
+  Write failing test first, then minimal code to pass (RED-GREEN-REFACTOR cycle).
+  WHEN: Implementing new features, fixing bugs, refactoring, any behavior changes. Write test BEFORE implementation code.
+  WHEN NOT: Throwaway prototypes, generated code, configuration files, debugging root cause (use systematic-debugging first).
 ---
 
 # Test-Driven Development (TDD)

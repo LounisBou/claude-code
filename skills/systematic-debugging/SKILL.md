@@ -1,6 +1,9 @@
 ---
 name: systematic-debugging
-description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
+description: |
+  Find root cause before attempting fixes through systematic investigation phases.
+  WHEN: Encountering bugs, test failures, unexpected behavior, build failures, performance issues. Use ESPECIALLY under time pressure or after multiple failed fixes.
+  WHEN NOT: Issue is already understood with clear root cause, writing new features (use test-driven-development), simple typos.
 ---
 
 # Systematic Debugging

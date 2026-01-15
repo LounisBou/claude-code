@@ -1,6 +1,9 @@
 ---
 name: dispatching-parallel-agents
-description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
+description: |
+  Dispatch multiple agents concurrently to solve independent problems in parallel.
+  WHEN: Facing 2+ independent tasks without shared state (multiple test file failures, different subsystems broken), each problem can be understood without context from others.
+  WHEN NOT: Related failures (fix one might fix others), need full system state, agents would interfere with each other, exploratory debugging.
 ---
 
 # Dispatching Parallel Agents

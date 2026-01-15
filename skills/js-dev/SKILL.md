@@ -1,6 +1,9 @@
 ---
 name: js-dev
-description: JavaScript development patterns and best practices. Use when writing JavaScript code, ES6+ features, async/await, array methods, destructuring, modules, error handling, and modern JS patterns. Applies to .js files and JavaScript sections in Vue/React components.
+description: |
+  JavaScript ES6+ patterns, async/await, modules, and modern JS best practices.
+  WHEN: Writing JavaScript code, using ES6+ features (destructuring, spread, arrow functions), async/await patterns, array methods, module imports/exports, .js files.
+  WHEN NOT: TypeScript code (use ts-dev), Vue-specific patterns (use vuejs-dev), Node.js backend APIs (use python-backend equivalent for Node).
 ---
 
 # JavaScript Development
