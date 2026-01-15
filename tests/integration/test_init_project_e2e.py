@@ -24,7 +24,7 @@ class TestInitProjectE2E:
                 shutil.copytree(src, temp_dir / dir_name)
 
         # Copy essential files
-        for file_name in ["AGENTS.md", "SKILLS.md", "CLAUDE.template.md"]:
+        for file_name in ["AGENTS.md", "SKILLS.md"]:
             src = project_root / file_name
             if src.exists():
                 shutil.copy(src, temp_dir / file_name)

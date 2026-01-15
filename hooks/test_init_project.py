@@ -354,27 +354,28 @@ old content
         self.assertIn("tdd", content)
         self.assertNotIn("old content", content)
 
-    def test_creates_from_template_if_missing(self):
-        """Creates CLAUDE.md from template if missing."""
-        template = self.test_dir / "CLAUDE.template.md"
-        template.write_text("""# Project
+    def test_appends_section_if_no_markers(self):
+        """Appends guidelines section if CLAUDE.md exists without markers."""
+        claude_md = self.test_dir / "CLAUDE.md"
+        claude_md.write_text("""# My Project
 
-<!-- BEGIN:AGENTS -->
-<!-- END:AGENTS -->
-
-<!-- BEGIN:SKILLS -->
-<!-- END:SKILLS -->
+Some existing content that should be preserved.
 """)
 
         update_claude_md(self.test_dir, ["dev"])
 
-        claude_md = self.test_dir / "CLAUDE.md"
-        self.assertTrue(claude_md.exists())
         content = claude_md.read_text()
+        # Original content preserved
+        self.assertIn("My Project", content)
+        self.assertIn("Some existing content", content)
+        # New section appended
+        self.assertIn("BEGIN:AGENTS", content)
         self.assertIn("debugging-assistant", content)
+        self.assertIn("BEGIN:SKILLS", content)
+        self.assertIn("tdd", content)
 
-    def test_creates_default_if_both_missing(self):
-        """Creates default CLAUDE.md if both file and template missing."""
+    def test_creates_default_if_missing(self):
+        """Creates default CLAUDE.md if file doesn't exist."""
         update_claude_md(self.test_dir, ["dev"])
 
         claude_md = self.test_dir / "CLAUDE.md"
