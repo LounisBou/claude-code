@@ -1,0 +1,6 @@
+{
+  "name": "vue-tailwind",
+  "categories": ["dev", "html", "js", "ts", "vue", "tailwind"],
+  "exclude": [],
+  "description": "Vue.js frontend with Tailwind CSS"
+}

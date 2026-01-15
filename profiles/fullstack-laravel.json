@@ -1,0 +1,6 @@
+{
+  "name": "fullstack-laravel",
+  "categories": ["dev", "php", "laravel", "html", "js", "ts", "vue", "tailwind", "api", "docs"],
+  "exclude": [],
+  "description": "Full-stack Laravel + Vue.js development"
+}

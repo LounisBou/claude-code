@@ -21,7 +21,8 @@
   },
   "permissions": {
     "allow": [
-      "Read",
+      "Read", 
+      "WebSearch",
       "Bash(awk:*)",
       "Bash(black:*)",
       "Bash(cat:*)",
@@ -49,6 +50,11 @@
       "Bash(pwd)",
       "Bash(pylint:*)",
       "Bash(pytest:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python3 -m pytest:*)",
+      "Bash(python3 hooks/init-project.py:*)",
+      "Bash(python -m unittest:*)",
+      "Bash(python tests/run_all_tests.py:*)",
       "Bash(sort:*)",
       "Bash(tail:*)",
       "Bash(time:*)",
@@ -68,8 +74,7 @@
       "mcp__chrome-devtools__list_console_messages",
       "mcp__chrome-devtools__click",
       "mcp__chrome-devtools__wait_for",
-      "mcp__chrome-devtools__take_screenshot",
-      "WebSearch"
+      "mcp__chrome-devtools__take_screenshot"
     ],
     "ask": [
       "Bash(./bin/console:*)",
