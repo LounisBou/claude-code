@@ -35,9 +35,21 @@ from typing import Dict, List, Optional, Tuple
 # CONFIGURATION
 # =============================================================================
 
-# When in tests/ folder, parent is the project root
-PROJECT_ROOT = Path(__file__).parent.parent
-CLAUDE_DIR = PROJECT_ROOT / ".claude"
+# Detect context: production (.claude/tests/) vs development (tests/)
+_script_parent = Path(__file__).parent.parent
+if _script_parent.name == ".claude":
+    # Production: script is in .claude/tests/, project root is parent of .claude
+    PROJECT_ROOT = _script_parent.parent
+    CLAUDE_DIR = _script_parent
+    # In production, items (agents/skills/commands) are in .claude
+    ITEMS_DIR = CLAUDE_DIR
+else:
+    # Development: script is in tests/ at project root
+    PROJECT_ROOT = _script_parent
+    CLAUDE_DIR = PROJECT_ROOT / ".claude"
+    # In development, items are at project root
+    ITEMS_DIR = PROJECT_ROOT
+
 LOGS_DIR = CLAUDE_DIR / "logs"
 AGENT_LOG = LOGS_DIR / "agent-invocations.log"
 SKILL_LOG = LOGS_DIR / "skills.log"
@@ -120,7 +132,7 @@ def get_log_entries_after(log_file: Path, after_time: datetime) -> List[str]:
 
 def load_test_definitions(test_type: str) -> dict:
     """Load test definitions for agents or skills."""
-    test_file = PROJECT_ROOT / "tests" / test_type / "test_definitions.json"
+    test_file = CLAUDE_DIR / "tests" / test_type / "test_definitions.json"
     if not test_file.exists():
         return {"tests": []}
     with open(test_file) as f:
@@ -129,7 +141,7 @@ def load_test_definitions(test_type: str) -> dict:
 
 def get_active_items(item_type: str) -> List[str]:
     """Get list of active agents/skills/commands (symlinked)."""
-    item_dir = PROJECT_ROOT / item_type
+    item_dir = ITEMS_DIR / item_type
     if not item_dir.exists():
         return []
 
@@ -215,7 +227,7 @@ def test_symlinks_created() -> Tuple[bool, str]:
     errors = []
 
     for item_type in ["agents", "skills", "commands"]:
-        item_dir = PROJECT_ROOT / item_type
+        item_dir = ITEMS_DIR / item_type
         if not item_dir.exists():
             errors.append(f"{item_type}/ directory missing")
             continue
@@ -256,7 +268,7 @@ def test_symlinks_match_categories() -> Tuple[bool, str]:
         ("skills", "skills-available"),
         ("commands", "commands-available")
     ]:
-        available_path = PROJECT_ROOT / available_dir
+        available_path = CLAUDE_DIR / available_dir
         if not available_path.exists():
             continue
 
@@ -358,7 +370,7 @@ def test_commands_visibility() -> Tuple[bool, str]:
 
     active_commands = get_active_items("commands")
     # Include init-project.md which is not a symlink
-    if (PROJECT_ROOT / "commands" / "init-project.md").exists():
+    if (ITEMS_DIR / "commands" / "init-project.md").exists():
         active_commands.append("init-project")
 
     found = []
