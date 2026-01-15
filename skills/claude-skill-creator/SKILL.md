@@ -1,6 +1,9 @@
 ---
 name: claude-skill-creator
-description: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.
+description: |
+  Create and structure Claude Code skills with proper SKILL.md format, frontmatter, and progressive disclosure.
+  WHEN: Creating new skills, updating existing skill content, structuring skill directories, writing skill descriptions, organizing skill references/scripts/assets.
+  WHEN NOT: Using existing skills for tasks, general coding, creating agents or commands (use claude-agent-creator, claude-command-development).
 ---
 
 # Skill Creator

@@ -1,6 +1,9 @@
 ---
 name: claude-agent-creator
-description: This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent tools", "agent colors", "autonomous agent", or needs guidance on agent structure, system prompts, triggering conditions, or agent development best practices for Claude Code plugins.
+description: |
+  Create and configure Claude Code agents with proper frontmatter, system prompts, and triggering conditions.
+  WHEN: Creating new agents, writing agent system prompts, configuring agent frontmatter (name, description, model, color, tools), designing agent triggering examples, adding agents to plugins.
+  WHEN NOT: General coding tasks, modifying existing non-agent files, using existing agents for tasks.
 ---
 
 # Agent creator for Claude Code

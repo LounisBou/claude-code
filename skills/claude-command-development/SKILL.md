@@ -1,6 +1,9 @@
 ---
 name: claude-command-development
-description: This skill should be used when the user asks to "create a slash command", "add a command", "write a custom command", "define command arguments", "use command frontmatter", "organize commands", "create command with file references", "interactive command", "use AskUserQuestion in command", or needs guidance on slash command structure, YAML frontmatter fields, dynamic arguments, bash execution in commands, user interaction patterns, or command development best practices for Claude Code.
+description: |
+  Create slash commands for Claude Code with proper frontmatter, arguments, and bash execution.
+  WHEN: Creating new slash commands, defining command arguments, configuring command frontmatter, adding interactive prompts with AskUserQuestion, embedding bash scripts in commands.
+  WHEN NOT: Using existing commands, creating agents (use claude-agent-creator), creating skills (use claude-skill-creator).
 ---
 
 # Command Development for Claude Code

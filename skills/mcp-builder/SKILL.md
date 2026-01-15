@@ -1,6 +1,9 @@
 ---
 name: mcp-builder
-description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services.
+description: |
+  Build MCP (Model Context Protocol) servers to expose external APIs and services as tools for LLMs.
+  WHEN: Creating new MCP servers, designing MCP tools, implementing MCP transport (stdio, SSE, HTTP), building external service integrations.
+  WHEN NOT: Integrating existing MCP servers into plugins (use mcp-integration), general API development.
 license: Complete terms in LICENSE.txt
 ---
 

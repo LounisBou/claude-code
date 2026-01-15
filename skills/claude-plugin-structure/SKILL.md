@@ -1,6 +1,9 @@
 ---
 name: claude-plugin-structure
-description: This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "understand plugin structure", "organize plugin components", "set up plugin.json", "use ${CLAUDE_PLUGIN_ROOT}", "add commands/agents/skills/hooks", "configure auto-discovery", or needs guidance on plugin directory layout, manifest configuration, component organization, file naming conventions, or Claude Code plugin architecture best practices.
+description: |
+  Scaffold and organize Claude Code plugins with proper directory structure and plugin.json manifest.
+  WHEN: Creating new plugins, setting up plugin directory layout, configuring plugin.json, organizing components (agents/commands/skills/hooks), understanding auto-discovery.
+  WHEN NOT: Configuring plugin settings (use claude-plugin-settings), creating individual components (use specific skill for agents/commands/skills/hooks).
 ---
 
 # Plugin Structure for Claude Code
