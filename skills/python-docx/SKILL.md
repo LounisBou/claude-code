@@ -1,6 +1,9 @@
 ---
 name: python-docx
-description: "Comprehensive document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. When developing in Python and Claude needs to work with professional documents (.docx files) for: (1) Creating new documents, (2) Modifying or editing content, (3) Working with tracked changes, (4) Adding comments, or any other document tasks"
+description: |
+  Create and edit Word documents (.docx) in Python with python-docx library.
+  WHEN: Creating .docx files, editing Word documents, working with tracked changes, adding comments, preserving formatting, extracting text from Word files.
+  WHEN NOT: PDF files (use python-pdf), Excel/spreadsheets (use python-xlsx), plain text files.
 license: Proprietary. LICENSE.txt has complete terms
 ---
 

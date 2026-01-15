@@ -1,6 +1,9 @@
 ---
 name: python-pdf
-description: Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. When developing in Python and Claude needs to fill in a PDF form or programmatically process, generate, or analyze PDF documents at scale.
+description: |
+  Manipulate PDF files in Python: extract text/tables, create, merge, split, and fill forms.
+  WHEN: Extracting text from PDFs, creating PDF documents, merging/splitting PDFs, filling PDF forms, working with pdfplumber/PyPDF2/reportlab.
+  WHEN NOT: Word documents (use python-docx), Excel files (use python-xlsx), image processing.
 license: Proprietary. LICENSE.txt has complete terms
 ---
 

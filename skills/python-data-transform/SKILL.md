@@ -1,7 +1,10 @@
 ---
 name: python-data-transform
 title: Data Transformation (Universal)
-description: Transform, clean, reshape, and preprocess data using pandas and numpy. Use when developing in Python and needing to manipulate tabular data, clean datasets or normalize data.
+description: |
+  Transform, clean, and reshape data using pandas and numpy for ETL and data preprocessing.
+  WHEN: Manipulating DataFrames, cleaning datasets, reshaping data (pivot, melt), merging/joining tables, data normalization, CSV/Excel processing.
+  WHEN NOT: Creating Excel files with formatting (use python-xlsx), building APIs (use python-backend), statistical modeling.
 ---
 
 # Data Transformation (Universal)

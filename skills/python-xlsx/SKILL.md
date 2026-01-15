@@ -1,6 +1,9 @@
 ---
 name: python-xlsx
-description: "Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization. When developing in Python and Claude needs to work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for: (1) Creating new spreadsheets with formulas and formatting, (2) Reading or analyzing data, (3) Modify existing spreadsheets while preserving formulas, (4) Data analysis and visualization in spreadsheets, or (5) Recalculating formulas"
+description: |
+  Create and edit Excel spreadsheets (.xlsx) in Python with openpyxl/xlsxwriter.
+  WHEN: Creating Excel files with formulas/formatting, reading .xlsx/.xlsm files, modifying spreadsheets while preserving formulas, adding charts/visualizations to Excel.
+  WHEN NOT: Simple CSV reading (use pandas), Word documents (use python-docx), PDF files (use python-pdf).
 license: Proprietary. LICENSE.txt has complete terms
 ---
 

@@ -1,6 +1,9 @@
 ---
 name: python-testing-patterns
-description: Implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. Use when developing in Python and writing Python tests, setting up test suites, or implementing testing best practices.
+description: |
+  Comprehensive pytest testing strategies with fixtures, mocking, and TDD patterns.
+  WHEN: Writing pytest tests, creating fixtures, mocking with unittest.mock/pytest-mock, implementing TDD, setting up test configuration (conftest.py, pytest.ini).
+  WHEN NOT: JavaScript tests (use Jest), PHP tests (use PHPUnit), running existing tests without modification.
 ---
 
 # Python Testing Patterns

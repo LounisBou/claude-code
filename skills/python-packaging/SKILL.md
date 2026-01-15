@@ -1,6 +1,9 @@
 ---
 name: python-packaging
-description: Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when developing in python and packaging Python libraries, creating CLI tools, or distributing Python code.
+description: |
+  Create distributable Python packages with pyproject.toml, setup.py, and PyPI publishing.
+  WHEN: Packaging Python libraries, creating pyproject.toml/setup.py, building CLI tools with entry points, publishing to PyPI, configuring package metadata.
+  WHEN NOT: Managing dependencies (use python-uv-package-manager), writing application code, creating virtual environments.
 ---
 
 # Python Packaging

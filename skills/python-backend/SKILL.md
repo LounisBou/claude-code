@@ -1,7 +1,9 @@
 ---
 name: python-backend
-description: Python backend developer for FastAPI, Django, Flask APIs with SQLAlchemy, Django ORM, Pydantic validation. Implements REST APIs, async operations, database integration, authentication, data processing with pandas/numpy, machine learning integration, background tasks with Celery, API documentation with OpenAPI/Swagger. Use when developing in Python and using one or more of the following technologies:
-    - Framework : FastAPI, Django, Flask, Starlette
+description: |
+  Build Python backend APIs with FastAPI, Django, Flask, SQLAlchemy, and Pydantic.
+  WHEN: Creating REST APIs, implementing authentication (JWT, OAuth2), database integration with SQLAlchemy/Django ORM, Pydantic validation, background tasks with Celery, OpenAPI documentation.
+  WHEN NOT: Frontend development, async-specific patterns (use python-async-patterns), data science workflows (use python-data-transform).
     - ORM : SQLAlchemy 2.0, Django ORM, Tortoise
     - Library : Pydantic v2, Marshmallow
 ---

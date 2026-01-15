@@ -1,6 +1,9 @@
 ---
 name: python-docstring
-description: Write correct Python docstrings following PEP 257 conventions and popular formats (Google, NumPy, Sphinx). Use when writing or improving Python documentation for functions, classes, and modules.
+description: |
+  Write Python docstrings following PEP 257 and popular formats (Google, NumPy, Sphinx).
+  WHEN: Writing docstrings for Python functions/classes/modules, choosing docstring format, documenting parameters/returns/exceptions.
+  WHEN NOT: JavaScript documentation (use js-docstring), TypeScript (use ts-docstring), PHP (use php-docstring), general code comments.
 ---
 
 # Python Docstring Standards
