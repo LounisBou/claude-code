@@ -1,2 +1,22 @@
 # Ignore claude local settings
 settings.local.json
+
+# Project-specific config (each project customizes this)
+project.json
+
+# Built symlinks (created by init.py)
+# Keep source files in category subdirectories, ignore symlinks at root level
+skills/*.md
+agents/*.md
+commands/*.md
+
+# But keep the source files in category directories
+!skills/*/*.md
+!agents/*/*.md
+!commands/*/*.md
+
+# Local project-specific additions (git ignored except .gitkeep)
+skills/local/*
+agents/local/*
+!skills/local/.gitkeep
+!agents/local/.gitkeep

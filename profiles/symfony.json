@@ -1,0 +1,6 @@
+{
+  "name": "symfony",
+  "categories": ["dev", "php", "symfony"],
+  "exclude": [],
+  "description": "PHP/Symfony backend development"
+}

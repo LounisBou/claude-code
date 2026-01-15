@@ -1,0 +1,6 @@
+{
+  "name": "laravel",
+  "categories": ["dev", "php", "laravel"],
+  "exclude": [],
+  "description": "PHP/Laravel backend development"
+}

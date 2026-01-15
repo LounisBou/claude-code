@@ -1,0 +1,6 @@
+{
+  "name": "python",
+  "categories": ["dev", "python"],
+  "exclude": [],
+  "description": "Python backend development"
+}
