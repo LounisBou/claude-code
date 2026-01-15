@@ -4,11 +4,14 @@ settings.local.json
 # Project-specific config (each project customizes this)
 project.json
 
-# Built symlinks (created by init.py)
+# Built symlinks (created by init-project.py)
 # Keep source files in category subdirectories, ignore symlinks at root level
 skills/*.md
 agents/*.md
 commands/*.md
+
+# But always keep init-project command (meta-command, always needed)
+!commands/init-project.md
 
 # But keep the source files in category directories
 !skills/*/*.md
