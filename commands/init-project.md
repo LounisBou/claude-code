@@ -46,9 +46,12 @@ When no .claude/project.json exists, asks:
 When this command is invoked:
 
 1. First check if .claude/project.json exists
-2. If .claude/project.json does NOT exist:
+2. If .claude/project.json EXISTS:
+   - Do NOT modify the file
+   - Skip to step 4
+3. If .claude/project.json does NOT exist:
    - Use AskUserQuestion to ask about project type (multi-select: PHP, Python, JavaScript/TypeScript, Vue.js)
    - Based on answers, ask follow-up questions about frameworks
    - Create .claude/project.json with selected categories
-3. Run the init-project.py script: `python3 hooks/init-project.py`
-4. Report the results to the user
+4. Run the init-project.py script: `python3 hooks/init-project.py`
+5. Report the results to the user
