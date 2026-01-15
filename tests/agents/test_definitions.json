@@ -1,0 +1,226 @@
+{
+  "description": "Agent invocation test definitions - ALL agents from agents-available/",
+  "tests": [
+    {
+      "agent": "api-designer",
+      "category": "api",
+      "triggers": ["design API", "REST API", "GraphQL", "API endpoints", "API architecture"],
+      "test_prompts": [
+        "Design a REST API for user management",
+        "How should I structure the API endpoints for this feature?",
+        "Create an OpenAPI spec for the blog API"
+      ],
+      "should_not_trigger": [
+        "Fix a bug in the API",
+        "Write implementation code"
+      ]
+    },
+    {
+      "agent": "code-norms-checker",
+      "category": "dev",
+      "triggers": ["check norms", "pattern compliance", "follows conventions", "check coding standards"],
+      "test_prompts": [
+        "Check if this code follows our patterns",
+        "Does this implementation match our conventions?",
+        "Run a norms check on my changes"
+      ],
+      "should_not_trigger": [
+        "Write new code",
+        "Fix this bug"
+      ]
+    },
+    {
+      "agent": "code-review",
+      "category": "dev",
+      "triggers": ["review code", "code review", "check this code", "security review", "review my changes"],
+      "test_prompts": [
+        "Review this code for security issues",
+        "Can you do a code review on my changes?",
+        "Check this implementation for any issues"
+      ],
+      "should_not_trigger": [
+        "Write a new function",
+        "Fix this bug"
+      ]
+    },
+    {
+      "agent": "debugging-assistant",
+      "category": "dev",
+      "triggers": ["bugs", "errors", "crashes", "test failures", "stack traces", "why is X happening", "not working", "unexpected behavior"],
+      "test_prompts": [
+        "I'm getting a TypeError when I call this function",
+        "Why is this returning None instead of the expected list?",
+        "My app crashes when I click submit",
+        "The tests are failing with this error message"
+      ],
+      "should_not_trigger": [
+        "Add a new login feature",
+        "Review this code for me"
+      ]
+    },
+    {
+      "agent": "dependency-auditor",
+      "category": "dev",
+      "triggers": ["audit dependencies", "check vulnerabilities", "outdated packages", "security scan", "dependency check"],
+      "test_prompts": [
+        "Check for security vulnerabilities in our dependencies",
+        "Are there any outdated packages?",
+        "Audit our npm dependencies"
+      ],
+      "should_not_trigger": [
+        "Install a new package",
+        "Write some code"
+      ]
+    },
+    {
+      "agent": "migration-planner",
+      "category": "dev",
+      "triggers": ["upgrade", "migrate", "version update", "framework upgrade", "breaking changes"],
+      "test_prompts": [
+        "Plan the migration from Python 3.8 to 3.12",
+        "How do I upgrade from Vue 2 to Vue 3?",
+        "What breaking changes should I expect in the next version?"
+      ],
+      "should_not_trigger": [
+        "Write new code",
+        "Fix a bug"
+      ]
+    },
+    {
+      "agent": "refactoring-advisor",
+      "category": "dev",
+      "triggers": ["refactor", "code smells", "improve code quality", "clean up code", "restructure"],
+      "test_prompts": [
+        "This class is getting too big, how should I refactor it?",
+        "Identify code smells in this module",
+        "How can I improve the structure of this code?"
+      ],
+      "should_not_trigger": [
+        "Add a new feature",
+        "Fix this specific bug"
+      ]
+    },
+    {
+      "agent": "test-generator",
+      "category": "dev",
+      "triggers": ["after implementing features", "when user asks for tests", "generate tests", "write tests", "add tests"],
+      "test_prompts": [
+        "Generate tests for the UserService class",
+        "Write unit tests for this function",
+        "I need tests for the payment module"
+      ],
+      "should_not_trigger": [
+        "Fix this failing test",
+        "Why is this test failing?"
+      ]
+    },
+    {
+      "agent": "docstring-generator",
+      "category": "docs",
+      "triggers": ["generate docstrings", "add docstrings", "document functions", "document classes"],
+      "test_prompts": [
+        "Add docstrings to these functions",
+        "Generate documentation for this class",
+        "Document the parameters of this method"
+      ],
+      "should_not_trigger": [
+        "Write new code",
+        "Fix a bug"
+      ]
+    },
+    {
+      "agent": "documentation-generator",
+      "category": "docs",
+      "triggers": ["generate documentation", "write docs", "README", "API documentation"],
+      "test_prompts": [
+        "Generate a README for this project",
+        "Create API documentation for this module",
+        "Write technical documentation"
+      ],
+      "should_not_trigger": [
+        "Write code",
+        "Fix a bug"
+      ]
+    },
+    {
+      "agent": "laravel-developer",
+      "category": "laravel",
+      "triggers": ["Laravel", "Eloquent", "Laravel artisan", "Laravel blade"],
+      "test_prompts": [
+        "Help me create a Laravel controller",
+        "How do I set up Eloquent relationships?",
+        "Create a Laravel migration for this table"
+      ],
+      "should_not_trigger": [
+        "Write Python code",
+        "Create a Vue component"
+      ]
+    },
+    {
+      "agent": "async-api-specialist",
+      "category": "python",
+      "triggers": ["async API", "asyncio API", "async Python backend"],
+      "test_prompts": [
+        "Help me build an async Python API",
+        "How do I handle async database calls in my API?"
+      ],
+      "should_not_trigger": [
+        "Write synchronous code",
+        "Create a frontend"
+      ]
+    },
+    {
+      "agent": "python-api-developer",
+      "category": "python",
+      "triggers": ["Python API", "FastAPI", "Flask API", "Django REST"],
+      "test_prompts": [
+        "Help me create a Python REST API",
+        "Build a FastAPI endpoint for user management"
+      ],
+      "should_not_trigger": [
+        "Write PHP code",
+        "Create Vue components"
+      ]
+    },
+    {
+      "agent": "api-platform-architect",
+      "category": "symfony",
+      "triggers": ["API Platform", "Symfony API", "API Platform architecture"],
+      "test_prompts": [
+        "Help me architect an API Platform project",
+        "Design the API Platform resource structure"
+      ],
+      "should_not_trigger": [
+        "Write Laravel code",
+        "Create a frontend"
+      ]
+    },
+    {
+      "agent": "doctrine-specialist",
+      "category": "symfony",
+      "triggers": ["Doctrine ORM", "Doctrine entities", "Doctrine queries"],
+      "test_prompts": [
+        "Help me with Doctrine entity relationships",
+        "Optimize this Doctrine query"
+      ],
+      "should_not_trigger": [
+        "Write Eloquent code",
+        "Create JavaScript"
+      ]
+    },
+    {
+      "agent": "vuejs-developer",
+      "category": "vue",
+      "triggers": ["Vue component", "Vue.js", "Composition API", "Vue template", "Vue SFC"],
+      "test_prompts": [
+        "Create a Vue component for user profile",
+        "Fix the reactivity in this Vue component",
+        "Convert this to Composition API"
+      ],
+      "should_not_trigger": [
+        "Write a Python script",
+        "Create a REST API"
+      ]
+    }
+  ]
+}

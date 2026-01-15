@@ -1,0 +1,491 @@
+{
+  "description": "Skill invocation test definitions - ALL skills from skills-available/",
+  "tests": [
+    {
+      "skill": "claude-agent-creator",
+      "category": "claude",
+      "triggers": ["create agent", "new agent", "agent development"],
+      "test_prompts": [
+        "Help me create a new Claude Code agent",
+        "I want to build a custom agent for code analysis"
+      ]
+    },
+    {
+      "skill": "claude-command-development",
+      "category": "claude",
+      "triggers": ["slash command", "create command", "command development"],
+      "test_prompts": [
+        "Help me create a new slash command",
+        "I want to develop a custom command with arguments"
+      ]
+    },
+    {
+      "skill": "claude-hook-development",
+      "category": "claude",
+      "triggers": ["create hook", "hook development", "PreToolUse hook"],
+      "test_prompts": [
+        "Help me create a PreToolUse hook",
+        "I want to add a hook that validates commands"
+      ]
+    },
+    {
+      "skill": "claude-hookify-rules",
+      "category": "claude",
+      "triggers": ["hookify", "hook rules", "pattern matcher"],
+      "test_prompts": [
+        "Help me write hookify rules",
+        "I need to create pattern matchers for my hooks"
+      ]
+    },
+    {
+      "skill": "claude-plugin-settings",
+      "category": "claude",
+      "triggers": ["plugin settings", "local.md", "plugin configuration"],
+      "test_prompts": [
+        "How do I store plugin settings?",
+        "Help me configure plugin settings in local.md"
+      ]
+    },
+    {
+      "skill": "claude-plugin-structure",
+      "category": "claude",
+      "triggers": ["plugin structure", "plugin.json", "create plugin"],
+      "test_prompts": [
+        "Help me set up a new Claude Code plugin",
+        "What's the correct plugin directory structure?"
+      ]
+    },
+    {
+      "skill": "claude-skill-creator",
+      "category": "claude",
+      "triggers": ["create skill", "new skill", "SKILL.md"],
+      "test_prompts": [
+        "Help me create a new Claude Code skill",
+        "I want to build a custom skill for this domain"
+      ]
+    },
+    {
+      "skill": "claude-skill-development",
+      "category": "claude",
+      "triggers": ["skill patterns", "improve skill", "skill organization"],
+      "test_prompts": [
+        "How do I improve this skill's descriptions?",
+        "Help me organize skill content with progressive disclosure"
+      ]
+    },
+    {
+      "skill": "brainstorming",
+      "category": "dev",
+      "triggers": ["brainstorm", "explore ideas", "design discussion"],
+      "test_prompts": [
+        "Let's brainstorm approaches for this feature",
+        "I want to explore different design options"
+      ]
+    },
+    {
+      "skill": "dispatching-parallel-agents",
+      "category": "dev",
+      "triggers": ["parallel agents", "multiple agents", "concurrent tasks"],
+      "test_prompts": [
+        "I have multiple independent tasks, can we run agents in parallel?",
+        "Dispatch parallel agents to fix these different issues"
+      ]
+    },
+    {
+      "skill": "executing-plans",
+      "category": "dev",
+      "triggers": ["execute plan", "follow plan", "run plan"],
+      "test_prompts": [
+        "Execute the plan we created",
+        "Let's follow through on the implementation plan"
+      ]
+    },
+    {
+      "skill": "finishing-a-development-branch",
+      "category": "dev",
+      "triggers": ["finish branch", "merge branch", "complete feature"],
+      "test_prompts": [
+        "I'm done with this feature branch, what are my options?",
+        "Help me finish this development branch"
+      ]
+    },
+    {
+      "skill": "receiving-code-review",
+      "category": "dev",
+      "triggers": ["received review", "review feedback", "respond to review"],
+      "test_prompts": [
+        "I received code review feedback, how should I respond?",
+        "Help me address this review comment"
+      ]
+    },
+    {
+      "skill": "requesting-code-review",
+      "category": "dev",
+      "triggers": ["request review", "pre-review checklist", "before review"],
+      "test_prompts": [
+        "I'm about to request code review, what should I check first?",
+        "Give me a pre-review checklist"
+      ]
+    },
+    {
+      "skill": "sql-optimization-patterns",
+      "category": "dev",
+      "triggers": ["SQL optimization", "slow query", "EXPLAIN plan", "index"],
+      "test_prompts": [
+        "This SQL query is slow, help me optimize it",
+        "How do I analyze this EXPLAIN plan?"
+      ]
+    },
+    {
+      "skill": "subagent-driven-development",
+      "category": "dev",
+      "triggers": ["subagent", "two-stage review", "fresh subagent"],
+      "test_prompts": [
+        "Let's use subagent-driven development for this complex task",
+        "I want fresh subagents with two-stage review for each task"
+      ]
+    },
+    {
+      "skill": "systematic-debugging",
+      "category": "dev",
+      "triggers": ["trace execution", "root cause", "debug systematically"],
+      "test_prompts": [
+        "Help me trace through this code to find the issue",
+        "I need to find the root cause of this bug systematically"
+      ]
+    },
+    {
+      "skill": "test-driven-development",
+      "category": "dev",
+      "triggers": ["TDD", "test first", "red-green-refactor"],
+      "test_prompts": [
+        "Let's implement this feature using TDD",
+        "I want to follow red-green-refactor for this"
+      ]
+    },
+    {
+      "skill": "using-git-worktrees",
+      "category": "dev",
+      "triggers": ["git worktree", "worktree", "parallel branches"],
+      "test_prompts": [
+        "Set up a git worktree for this feature",
+        "I want to work on multiple branches in parallel using worktrees"
+      ]
+    },
+    {
+      "skill": "verification-before-completion",
+      "category": "dev",
+      "triggers": ["verify completion", "verification checklist", "evidence-based"],
+      "test_prompts": [
+        "Before marking this done, let's run verification",
+        "I need an evidence-based verification checklist"
+      ]
+    },
+    {
+      "skill": "writing-plans",
+      "category": "dev",
+      "triggers": ["write a plan", "implementation plan", "create roadmap"],
+      "test_prompts": [
+        "Write an implementation plan for this feature",
+        "Create a step-by-step plan for the migration"
+      ]
+    },
+    {
+      "skill": "html-dev",
+      "category": "html",
+      "triggers": ["HTML", "semantic markup", "accessibility"],
+      "test_prompts": [
+        "Help me write semantic HTML for this form",
+        "What's the accessible way to structure this component?"
+      ]
+    },
+    {
+      "skill": "js-dev",
+      "category": "js",
+      "triggers": ["JavaScript", "ES6", "async/await JS"],
+      "test_prompts": [
+        "Help me write this JavaScript function",
+        "Convert this callback to async/await"
+      ]
+    },
+    {
+      "skill": "js-docstring",
+      "category": "js",
+      "triggers": ["JSDoc", "JavaScript documentation", "JS docstring"],
+      "test_prompts": [
+        "Add JSDoc comments to this JavaScript function",
+        "Document this JS module with JSDoc"
+      ]
+    },
+    {
+      "skill": "php-laravel-specialist",
+      "category": "laravel",
+      "triggers": ["Laravel", "Eloquent", "Laravel patterns"],
+      "test_prompts": [
+        "Help me with Laravel Eloquent relationships",
+        "What's the Laravel way to implement this?"
+      ]
+    },
+    {
+      "skill": "mcp-builder",
+      "category": "mcp",
+      "triggers": ["build MCP", "create MCP server", "MCP development"],
+      "test_prompts": [
+        "Help me build an MCP server",
+        "How do I create a custom MCP tool?"
+      ]
+    },
+    {
+      "skill": "mcp-integration",
+      "category": "mcp",
+      "triggers": ["integrate MCP", "MCP configuration", "connect MCP"],
+      "test_prompts": [
+        "Help me integrate an MCP server",
+        "How do I configure MCP in Claude Code?"
+      ]
+    },
+    {
+      "skill": "php-docstring",
+      "category": "php",
+      "triggers": ["PHPDoc", "PHP documentation", "PHP docstring"],
+      "test_prompts": [
+        "Add PHPDoc comments to this class",
+        "Document this PHP function with proper docstring"
+      ]
+    },
+    {
+      "skill": "python-async-patterns",
+      "category": "python",
+      "triggers": ["asyncio", "async Python", "concurrent Python"],
+      "test_prompts": [
+        "Help me with asyncio patterns",
+        "How do I make this function async?"
+      ]
+    },
+    {
+      "skill": "python-backend",
+      "category": "python",
+      "triggers": ["FastAPI", "Django", "Flask", "Python API"],
+      "test_prompts": [
+        "Help me create a FastAPI endpoint",
+        "What's the best way to structure this Django view?"
+      ]
+    },
+    {
+      "skill": "python-data-transform",
+      "category": "python",
+      "triggers": ["pandas", "numpy", "data transformation"],
+      "test_prompts": [
+        "Help me transform this data with pandas",
+        "How do I use numpy for this calculation?"
+      ]
+    },
+    {
+      "skill": "python-docstring",
+      "category": "python",
+      "triggers": ["Python docstring", "PEP 257", "Google style docstring"],
+      "test_prompts": [
+        "Add docstrings to these Python functions",
+        "Document this class following PEP 257"
+      ]
+    },
+    {
+      "skill": "python-docx",
+      "category": "python",
+      "triggers": ["python-docx", "Word document", "DOCX generation"],
+      "test_prompts": [
+        "Help me generate a Word document with python-docx",
+        "How do I add tables to a DOCX file?"
+      ]
+    },
+    {
+      "skill": "python-packaging",
+      "category": "python",
+      "triggers": ["pyproject.toml", "setup.py", "Python package"],
+      "test_prompts": [
+        "Help me set up pyproject.toml",
+        "How do I publish this to PyPI?"
+      ]
+    },
+    {
+      "skill": "python-pdf",
+      "category": "python",
+      "triggers": ["PDF generation", "reportlab", "PyPDF"],
+      "test_prompts": [
+        "Help me generate a PDF with Python",
+        "How do I extract text from a PDF?"
+      ]
+    },
+    {
+      "skill": "python-performance-optimization",
+      "category": "python",
+      "triggers": ["Python performance", "optimize Python", "profiling"],
+      "test_prompts": [
+        "Help me optimize this slow Python code",
+        "How do I profile this Python function?"
+      ]
+    },
+    {
+      "skill": "python-testing-patterns",
+      "category": "python",
+      "triggers": ["pytest", "Python testing", "test fixtures", "mocking"],
+      "test_prompts": [
+        "Help me write pytest tests for this",
+        "How do I mock this dependency?"
+      ]
+    },
+    {
+      "skill": "python-uv-package-manager",
+      "category": "python",
+      "triggers": ["uv", "uv package manager", "fast pip"],
+      "test_prompts": [
+        "Help me use uv for dependency management",
+        "How do I migrate from pip to uv?"
+      ]
+    },
+    {
+      "skill": "python-xlsx",
+      "category": "python",
+      "triggers": ["openpyxl", "Excel", "XLSX"],
+      "test_prompts": [
+        "Help me read an Excel file with openpyxl",
+        "How do I create an Excel spreadsheet?"
+      ]
+    },
+    {
+      "skill": "php-symfony-api-platform-filters",
+      "category": "symfony",
+      "triggers": ["API Platform filters", "filter resources", "Symfony filters"],
+      "test_prompts": [
+        "Add filters to this API Platform resource",
+        "How do I implement custom filters in API Platform?"
+      ]
+    },
+    {
+      "skill": "php-symfony-api-platform-resources",
+      "category": "symfony",
+      "triggers": ["API Platform resource", "ApiResource", "Symfony API"],
+      "test_prompts": [
+        "Help me create an API Platform resource",
+        "How do I configure ApiResource attributes?"
+      ]
+    },
+    {
+      "skill": "php-symfony-api-platform-security",
+      "category": "symfony",
+      "triggers": ["API Platform security", "voters", "access control"],
+      "test_prompts": [
+        "Help me secure this API Platform endpoint",
+        "How do I implement voters for API Platform?"
+      ]
+    },
+    {
+      "skill": "php-symfony-api-platform-serialization",
+      "category": "symfony",
+      "triggers": ["API Platform serialization", "normalization groups", "serializer"],
+      "test_prompts": [
+        "Help me configure serialization groups",
+        "How do I customize API Platform serialization?"
+      ]
+    },
+    {
+      "skill": "php-symfony-api-platform-state-providers",
+      "category": "symfony",
+      "triggers": ["state provider", "API Platform provider", "custom provider"],
+      "test_prompts": [
+        "Help me create a custom state provider",
+        "How do I implement a state provider in API Platform?"
+      ]
+    },
+    {
+      "skill": "php-symfony-doctrine-batch-processing",
+      "category": "symfony",
+      "triggers": ["Doctrine batch", "bulk insert", "batch processing"],
+      "test_prompts": [
+        "Help me do batch processing with Doctrine",
+        "How do I efficiently insert bulk data?"
+      ]
+    },
+    {
+      "skill": "php-symfony-doctrine-fetch-modes",
+      "category": "symfony",
+      "triggers": ["Doctrine fetch mode", "lazy loading", "eager loading"],
+      "test_prompts": [
+        "Help me optimize Doctrine fetch modes",
+        "How do I avoid N+1 queries in Doctrine?"
+      ]
+    },
+    {
+      "skill": "php-symfony-doctrine-migrations",
+      "category": "symfony",
+      "triggers": ["Doctrine migrations", "database migration", "schema update"],
+      "test_prompts": [
+        "Create a Doctrine migration for this schema change",
+        "How do I handle this database migration?"
+      ]
+    },
+    {
+      "skill": "frontend-design",
+      "category": "tailwind",
+      "triggers": ["UI design", "component design", "frontend patterns"],
+      "test_prompts": [
+        "Help me design this UI component",
+        "What's the best pattern for this frontend?"
+      ]
+    },
+    {
+      "skill": "tailwind-css-dev",
+      "category": "tailwind",
+      "triggers": ["Tailwind CSS", "utility classes", "Tailwind config"],
+      "test_prompts": [
+        "Style this component with Tailwind CSS",
+        "How do I customize the Tailwind config?"
+      ]
+    },
+    {
+      "skill": "ts-dev",
+      "category": "ts",
+      "triggers": ["TypeScript", "TS types", "type safety"],
+      "test_prompts": [
+        "Help me write this TypeScript function",
+        "How do I type this correctly in TypeScript?"
+      ]
+    },
+    {
+      "skill": "ts-docstring",
+      "category": "ts",
+      "triggers": ["TSDoc", "TypeScript documentation", "TS docstring"],
+      "test_prompts": [
+        "Add TSDoc comments to this TypeScript function",
+        "Document this TS module with TSDoc"
+      ]
+    },
+    {
+      "skill": "vuejs-apex-charts",
+      "category": "vue",
+      "triggers": ["ApexCharts", "Vue charts", "chart component"],
+      "test_prompts": [
+        "Help me add an ApexCharts chart to Vue",
+        "How do I create a reactive chart in Vue?"
+      ]
+    },
+    {
+      "skill": "vuejs-dev",
+      "category": "vue",
+      "triggers": ["Vue.js", "Vue component", "Composition API", "Vue 3"],
+      "test_prompts": [
+        "Help me create a Vue 3 component",
+        "How do I use composables in Vue?"
+      ]
+    },
+    {
+      "skill": "vuejs-shadcn",
+      "category": "vue",
+      "triggers": ["Shadcn Vue", "Vue UI components", "Shadcn"],
+      "test_prompts": [
+        "Help me use Shadcn components in Vue",
+        "How do I set up Shadcn Vue?"
+      ]
+    }
+  ]
+}
