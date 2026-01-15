@@ -84,6 +84,7 @@ def invoke_claude(prompt: str, timeout: int = CLAUDE_TIMEOUT) -> Tuple[bool, str
         result = subprocess.run(
             cmd,
             cwd=str(PROJECT_ROOT),
+            stdin=subprocess.DEVNULL,
             capture_output=True,
             text=True,
             timeout=timeout
@@ -442,7 +443,7 @@ def run_visibility_tests() -> Dict:
 
 def test_claude_md_has_agents_section() -> Tuple[bool, str]:
     """Test that CLAUDE.md has agents section with content."""
-    claude_md = CLAUDE_DIR / "CLAUDE.md"
+    claude_md = PROJECT_ROOT / "CLAUDE.md"
 
     if not claude_md.exists():
         return False, "CLAUDE.md not found"
@@ -475,7 +476,7 @@ def test_claude_md_has_agents_section() -> Tuple[bool, str]:
 
 def test_claude_md_has_skills_section() -> Tuple[bool, str]:
     """Test that CLAUDE.md has skills section with content."""
-    claude_md = CLAUDE_DIR / "CLAUDE.md"
+    claude_md = PROJECT_ROOT / "CLAUDE.md"
 
     if not claude_md.exists():
         return False, "CLAUDE.md not found"

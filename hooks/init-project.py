@@ -191,29 +191,14 @@ def extract_sections(md_file: Path, categories: list, section_type: str) -> str:
 
 
 def update_claude_md(project_root: Path, categories: list) -> None:
-    """Update CLAUDE.md with agent and skill instructions."""
+    """Update CLAUDE.md with agent and skill instructions.
+
+    Strategy:
+    - If CLAUDE.md doesn't exist: create minimal file with guidelines section
+    - If CLAUDE.md exists without markers: append guidelines section at the end
+    - If CLAUDE.md exists with markers: update content between markers
+    """
     claude_md = project_root / "CLAUDE.md"
-    template_md = project_root / "CLAUDE.template.md"
-
-    # If CLAUDE.md doesn't exist, copy from template
-    if not claude_md.exists():
-        if template_md.exists():
-            with open(template_md, "r") as f:
-                content = f.read()
-        else:
-            content = """# CLAUDE.md
-
-## Agent and Skill Guidelines
-
-<!-- BEGIN:AGENTS -->
-<!-- END:AGENTS -->
-
-<!-- BEGIN:SKILLS -->
-<!-- END:SKILLS -->
-"""
-    else:
-        with open(claude_md, "r") as f:
-            content = f.read()
 
     # Extract agent instructions
     agents_md = project_root / "AGENTS.md"
@@ -223,7 +208,7 @@ def update_claude_md(project_root: Path, categories: list) -> None:
     skills_md = project_root / "SKILLS.md"
     skill_instructions = extract_sections(skills_md, categories, "skills")
 
-    # Replace content between markers
+    # Build the auto-generated sections
     agent_section = f"""<!-- BEGIN:AGENTS -->
 <!-- Auto-generated agent instructions - DO NOT EDIT between markers -->
 <!-- Run /init-project to regenerate -->
@@ -240,21 +225,41 @@ def update_claude_md(project_root: Path, categories: list) -> None:
 
 <!-- END:SKILLS -->"""
 
-    # Replace agents section
-    content = re.sub(
-        r"<!-- BEGIN:AGENTS -->.*?<!-- END:AGENTS -->",
-        agent_section,
-        content,
-        flags=re.DOTALL
-    )
+    guidelines_section = f"""
+## Agent and Skill Guidelines
 
-    # Replace skills section
-    content = re.sub(
-        r"<!-- BEGIN:SKILLS -->.*?<!-- END:SKILLS -->",
-        skill_section,
-        content,
-        flags=re.DOTALL
-    )
+{agent_section}
+
+{skill_section}
+"""
+
+    if not claude_md.exists():
+        # Create minimal CLAUDE.md with guidelines section
+        content = f"# CLAUDE.md\n{guidelines_section}"
+    else:
+        with open(claude_md, "r") as f:
+            content = f.read()
+
+        has_agent_markers = "<!-- BEGIN:AGENTS -->" in content and "<!-- END:AGENTS -->" in content
+        has_skill_markers = "<!-- BEGIN:SKILLS -->" in content and "<!-- END:SKILLS -->" in content
+
+        if has_agent_markers and has_skill_markers:
+            # Update existing markers
+            content = re.sub(
+                r"<!-- BEGIN:AGENTS -->.*?<!-- END:AGENTS -->",
+                agent_section,
+                content,
+                flags=re.DOTALL
+            )
+            content = re.sub(
+                r"<!-- BEGIN:SKILLS -->.*?<!-- END:SKILLS -->",
+                skill_section,
+                content,
+                flags=re.DOTALL
+            )
+        else:
+            # Append guidelines section at the end
+            content = content.rstrip() + "\n" + guidelines_section
 
     with open(claude_md, "w") as f:
         f.write(content)
