@@ -53,6 +53,7 @@ def main():
 
         # Only process Task tool calls (agent invocations)
         if tool_name != 'Task':
+            print(json.dumps({"continue": True}))
             sys.exit(0)
 
         # Extract agent information
@@ -61,6 +62,7 @@ def main():
         prompt = tool_input.get('prompt', '')
 
         if not agent_type:
+            print(json.dumps({"continue": True}))
             sys.exit(0)  # No agent type to log
 
         # Determine log file path relative to project root
@@ -69,6 +71,7 @@ def main():
 
         # Log the agent usage
         log_agent_usage(agent_type, description, prompt, log_file)
+        print(json.dumps({"continue": True}))
 
     except (json.JSONDecodeError, IOError, OSError) as e:
         # Silently fail - don't block agent execution

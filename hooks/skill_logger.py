@@ -49,6 +49,7 @@ def main():
 
         # Only process Skill tool calls
         if tool_name != 'Skill':
+            print(json.dumps({"continue": True}))
             sys.exit(0)
 
         # Extract skill information
@@ -56,6 +57,7 @@ def main():
         args = tool_input.get('args', '')
 
         if not skill_name:
+            print(json.dumps({"continue": True}))
             sys.exit(0)  # No skill name to log
 
         # Determine log file path relative to project root
@@ -64,6 +66,7 @@ def main():
 
         # Log the skill usage
         log_skill_usage(skill_name, args, log_file)
+        print(json.dumps({"continue": True}))
 
     except (json.JSONDecodeError, IOError, OSError) as e:
         # Silently fail - don't block skill execution

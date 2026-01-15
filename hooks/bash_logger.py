@@ -45,6 +45,7 @@ def main():
 
         # Only process Bash tool calls
         if tool_name != 'Bash':
+            print(json.dumps({"continue": True}))
             sys.exit(0)
 
         # Extract command and description
@@ -52,6 +53,7 @@ def main():
         description = tool_input.get('description', '')
 
         if not command:
+            print(json.dumps({"continue": True}))
             sys.exit(0)  # No command to log
 
         # Determine log file path relative to project root
@@ -61,6 +63,7 @@ def main():
 
         # Log the command
         log_bash_command(command, description, log_file)
+        print(json.dumps({"continue": True}))
 
     except (json.JSONDecodeError, IOError, OSError) as e:
         # Silently fail - don't block command execution
