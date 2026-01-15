@@ -10,12 +10,12 @@ This file provides guidance to Claude Code when working with code in this reposi
 
 <!-- BEGIN:AGENTS -->
 <!-- Auto-generated agent instructions - DO NOT EDIT between markers -->
-<!-- Run /init-agents-and-skills to regenerate -->
+<!-- Run /init-project to regenerate -->
 <!-- END:AGENTS -->
 
 <!-- BEGIN:SKILLS -->
 <!-- Auto-generated skill instructions - DO NOT EDIT between markers -->
-<!-- Run /init-agents-and-skills to regenerate -->
+<!-- Run /init-project to regenerate -->
 <!-- END:SKILLS -->
 
 ## Additional Project Instructions
