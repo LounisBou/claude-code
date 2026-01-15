@@ -4,22 +4,20 @@ settings.local.json
 # Project-specific config (each project customizes this)
 project.json
 
-# Built symlinks (created by init-project.py)
-# Keep source files in category subdirectories, ignore symlinks at root level
-skills/*.md
-agents/*.md
-commands/*.md
+# Target directories (symlinks only, git ignored)
+# Claude scans these directories - we create symlinks here from *-available/
+skills/
+agents/
+commands/
 
-# But always keep init-project command (meta-command, always needed)
+# BUT keep init-project.md (must exist for /init-project to work - it can't create itself)
 !commands/init-project.md
 
-# But keep the source files in category directories
-!skills/*/*.md
-!agents/*/*.md
-!commands/*/*.md
+# Source files in *-available/ directories are tracked
+# These are NOT scanned by Claude (only skills/, agents/, commands/ are)
 
 # Local project-specific additions (git ignored except .gitkeep)
-skills/local/*
-agents/local/*
-!skills/local/.gitkeep
-!agents/local/.gitkeep
+skills-available/local/*
+agents-available/local/*
+!skills-available/local/.gitkeep
+!agents-available/local/.gitkeep

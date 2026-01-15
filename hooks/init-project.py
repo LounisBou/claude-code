@@ -49,9 +49,21 @@ def remove_existing_symlinks(directory: Path) -> int:
     return count
 
 
-def create_symlinks(source_dir: Path, categories: list, excludes: list) -> int:
-    """Create symlinks from category subdirectories to the parent directory."""
+def create_symlinks_from_available(source_dir: Path, target_dir: Path, categories: list, excludes: list) -> int:
+    """Create symlinks from source *-available directory to target directory.
+
+    Args:
+        source_dir: The source directory (e.g., skills-available/)
+        target_dir: The target directory (e.g., skills/)
+        categories: List of category subdirectories to include
+        excludes: List of items to exclude (format: "skills/item-name")
+
+    Handles two structures:
+    - Flat: category/item.md (agents, commands)
+    - Nested: category/item-name/SKILL.md (skills)
+    """
     count = 0
+    source_name = source_dir.name.replace("-available", "")  # e.g., "skills"
 
     for category in categories:
         category_dir = source_dir / category
@@ -59,14 +71,14 @@ def create_symlinks(source_dir: Path, categories: list, excludes: list) -> int:
             continue
 
         for item in category_dir.iterdir():
+            # Case 1: Flat structure - .md files directly in category
             if item.suffix == ".md" and item.is_file():
-                # Check if excluded
-                relative_path = f"{source_dir.name}/{item.name}"
+                item_name_without_ext = item.stem
+                relative_path = f"{source_name}/{item_name_without_ext}"
                 if relative_path in excludes:
                     continue
 
-                # Create symlink
-                link_path = source_dir / item.name
+                link_path = target_dir / item.name
                 if link_path.exists():
                     if link_path.is_symlink():
                         link_path.unlink()
@@ -74,19 +86,48 @@ def create_symlinks(source_dir: Path, categories: list, excludes: list) -> int:
                         print(f"Warning: {link_path} exists and is not a symlink, skipping")
                         continue
 
-                # Create relative symlink
-                relative_target = Path(category) / item.name
+                relative_target = Path("..") / source_dir.name / category / item.name
                 link_path.symlink_to(relative_target)
                 count += 1
+
+            # Case 2: Nested structure - subdirectory with SKILL.md (Claude Code skills format)
+            elif item.is_dir():
+                skill_file = item / "SKILL.md"
+                if skill_file.exists():
+                    skill_name = item.name
+                    relative_path = f"{source_name}/{skill_name}"
+                    if relative_path in excludes:
+                        continue
+
+                    # Symlink the whole skill directory
+                    link_path = target_dir / skill_name
+                    if link_path.exists():
+                        if link_path.is_symlink():
+                            link_path.unlink()
+                        else:
+                            print(f"Warning: {link_path} exists and is not a symlink, skipping")
+                            continue
+
+                    relative_target = Path("..") / source_dir.name / category / skill_name
+                    link_path.symlink_to(relative_target)
+                    count += 1
 
     # Also include local/ folder contents
     local_dir = source_dir / "local"
     if local_dir.exists():
         for item in local_dir.iterdir():
+            # Flat .md files
             if item.suffix == ".md" and item.is_file():
-                link_path = source_dir / item.name
+                link_path = target_dir / item.name
                 if not link_path.exists():
-                    relative_target = Path("local") / item.name
+                    relative_target = Path("..") / source_dir.name / "local" / item.name
+                    link_path.symlink_to(relative_target)
+                    count += 1
+            # Nested skill directories
+            elif item.is_dir() and (item / "SKILL.md").exists():
+                link_path = target_dir / item.name
+                if not link_path.exists():
+                    relative_target = Path("..") / source_dir.name / "local" / item.name
                     link_path.symlink_to(relative_target)
                     count += 1
 
@@ -185,7 +226,7 @@ def update_claude_md(project_root: Path, categories: list) -> None:
     # Replace content between markers
     agent_section = f"""<!-- BEGIN:AGENTS -->
 <!-- Auto-generated agent instructions - DO NOT EDIT between markers -->
-<!-- Run /init-agents-and-skills to regenerate -->
+<!-- Run /init-project to regenerate -->
 
 {agent_instructions}
 
@@ -193,7 +234,7 @@ def update_claude_md(project_root: Path, categories: list) -> None:
 
     skill_section = f"""<!-- BEGIN:SKILLS -->
 <!-- Auto-generated skill instructions - DO NOT EDIT between markers -->
-<!-- Run /init-agents-and-skills to regenerate -->
+<!-- Run /init-project to regenerate -->
 
 {skill_instructions}
 
@@ -234,11 +275,17 @@ def main():
     if excludes:
         print(f"Excludes: {', '.join(excludes)}")
 
-    # Remove existing symlinks
+    # Source directories (NOT scanned by Claude)
+    skills_available = project_root / "skills-available"
+    agents_available = project_root / "agents-available"
+    commands_available = project_root / "commands-available"
+
+    # Target directories (scanned by Claude - symlinks only)
     skills_dir = project_root / "skills"
     agents_dir = project_root / "agents"
     commands_dir = project_root / "commands"
 
+    # Remove existing symlinks from target directories
     removed = 0
     removed += remove_existing_symlinks(skills_dir)
     removed += remove_existing_symlinks(agents_dir)
@@ -247,10 +294,13 @@ def main():
     if removed > 0:
         print(f"Removed {removed} existing symlinks")
 
-    # Create new symlinks
-    skills_count = create_symlinks(skills_dir, categories, excludes)
-    agents_count = create_symlinks(agents_dir, categories, excludes)
-    commands_count = create_symlinks(commands_dir, categories, excludes)
+    # Create new symlinks from source to target
+    skills_count = create_symlinks_from_available(skills_available, skills_dir, categories, excludes)
+    agents_count = create_symlinks_from_available(agents_available, agents_dir, categories, excludes)
+    commands_count = create_symlinks_from_available(commands_available, commands_dir, categories, excludes)
+
+    # Note: init-project.md stays in commands/ as a regular file (not a symlink)
+    # It cannot create itself, so it must always be present
 
     print(f"✓ {skills_count} skills loaded")
     print(f"✓ {agents_count} agents loaded")
