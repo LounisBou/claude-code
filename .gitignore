@@ -10,6 +10,11 @@ skills/
 agents/
 commands/
 
+# Keep directory structure even if empty
+!skills/.gitkeep
+!agents/.gitkeep
+!commands/.gitkeep
+
 # BUT keep init-project.md (must exist for /init-project to work - it can't create itself)
 !commands/init-project.md
 
