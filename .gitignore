@@ -2,8 +2,8 @@
 settings.local.json
 
 # Project-specific config (each project customizes this)
-# Located in .claude/project.json
-.claude/project.json
+# Located in .project.json
+.project.json
 
 # Target directories (symlinks only, git ignored)
 # Claude scans these directories - we create symlinks here from *-available/
@@ -16,8 +16,9 @@ commands/
 !agents/.gitkeep
 !commands/.gitkeep
 
-# BUT keep init-project.md (must exist for /init-project to work - it can't create itself)
+# BUT keep default commands (must exist - they can't create themselves)
 !commands/init-project.md
+!commands/test-agents-skills.md
 
 # Source files in *-available/ directories are tracked
 # These are NOT scanned by Claude (only skills/, agents/, commands/ are)

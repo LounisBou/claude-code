@@ -54,7 +54,7 @@
       "Bash(python3 -m pytest:*)",
       "Bash(python3 hooks/init-project.py:*)",
       "Bash(python -m unittest:*)",
-      "Bash(python tests/test_runner.py:*)",
+      "Bash(python tests/run_all_tests.py:*)",
       "Bash(sort:*)",
       "Bash(tail:*)",
       "Bash(time:*)",

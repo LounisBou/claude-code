@@ -8,99 +8,111 @@ user_invocable: true
 
 You are running tests to verify that agents and skills are invoked correctly when prompts match their "when to use" criteria.
 
-## Test Workflow
+## Quick Start
 
-### Step 1: Show Test Summary
-Run the test runner to show current test coverage:
-
-```bash
-python tests/test_runner.py --summary
-```
-
-### Step 2: List Available Tests
-Show all test scenarios for active agents and skills:
+Run ALL tests with a single command:
 
 ```bash
-python tests/test_runner.py --list
+python tests/run_all_tests.py
 ```
 
-### Step 3: Run Unit Tests
-Run the unit tests for init-project, visibility, and CLAUDE.md:
+## Test Suites
+
+The comprehensive test runner includes:
+
+1. **Unit Tests** - Tests for init-project.py functionality
+2. **Init-Project Tests** - Verifies project.json and symlinks
+3. **Visibility Tests** - Verifies Claude can see agents/commands/skills
+4. **CLAUDE.md Tests** - Verifies documentation is generated correctly
+5. **Agent Trigger Tests** - Tests each ACTIVE agent is triggered by matching prompts
+6. **Skill Trigger Tests** - Tests each ACTIVE skill is triggered by matching prompts
+
+## Command Options
 
 ```bash
-python -m unittest discover hooks/ -v 2>&1 | grep -E "^test_|OK|FAIL|ERROR|skipped"
+# Run ALL tests
+python tests/run_all_tests.py
+
+# Run specific test suites
+python tests/run_all_tests.py --unit          # Unit tests only
+python tests/run_all_tests.py --init          # Init-project tests only
+python tests/run_all_tests.py --visibility    # Visibility tests only
+python tests/run_all_tests.py --claude-md     # CLAUDE.md tests only
+python tests/run_all_tests.py --triggers      # Agent + skill trigger tests
+python tests/run_all_tests.py --agents        # Agent trigger tests only
+python tests/run_all_tests.py --skills        # Skill trigger tests only
+
+# Verbose output
+python tests/run_all_tests.py --verbose
 ```
 
-### Step 4: Interactive Agent Testing
-For each active agent, I will:
-1. Read a test prompt from the test definitions
-2. Explain which agent should be triggered
-3. Ask you if you want to test it
+## Test Definitions
 
-Example test interaction:
-```
-Testing: debugging-assistant
-Prompt: "I'm getting a TypeError when I call this function"
-Expected: Claude should invoke the debugging-assistant agent
+Test definitions are stored in JSON files:
 
-Would you like me to test this? [Yes/No/Skip to next]
-```
+- `tests/agents/test_definitions.json` - 16 agent test definitions (ALL agents)
+- `tests/skills/test_definitions.json` - 54 skill test definitions (ALL skills)
 
-### Step 5: Check Invocation Logs
-After testing, check if agents/skills were invoked:
+**Important:** ALL agents/skills have test definitions, but only ACTIVE ones (symlinked) are tested when running.
 
-```bash
-python tests/test_runner.py --check-logs --minutes 60
-```
+## How Trigger Tests Work
 
-## Test Report Format
+For each active agent/skill:
 
-After running tests, I will provide a summary:
+1. Send a test prompt to Claude CLI (`claude -p "prompt" --dangerously-skip-permissions`)
+2. Check `.claude/logs/agent-invocations.log` or `.claude/logs/skills.log`
+3. Verify the correct agent/skill was invoked
+4. Report PASS/FAIL
+
+## Expected Output
 
 ```
-=== TEST RESULTS ===
+======================================================================
+ COMPREHENSIVE TEST SUITE FOR /init-project
+======================================================================
 
-Unit Tests:
-  - test_init_project.py: 20/20 passed
-  - test_visibility.py: 13/13 passed
-  - test_claude_md.py: 1/9 passed (8 skipped - needs initialization)
+  Project root: /path/to/project
+  Logs dir: /path/to/project/.claude/logs
+  Active agents: 9
+  Active skills: 21
+  Active commands: 12
 
-Agent Invocation Tests:
-  - debugging-assistant: PASS (invoked when expected)
-  - test-generator: PASS (invoked when expected)
-  - code-review: SKIP (not tested)
+======================================================================
+ UNIT TESTS
+======================================================================
+  Passed: 34
+  Failed: 0
+  Skipped: 8
 
-Skill Invocation Tests:
-  - test-driven-development: PASS (invoked when expected)
-  - systematic-debugging: PASS (invoked when expected)
+======================================================================
+ INIT-PROJECT TESTS
+======================================================================
+  [✓ PASS] project.json exists - project.json already exists
+  [✓ PASS] Symlinks created - Symlinks exist in agents/, skills/, commands/
+  [✓ PASS] Symlinks match categories - Symlinks match categories: dev, claude, docs
 
-Coverage: 8/11 agents tested, 6/22 skills tested
-```
+...
 
-## Quick Test Commands
+======================================================================
+ FINAL TEST SUMMARY
+======================================================================
+  ✓ Unit Tests: 34 passed, 0 failed, 8 skipped
+  ✓ Init-Project Tests: 3 passed, 0 failed
+  ✓ Visibility Tests: 3 passed, 0 failed
+  ✓ CLAUDE.md Tests: 2 passed, 0 failed
+  ✓ Agent Trigger Tests: 9 passed, 0 failed, 7 skipped
+  ✓ Skill Trigger Tests: 21 passed, 0 failed, 33 skipped
 
-```bash
-# Run all unit tests
-python -m unittest discover hooks/ -v
+  TOTAL: 72 passed, 0 failed, 48 skipped
 
-# Show test summary
-python tests/test_runner.py --summary
-
-# List all tests
-python tests/test_runner.py --list
-
-# Check recent logs
-python tests/test_runner.py --check-logs
-
-# Filter by category
-python tests/test_runner.py --list --category dev
-python tests/test_runner.py --list --type agents
+  ✓ ALL TESTS PASSED!
 ```
 
 ## Instructions
 
-1. Start by running the unit tests
-2. Show the test summary to see coverage
-3. Ask the user which agents/skills they want to test
-4. For each test, explain what should happen and check the result
-5. Provide a final summary of all test results
+1. Run `python tests/run_all_tests.py` to execute all tests
+2. Review the output for any failures
+3. If trigger tests fail, check that:
+   - The agent/skill is properly symlinked
+   - The logging hooks are configured in `.claude/settings.json`
+   - The test prompt matches the agent/skill's "when to use" criteria
