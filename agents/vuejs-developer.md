@@ -1,7 +1,11 @@
 ---
 name: vuejs-developer
 description: |
-  Use this agent PROACTIVELY when working with Vue.js components or .vue files. Examples:
+  Vue.js specialist for component creation, modification, and Vue ecosystem integration.
+  WHEN: Working with .vue files, creating Vue components, Vue 3 Composition API, Pinia state, Vue Router, Vue-specific patterns.
+  WHEN NOT: Non-Vue frontend work (React, Angular), backend APIs, general JavaScript without Vue context.
+
+  Examples:
 
   <example>
   Context: User is editing a .vue file

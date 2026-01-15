@@ -1,7 +1,11 @@
 ---
 name: async-api-specialist
 description: |
-  Use this agent when building async Python applications with asyncio, concurrent systems, or I/O-bound services. Examples:
+  Python asyncio specialist for concurrent systems and non-blocking I/O applications.
+  WHEN: Building async Python APIs, concurrent API calls, asyncio patterns, semaphores/rate limiting, producer-consumer queues, async database sessions.
+  WHEN NOT: Sync Python APIs (use python-api-developer), non-Python async, general Python backend without async needs.
+
+  Examples:
 
   <example>
   Context: User is building an async API

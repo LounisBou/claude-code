@@ -1,7 +1,11 @@
 ---
 name: code-review
 description: |
-  Use this agent when user explicitly requests code review. Specializes in finding LLM-generated code issues. Examples:
+  Senior code reviewer for security, bugs, and LLM-generated code issues.
+  WHEN: User says "review", "check code", "ready for production?", "any issues?", security audit request, before commit/merge.
+  WHEN NOT: Pattern consistency (use code-norms-checker), refactoring advice, debugging errors, generating tests.
+
+  Do NOT use proactively - only when user explicitly requests review. Examples:
 
   <example>
   Context: User finished writing code

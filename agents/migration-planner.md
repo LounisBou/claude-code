@@ -1,7 +1,11 @@
 ---
 name: migration-planner
 description: |
-  Use this agent when user asks to upgrade frameworks or language versions. Examples:
+  Framework and language upgrade specialist with breaking change analysis.
+  WHEN: User asks "upgrade to", "migrate from X to Y", "breaking changes?", "what will break?", version migration planning.
+  WHEN NOT: Package security (use dependency-auditor), code refactoring (use refactoring-advisor), new feature implementation.
+
+  DIFFERENT FROM dependency-auditor: Handles framework/language upgrades, not package security. Examples:
 
   <example>
   Context: User wants to upgrade

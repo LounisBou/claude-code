@@ -1,7 +1,11 @@
 ---
 name: api-platform-architect
 description: |
-  Use this agent when working with Symfony API Platform to design and implement REST/GraphQL APIs. Examples:
+  Symfony API Platform specialist for resources, filters, serialization, and security.
+  WHEN: Working with Symfony API Platform, configuring resources/operations, implementing filters, serialization groups, state providers, API Platform security.
+  WHEN NOT: Generic REST API design (use api-designer), Doctrine queries (use doctrine-specialist), non-Symfony PHP.
+
+  Examples:
 
   <example>
   Context: User needs to add filtering to an API resource

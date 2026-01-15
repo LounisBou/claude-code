@@ -1,7 +1,11 @@
 ---
 name: code-norms-checker
 description: |
-  Use this agent when user asks to check code against project patterns and conventions. Examples:
+  Pattern compliance analyzer comparing code against established project conventions.
+  WHEN: User asks "does this follow patterns?", "is this consistent?", "check conventions", pattern compliance check, style consistency review.
+  WHEN NOT: Bug hunting (use code-review), refactoring (use refactoring-advisor), debugging (use debugging-assistant).
+
+  DIFFERENT FROM code-review: Focuses on pattern consistency, not bugs/security. Examples:
 
   <example>
   Context: User added new code

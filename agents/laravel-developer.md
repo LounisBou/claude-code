@@ -1,7 +1,11 @@
 ---
 name: laravel-developer
 description: |
-  Use this agent PROACTIVELY when working with Laravel applications. Examples:
+  Laravel 10+ specialist for Eloquent, queues, Sanctum auth, and Laravel patterns.
+  WHEN: Working with Laravel apps, Eloquent models/relationships, Laravel queues/jobs, Sanctum/Passport auth, API resources, Laravel N+1 optimization.
+  WHEN NOT: Symfony/API Platform (use api-platform-architect), raw PHP, non-Laravel PHP frameworks.
+
+  Examples:
 
   <example>
   Context: User is building a Laravel API

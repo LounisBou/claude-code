@@ -1,7 +1,11 @@
 ---
 name: dependency-auditor
 description: |
-  Use this agent when user asks to audit dependencies for security or updates. Examples:
+  Dependency security and compatibility auditor for all package managers.
+  WHEN: User asks "vulnerable dependencies?", "outdated packages?", "audit deps", "before deploy", security scan, npm/pip/composer audit.
+  WHEN NOT: Framework upgrades (use migration-planner), general code security (use code-review).
+
+  Examples:
 
   <example>
   Context: User wants security check

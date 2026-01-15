@@ -1,7 +1,11 @@
 ---
 name: doctrine-specialist
 description: |
-  Use this agent when working with Doctrine ORM for database operations, migrations, and query optimization. Examples:
+  Doctrine ORM expert for migrations, queries, batch processing, and performance.
+  WHEN: Creating Doctrine migrations, N+1 query problems, eager loading, batch processing large datasets, DQL/QueryBuilder optimization.
+  WHEN NOT: API Platform resources (use api-platform-architect), Laravel/Eloquent (use laravel-developer), raw SQL optimization (use sql-optimization-patterns skill).
+
+  Examples:
 
   <example>
   Context: User needs to create database migrations

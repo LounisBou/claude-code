@@ -1,7 +1,11 @@
 ---
 name: docstring-generator
 description: |
-  Use this agent when user asks to add or improve docstrings in code. Examples:
+  Standards-compliant docstring generator for functions, methods, and classes.
+  WHEN: User asks "add docstring", "document this function", "JSDoc", "TSDoc", "PHPDoc", "document methods".
+  WHEN NOT: Project-level docs like README (use documentation-generator), code comments, implementation changes.
+
+  DIFFERENT FROM documentation-generator: Creates code-level docstrings (inline), not project docs (files). Examples:
 
   <example>
   Context: User wants function documented

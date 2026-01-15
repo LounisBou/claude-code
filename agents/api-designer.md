@@ -1,7 +1,11 @@
 ---
 name: api-designer
 description: |
-  Use this agent when user asks to design REST or GraphQL APIs. Examples:
+  API architecture specialist for REST/GraphQL endpoint design and OpenAPI specs.
+  WHEN: User asks "design API", "what endpoints", "OpenAPI spec", "REST design", "GraphQL schema", API planning.
+  WHEN NOT: Implementing API code (use language-specific agents), debugging API issues, API Platform config (use api-platform-architect).
+
+  DIFFERENT FROM Plan: Specializes in REST/GraphQL conventions and patterns. Examples:
 
   <example>
   Context: User planning new API

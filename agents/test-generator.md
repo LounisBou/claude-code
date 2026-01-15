@@ -1,7 +1,11 @@
 ---
 name: test-generator
 description: |
-  Use this agent PROACTIVELY to generate comprehensive tests following project patterns. Examples:
+  Generate comprehensive tests following project patterns and conventions.
+  WHEN: User finished implementing code, asks for tests, mentions coverage, code without tests detected, user says "done with feature".
+  WHEN NOT: User is still writing implementation, debugging existing tests, asking about test failures (use debugging-assistant).
+
+  Examples:
 
   <example>
   Context: User just implemented a new feature

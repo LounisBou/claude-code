@@ -1,7 +1,11 @@
 ---
 name: documentation-generator
 description: |
-  Use this agent ONLY when user explicitly requests project documentation. Examples:
+  Technical documentation generator for README, API docs, and architecture docs.
+  WHEN: User asks "create README", "generate docs", "API documentation", "architecture docs", "document this project".
+  WHEN NOT: Code-level docstrings (use docstring-generator), code comments, inline documentation.
+
+  NEVER use proactively. DIFFERENT FROM docstring-generator: Creates project-level docs (files), not code-level docstrings. Examples:
 
   <example>
   Context: User wants README

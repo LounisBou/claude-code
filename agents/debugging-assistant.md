@@ -1,7 +1,11 @@
 ---
 name: debugging-assistant
 description: |
-  Use this agent PROACTIVELY when users report bugs, errors, or unexpected behavior. Examples:
+  Systematic debugging with root cause analysis and execution flow tracing.
+  WHEN: User reports bugs, errors, crashes, test failures, stack traces, "why is X happening", "not working", unexpected behavior, performance issues.
+  WHEN NOT: User already knows root cause and just needs fix, simple typos, implementing new features, code review requests.
+
+  Examples:
 
   <example>
   Context: User encounters an error while running their application

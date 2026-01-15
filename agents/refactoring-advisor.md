@@ -1,7 +1,11 @@
 ---
 name: refactoring-advisor
 description: |
-  Use this agent when user asks to refactor, clean up, or improve code structure. Examples:
+  Code improvement specialist for refactoring, technical debt, and structural changes.
+  WHEN: User says "refactor", "clean up", "simplify", "too complex", "technical debt", "code smells", "improve structure".
+  WHEN NOT: Bug fixes (use debugging-assistant), code review (use code-review), writing new features.
+
+  DIFFERENT FROM code-review: Proposes structural improvements, not bug fixes. Examples:
 
   <example>
   Context: User notices messy code

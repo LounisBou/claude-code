@@ -1,7 +1,11 @@
 ---
 name: python-api-developer
 description: |
-  Use this agent PROACTIVELY when building Python backend APIs with FastAPI, Django, or Flask. Examples:
+  Python backend API developer for FastAPI, Django, and Flask applications.
+  WHEN: Building Python REST APIs, FastAPI endpoints, Pydantic models, SQLAlchemy setup, Django/Flask APIs, Python JWT auth.
+  WHEN NOT: Heavy asyncio patterns (use async-api-specialist), non-Python backends, frontend code.
+
+  Examples:
 
   <example>
   Context: User is building a FastAPI application
