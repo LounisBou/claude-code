@@ -1,12 +1,12 @@
 ---
 name: init-project
-description: Initialize project skills and agents based on project.json configuration
+description: Initialize project skills and agents based on .claude/project.json configuration
 user_invocable: true
 ---
 
 # Init Project Command
 
-Initializes the project by creating symlinks for skills, agents, and commands based on the project.json configuration.
+Initializes the project by creating symlinks for skills, agents, and commands based on the `.claude/project.json` configuration.
 
 ## Usage
 
@@ -16,9 +16,9 @@ Initializes the project by creating symlinks for skills, agents, and commands ba
 
 ## What It Does
 
-1. **Checks for project.json**
+1. **Checks for .claude/project.json**
    - If exists: Reads configuration and builds symlinks
-   - If not exists: Runs interactive setup to create project.json
+   - If not exists: Runs interactive setup to create .claude/project.json
 
 2. **Creates symlinks**
    - Removes existing symlinks in skills/, agents/, commands/
@@ -36,7 +36,7 @@ Initializes the project by creating symlinks for skills, agents, and commands ba
 
 ## Interactive Setup
 
-When no project.json exists, asks:
+When no .claude/project.json exists, asks:
 - What type of project? (PHP, Python, JavaScript/TypeScript, Vue.js)
 - Which framework? (Symfony, Laravel, None)
 - Include frontend? (Vue + Tailwind, vanilla JS/TS, No)
@@ -45,10 +45,10 @@ When no project.json exists, asks:
 
 When this command is invoked:
 
-1. First check if project.json exists in the .claude directory
-2. If project.json does NOT exist:
+1. First check if .claude/project.json exists
+2. If .claude/project.json does NOT exist:
    - Use AskUserQuestion to ask about project type (multi-select: PHP, Python, JavaScript/TypeScript, Vue.js)
    - Based on answers, ask follow-up questions about frameworks
-   - Create project.json with selected categories
+   - Create .claude/project.json with selected categories
 3. Run the init-project.py script: `python3 hooks/init-project.py`
 4. Report the results to the user

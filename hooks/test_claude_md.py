@@ -181,10 +181,10 @@ class TestOnlyActiveCategoriesIncluded(unittest.TestCase):
     def setUp(self):
         self.project_root = get_project_root()
         self.claude_md = self.project_root / "CLAUDE.md"
-        self.project_json = self.project_root / "project.json"
+        self.project_json = self.project_root / ".claude" / "project.json"
 
     def get_active_categories(self) -> list:
-        """Get categories from project.json."""
+        """Get categories from .claude/project.json."""
         if not self.project_json.exists():
             return []
         with open(self.project_json) as f:

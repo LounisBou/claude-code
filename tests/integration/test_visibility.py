@@ -47,10 +47,10 @@ class TestAgentsVisibility:
                 assert item.suffix == ".md", f"Agent {item.name} should have .md extension"
 
     def test_agents_match_project_categories(self, project_root):
-        """Active agents should match project.json categories."""
-        project_json = project_root / "project.json"
+        """Active agents should match .claude/project.json categories."""
+        project_json = project_root / ".claude" / "project.json"
         if not project_json.exists():
-            pytest.skip("No project.json")
+            pytest.skip("No .claude/project.json")
 
         config = json.loads(project_json.read_text())
         categories = set(config.get("categories", []))
@@ -117,10 +117,10 @@ class TestSkillsVisibility:
                         f"Skill {item.name} should contain SKILL.md"
 
     def test_skills_match_project_categories(self, project_root):
-        """Active skills should match project.json categories."""
-        project_json = project_root / "project.json"
+        """Active skills should match .claude/project.json categories."""
+        project_json = project_root / ".claude" / "project.json"
         if not project_json.exists():
-            pytest.skip("No project.json")
+            pytest.skip("No .claude/project.json")
 
         config = json.loads(project_json.read_text())
         categories = set(config.get("categories", []))

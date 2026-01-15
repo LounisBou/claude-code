@@ -39,6 +39,9 @@ class TestInitProjectE2E:
         (temp_dir / "skills").mkdir(exist_ok=True)
         (temp_dir / "commands").mkdir(exist_ok=True)
 
+        # Create .claude directory for project.json
+        (temp_dir / ".claude").mkdir(exist_ok=True)
+
         yield temp_dir
 
         shutil.rmtree(temp_dir)
@@ -50,7 +53,7 @@ class TestInitProjectE2E:
             "categories": ["dev"],
             "exclude": []
         }
-        (full_project_copy / "project.json").write_text(json.dumps(config))
+        (full_project_copy / ".claude" / "project.json").write_text(json.dumps(config))
 
         result = subprocess.run(
             ["python3", "hooks/init-project.py"],
@@ -79,7 +82,7 @@ class TestInitProjectE2E:
             "categories": ["dev"],
             "exclude": []
         }
-        (full_project_copy / "project.json").write_text(json.dumps(config))
+        (full_project_copy / ".claude" / "project.json").write_text(json.dumps(config))
 
         subprocess.run(
             ["python3", "hooks/init-project.py"],
@@ -103,7 +106,7 @@ class TestInitProjectE2E:
             "categories": ["dev"],
             "exclude": ["agents/test-generator"]
         }
-        (full_project_copy / "project.json").write_text(json.dumps(config))
+        (full_project_copy / ".claude" / "project.json").write_text(json.dumps(config))
 
         subprocess.run(
             ["python3", "hooks/init-project.py"],
@@ -122,7 +125,7 @@ class TestInitProjectE2E:
             "categories": ["dev", "docs", "claude"],
             "exclude": []
         }
-        (full_project_copy / "project.json").write_text(json.dumps(config))
+        (full_project_copy / ".claude" / "project.json").write_text(json.dumps(config))
 
         result = subprocess.run(
             ["python3", "hooks/init-project.py"],
@@ -150,7 +153,7 @@ class TestInitProjectE2E:
             "categories": ["dev"],
             "exclude": []
         }
-        (full_project_copy / "project.json").write_text(json.dumps(config))
+        (full_project_copy / ".claude" / "project.json").write_text(json.dumps(config))
 
         result = subprocess.run(
             ["python3", "hooks/init-project.py"],
@@ -182,11 +185,11 @@ class TestInitProjectWithRealProject:
         assert broken == [], f"Broken symlinks: {broken}"
 
     def test_current_project_json_valid(self, project_root):
-        """project.json should be valid if it exists."""
-        project_json = project_root / "project.json"
+        """.claude/project.json should be valid if it exists."""
+        project_json = project_root / ".claude" / "project.json"
         if not project_json.exists():
-            pytest.skip("project.json does not exist")
+            pytest.skip(".claude/project.json does not exist")
 
         config = json.loads(project_json.read_text())
-        assert "categories" in config, "project.json should have categories"
+        assert "categories" in config, ".claude/project.json should have categories"
         assert isinstance(config["categories"], list), "categories should be a list"

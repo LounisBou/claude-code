@@ -1,7 +1,7 @@
 {
   // Project Profile Configuration
   // =============================
-  // Copy this file to project.json and customize for your project.
+  // Copy this file to .claude/project.json and customize for your project.
   // Run /init-project to build symlinks based on this config.
   //
   // See CATEGORIES.md for full list of available categories.

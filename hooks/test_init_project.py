@@ -36,22 +36,23 @@ class TestLoadProjectConfig(unittest.TestCase):
     """Tests for load_project_config function."""
 
     def setUp(self):
-        """Create a temporary directory for tests."""
+        """Create a temporary directory for tests with .claude subdirectory."""
         self.test_dir = Path(tempfile.mkdtemp())
+        (self.test_dir / ".claude").mkdir()
 
     def tearDown(self):
         """Remove the temporary directory."""
         shutil.rmtree(self.test_dir)
 
     def test_valid_project_json(self):
-        """Valid project.json returns dict with categories."""
+        """Valid .claude/project.json returns dict with categories."""
         config = {
             "name": "test-project",
             "categories": ["dev", "php"],
             "exclude": [],
             "description": "Test project"
         }
-        project_json = self.test_dir / "project.json"
+        project_json = self.test_dir / ".claude" / "project.json"
         project_json.write_text(json.dumps(config))
 
         result = load_project_config(self.test_dir)
@@ -60,14 +61,14 @@ class TestLoadProjectConfig(unittest.TestCase):
         self.assertEqual(result["categories"], ["dev", "php"])
 
     def test_missing_project_json_exits(self):
-        """Missing project.json calls sys.exit(1)."""
+        """Missing .claude/project.json calls sys.exit(1)."""
         with self.assertRaises(SystemExit) as cm:
             load_project_config(self.test_dir)
         self.assertEqual(cm.exception.code, 1)
 
     def test_invalid_json_raises_error(self):
         """Invalid JSON raises JSONDecodeError."""
-        project_json = self.test_dir / "project.json"
+        project_json = self.test_dir / ".claude" / "project.json"
         project_json.write_text("{ invalid json }")
 
         with self.assertRaises(json.JSONDecodeError):

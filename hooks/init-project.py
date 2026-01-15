@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Initialize project skills and agents based on project.json configuration.
+Initialize project skills and agents based on .claude/project.json configuration.
 
 Usage:
     python init-project.py
 
 This script:
-1. Reads project.json (required - created by /init-project command)
+1. Reads .claude/project.json (required - created by /init-project command)
 2. Creates symlinks for matching skills, agents, and commands
 3. Updates CLAUDE.md with relevant instructions
 
 Note: This script is invoked by the /init-project Claude command.
-If project.json doesn't exist, run /init-project to create it interactively.
+If .claude/project.json doesn't exist, run /init-project to create it interactively.
 """
 
 import json
@@ -28,10 +28,10 @@ def get_project_root() -> Path:
 
 
 def load_project_config(project_root: Path) -> dict:
-    """Load project configuration from project.json."""
-    project_json = project_root / "project.json"
+    """Load project configuration from .claude/project.json."""
+    project_json = project_root / ".claude" / "project.json"
     if not project_json.exists():
-        print("Error: project.json not found.")
+        print("Error: .claude/project.json not found.")
         print("Run /init-project to create one interactively.")
         sys.exit(1)
 

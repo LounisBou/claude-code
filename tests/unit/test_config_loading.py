@@ -1,4 +1,4 @@
-"""Unit tests for project.json configuration loading."""
+"""Unit tests for .claude/project.json configuration loading."""
 
 import json
 import tempfile
@@ -19,30 +19,31 @@ spec.loader.exec_module(init_project)
 
 
 class TestProjectJsonCreation:
-    """Tests for project.json creation and loading."""
+    """Tests for .claude/project.json creation and loading."""
 
     @pytest.fixture
     def temp_dir(self):
-        """Create a temporary directory."""
+        """Create a temporary directory with .claude subdirectory."""
         temp_dir = Path(tempfile.mkdtemp())
+        (temp_dir / ".claude").mkdir()
         yield temp_dir
         shutil.rmtree(temp_dir)
 
     def test_missing_project_json_exits(self, temp_dir):
-        """Missing project.json calls sys.exit(1)."""
+        """Missing .claude/project.json calls sys.exit(1)."""
         with pytest.raises(SystemExit) as exc_info:
             init_project.load_project_config(temp_dir)
         assert exc_info.value.code == 1
 
     def test_valid_project_json_loads(self, temp_dir):
-        """Valid project.json loads correctly."""
+        """Valid .claude/project.json loads correctly."""
         config = {
             "name": "test-project",
             "categories": ["dev", "php"],
             "exclude": [],
             "description": "Test project"
         }
-        project_json = temp_dir / "project.json"
+        project_json = temp_dir / ".claude" / "project.json"
         project_json.write_text(json.dumps(config))
 
         result = init_project.load_project_config(temp_dir)
@@ -52,7 +53,7 @@ class TestProjectJsonCreation:
 
     def test_invalid_json_raises_error(self, temp_dir):
         """Invalid JSON raises JSONDecodeError."""
-        project_json = temp_dir / "project.json"
+        project_json = temp_dir / ".claude" / "project.json"
         project_json.write_text("{ invalid json }")
 
         with pytest.raises(json.JSONDecodeError):
@@ -61,7 +62,7 @@ class TestProjectJsonCreation:
     def test_empty_categories_defaults(self, temp_dir):
         """Project config with missing categories returns config as-is."""
         config = {"name": "test"}
-        project_json = temp_dir / "project.json"
+        project_json = temp_dir / ".claude" / "project.json"
         project_json.write_text(json.dumps(config))
 
         result = init_project.load_project_config(temp_dir)

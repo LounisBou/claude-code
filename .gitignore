@@ -2,7 +2,8 @@
 settings.local.json
 
 # Project-specific config (each project customizes this)
-project.json
+# Located in .claude/project.json
+.claude/project.json
 
 # Target directories (symlinks only, git ignored)
 # Claude scans these directories - we create symlinks here from *-available/
