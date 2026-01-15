@@ -21,7 +21,8 @@
   },
   "permissions": {
     "allow": [
-      "Read",
+      "Read", 
+      "WebSearch",
       "Bash(awk:*)",
       "Bash(black:*)",
       "Bash(cat:*)",
@@ -49,6 +50,8 @@
       "Bash(pwd)",
       "Bash(pylint:*)",
       "Bash(pytest:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python3 -m pytest:*)",
       "Bash(sort:*)",
       "Bash(tail:*)",
       "Bash(time:*)",
@@ -69,7 +72,6 @@
       "mcp__chrome-devtools__click",
       "mcp__chrome-devtools__wait_for",
       "mcp__chrome-devtools__take_screenshot",
-      "WebSearch"
     ],
     "ask": [
       "Bash(./bin/console:*)",
