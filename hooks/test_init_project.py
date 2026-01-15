@@ -361,7 +361,7 @@ old content
 <!-- END:SKILLS -->
 """)
 
-        update_claude_md(self.test_dir, ["dev"])
+        update_claude_md(self.test_dir, self.test_dir, ["dev"])
 
         content = claude_md.read_text()
         self.assertIn("debugging-assistant", content)
@@ -376,7 +376,7 @@ old content
 Some existing content that should be preserved.
 """)
 
-        update_claude_md(self.test_dir, ["dev"])
+        update_claude_md(self.test_dir, self.test_dir, ["dev"])
 
         content = claude_md.read_text()
         # Original content preserved
@@ -390,7 +390,7 @@ Some existing content that should be preserved.
 
     def test_creates_default_if_missing(self):
         """Creates default CLAUDE.md if file doesn't exist."""
-        update_claude_md(self.test_dir, ["dev"])
+        update_claude_md(self.test_dir, self.test_dir, ["dev"])
 
         claude_md = self.test_dir / "CLAUDE.md"
         self.assertTrue(claude_md.exists())

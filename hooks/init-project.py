@@ -200,8 +200,13 @@ def extract_sections(md_file: Path, categories: list, section_type: str) -> str:
     return "\n".join(extracted).strip()
 
 
-def update_claude_md(project_root: Path, categories: list) -> None:
+def update_claude_md(claude_dir: Path, project_root: Path, categories: list) -> None:
     """Update CLAUDE.md with agent and skill instructions.
+
+    Args:
+        claude_dir: The .claude directory (where AGENTS.md, SKILLS.md are)
+        project_root: The actual project root (where CLAUDE.md should be)
+        categories: List of categories to include
 
     Strategy:
     - If CLAUDE.md doesn't exist: create minimal file with guidelines section
@@ -210,12 +215,12 @@ def update_claude_md(project_root: Path, categories: list) -> None:
     """
     claude_md = project_root / "CLAUDE.md"
 
-    # Extract agent instructions
-    agents_md = project_root / "AGENTS.md"
+    # Extract agent instructions from .claude directory
+    agents_md = claude_dir / "AGENTS.md"
     agent_instructions = extract_sections(agents_md, categories, "agents")
 
-    # Extract skill instructions
-    skills_md = project_root / "SKILLS.md"
+    # Extract skill instructions from .claude directory
+    skills_md = claude_dir / "SKILLS.md"
     skill_instructions = extract_sections(skills_md, categories, "skills")
 
     # Build the auto-generated sections
@@ -277,10 +282,18 @@ def update_claude_md(project_root: Path, categories: list) -> None:
 
 def main():
     """Main function."""
-    project_root = get_project_root()
+    claude_dir = get_project_root()  # The .claude directory
+
+    # Determine actual project root based on context
+    if claude_dir.name == ".claude":
+        # Production: script is in .claude/hooks/, project root is parent of .claude
+        actual_project_root = claude_dir.parent
+    else:
+        # Development: script is in hooks/ at project root
+        actual_project_root = claude_dir
 
     # Load configuration from project.json
-    config = load_project_config(project_root)
+    config = load_project_config(claude_dir)
     categories = config.get("categories", [])
     excludes = config.get("exclude", [])
 
@@ -290,15 +303,15 @@ def main():
     if excludes:
         print(f"Excludes: {', '.join(excludes)}")
 
-    # Source directories (NOT scanned by Claude)
-    skills_available = project_root / "skills-available"
-    agents_available = project_root / "agents-available"
-    commands_available = project_root / "commands-available"
+    # Source directories (NOT scanned by Claude) - in .claude directory
+    skills_available = claude_dir / "skills-available"
+    agents_available = claude_dir / "agents-available"
+    commands_available = claude_dir / "commands-available"
 
-    # Target directories (scanned by Claude - symlinks only)
-    skills_dir = project_root / "skills"
-    agents_dir = project_root / "agents"
-    commands_dir = project_root / "commands"
+    # Target directories (scanned by Claude - symlinks only) - in .claude directory
+    skills_dir = claude_dir / "skills"
+    agents_dir = claude_dir / "agents"
+    commands_dir = claude_dir / "commands"
 
     # Remove existing symlinks from target directories
     removed = 0
@@ -321,8 +334,8 @@ def main():
     print(f"✓ {agents_count} agents loaded")
     print(f"✓ {commands_count} commands loaded")
 
-    # Update CLAUDE.md
-    update_claude_md(project_root, categories)
+    # Update CLAUDE.md at actual project root
+    update_claude_md(claude_dir, actual_project_root, categories)
     print("✓ CLAUDE.md updated")
 
     print("\nDone!")
