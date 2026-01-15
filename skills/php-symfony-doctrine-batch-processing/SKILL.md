@@ -1,6 +1,9 @@
 ---
 name: php-symfony-doctrine-batch-processing
-description: Process large datasets efficiently with Doctrine batch processing, iteration, and memory management. Use when building Symfony applications that need to handle large volumes of database records without running into memory issues or performance bottlenecks.
+description: |
+  Process large datasets with Doctrine batch processing, iteration, and memory management.
+  WHEN: Processing thousands/millions of records, batch updates/inserts, clearing EntityManager periodically, using toIterable(), managing memory in long-running scripts.
+  WHEN NOT: Simple CRUD operations, query optimization (use php-symfony-doctrine-fetch-modes), migrations (use php-symfony-doctrine-migrations).
 ---
 
 # Doctrine Batch Processing

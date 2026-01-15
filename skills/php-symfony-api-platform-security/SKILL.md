@@ -1,6 +1,9 @@
 ---
 name: php-symfony-api-platform-security
-description: Secure API Platform resources with security expressions, voters, and operation-level access control. Use when building Symfony APIs with API Platform that require fine-grained security controls on resources and operations.
+description: |
+  Secure API Platform resources with security expressions, voters, and operation-level access control.
+  WHEN: Adding security to API operations, writing security expressions, creating custom voters, implementing role-based access, protecting resources.
+  WHEN NOT: General Symfony security (use Symfony docs), API filters (use php-symfony-api-platform-filters), serialization (use php-symfony-api-platform-serialization).
 ---
 
 # API Platform Security

@@ -1,6 +1,9 @@
 ---
 name: php-symfony-api-platform-filters
-description: Implement API Platform filters for search, date ranges, boolean, and custom filtering with proper indexing. Use when building Symfony APIs with API Platform that require advanced filtering capabilities on resources.
+description: |
+  Implement API Platform filters: SearchFilter, DateFilter, RangeFilter, BooleanFilter, and custom filters.
+  WHEN: Adding filters to API Platform resources, creating custom filter classes, configuring filter properties, indexing filtered columns.
+  WHEN NOT: Laravel APIs (use php-laravel-specialist), API security (use php-symfony-api-platform-security), serialization (use php-symfony-api-platform-serialization).
 ---
 
 # API Platform Filters

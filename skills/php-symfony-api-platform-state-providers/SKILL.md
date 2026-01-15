@@ -1,6 +1,9 @@
 ---
 name: php-symfony-api-platform-state-providers
-description: Master API Platform State Providers and Processors to decouple data retrieval and persistence from entities, enabling clean architecture and custom data sources. Use when building Symfony APIs with API Platform that require custom data fetching, transformation, or storage logic beyond default Doctrine integration.
+description: |
+  Implement API Platform State Providers and Processors for custom data sources and persistence.
+  WHEN: Creating custom state providers, implementing state processors, fetching data from non-Doctrine sources, custom persistence logic, decoupling from entities.
+  WHEN NOT: Standard Doctrine resources (use php-symfony-api-platform-resources), database optimization (use php-symfony-doctrine-fetch-modes).
 ---
 
 # API Platform State Providers & Processors

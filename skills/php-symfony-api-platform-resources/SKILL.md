@@ -1,6 +1,9 @@
 ---
 name: php-symfony-api-platform-resources
-description: Configure API Platform resources with operations, pagination, and output DTOs for clean, versioned REST/GraphQL APIs. Use when building Symfony APIs with API Platform that require well-defined resources, custom operations, pagination strategies, and data transformation.
+description: |
+  Configure API Platform resources with operations, pagination, DTOs, and GraphQL support.
+  WHEN: Defining API resources, configuring operations (Get, Post, Put, Delete), setting pagination strategies, creating input/output DTOs, API versioning.
+  WHEN NOT: Adding filters (use php-symfony-api-platform-filters), security (use php-symfony-api-platform-security), custom data providers (use php-symfony-api-platform-state-providers).
 ---
 
 # API Platform Resources

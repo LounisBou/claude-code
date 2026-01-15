@@ -1,6 +1,9 @@
 ---
 name: php-docstring
-description: Write correct PHP DocBlocks following PSR-5 and PSR-19 standards for PHPDoc. Use when writing or improving PHP documentation for classes, methods, functions, and properties.
+description: |
+  Write PHP DocBlocks following PSR-5 and PSR-19 PHPDoc standards.
+  WHEN: Writing DocBlocks for PHP classes/methods/functions/properties, documenting @param/@return/@throws, type annotations in PHPDoc.
+  WHEN NOT: Python docstrings (use python-docstring), JavaScript (use js-docstring), TypeScript (use ts-docstring).
 ---
 
 # PHP DocBlock Standards

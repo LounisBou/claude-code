@@ -1,6 +1,9 @@
 ---
 name: php-symfony-api-platform-serialization
-description: Control API output with serialization groups, custom normalizers, and context-aware serialization in API Platform. Use when building Symfony APIs with API Platform that require tailored data representations, computed fields, or role-based serialization.
+description: |
+  Control API Platform output with serialization groups, custom normalizers, and context-aware serialization.
+  WHEN: Configuring serialization groups, creating custom normalizers, implementing computed fields, role-based serialization, controlling API response shape.
+  WHEN NOT: API security (use php-symfony-api-platform-security), filters (use php-symfony-api-platform-filters), resource configuration (use php-symfony-api-platform-resources).
 ---
 
 # API Platform Serialization

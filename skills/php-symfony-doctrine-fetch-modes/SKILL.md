@@ -1,6 +1,9 @@
 ---
 name: php-symfony-doctrine-fetch-modes
-description: Optimize Doctrine queries with fetch modes, lazy loading, extra lazy collections, and query hints for performance. Use when building Symfony applications that require efficient data retrieval strategies using Doctrine ORM.
+description: |
+  Optimize Doctrine queries with fetch modes, eager loading, lazy loading, and query hints.
+  WHEN: Fixing N+1 queries, configuring eager/lazy loading, using EXTRA_LAZY collections, optimizing query performance, adding fetch joins.
+  WHEN NOT: Batch processing large datasets (use php-symfony-doctrine-batch-processing), migrations (use php-symfony-doctrine-migrations).
 ---
 
 # Doctrine Fetch Modes
