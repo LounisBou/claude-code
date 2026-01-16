@@ -1,4 +1,13 @@
 {
+  "additionalDirectories": ["/tmp/claude-work"],
+  "attribution": {
+    "commit": "", 
+    "pr": ""
+  },
+  "autoUpdatesChannel": "stable",
+  "env": {
+    "CLAUDE_CONFIG_DIR": "~/.claude-work"
+  },
   "hooks": {
     "PreToolUse": [
       {
@@ -19,6 +28,7 @@
       }
     ]
   },
+  "language": "english",
   "permissions": {
     "allow": [
       "Read", 
@@ -104,9 +114,14 @@
       "Bash(uv:*)",
       "Bash(yarn:*)"
     ],
+    "defaultMode": "default",
     "deny": [
       "Bash(rm:*)",
       "Bash(sudo:*)"
     ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
   }
 }
