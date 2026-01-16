@@ -2,8 +2,8 @@
 name: dispatching-parallel-agents
 description: |
   Dispatch multiple agents concurrently to solve independent problems in parallel.
-  WHEN: Facing 2+ independent tasks without shared state (multiple test file failures, different subsystems broken), each problem can be understood without context from others.
-  WHEN NOT: Related failures (fix one might fix others), need full system state, agents would interfere with each other, exploratory debugging.
+  WHEN: MUST use when facing 2+ independent tasks/failures. Invoke with "/dispatching-parallel-agents" or "run in parallel", "multiple independent failures", "parallel investigation".
+  WHEN NOT: Related failures (fix one might fix others), agents would interfere with each other.
 ---
 
 # Dispatching Parallel Agents

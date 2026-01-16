@@ -2,8 +2,8 @@
 name: receiving-code-review
 description: |
   Handle code review feedback with technical rigor, verification, and appropriate pushback.
-  WHEN: Receiving review feedback from humans or agents, before implementing suggestions, when feedback seems unclear or technically questionable.
-  WHEN NOT: Requesting code review (use requesting-code-review), writing code, debugging issues.
+  WHEN: MUST use when received code review feedback. Invoke with "/receiving-code-review" or "handle this review feedback", "respond to review".
+  WHEN NOT: Requesting code review (use requesting-code-review), writing code, debugging.
 ---
 
 # Code Review Reception

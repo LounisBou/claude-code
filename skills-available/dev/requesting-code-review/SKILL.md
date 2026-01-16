@@ -2,8 +2,8 @@
 name: requesting-code-review
 description: |
   Request code review by dispatching reviewer subagent with proper context and git SHAs.
-  WHEN: Completing tasks, after implementing major features, before merging, after each task in subagent-driven development.
-  WHEN NOT: Receiving/responding to review feedback (use receiving-code-review), design phase, debugging.
+  WHEN: MUST use after completing major features or before merge. Invoke with "/requesting-code-review" or "request code review", "get review before merge".
+  WHEN NOT: Receiving feedback (use receiving-code-review), design phase, debugging.
 ---
 
 # Requesting Code Review

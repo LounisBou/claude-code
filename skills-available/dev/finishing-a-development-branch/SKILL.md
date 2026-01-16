@@ -2,8 +2,8 @@
 name: finishing-a-development-branch
 description: |
   Complete development branches with structured options for merge, PR, keep, or discard.
-  WHEN: Implementation complete, tests pass, ready to integrate work. Presents 4 options: merge locally, create PR, keep as-is, discard.
-  WHEN NOT: Tests still failing, implementation incomplete, still debugging, plan not finished.
+  WHEN: MUST use when implementation complete and tests pass. Invoke with "/finishing-a-development-branch" or "finish this branch", "ready to merge", "what to do with this branch".
+  WHEN NOT: Tests still failing, implementation incomplete, still debugging.
 ---
 
 # Finishing a Development Branch

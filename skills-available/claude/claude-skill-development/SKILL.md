@@ -2,7 +2,7 @@
 name: claude-skill-development
 description: |
   Best practices for developing Claude Code skills with progressive disclosure and proper organization.
-  WHEN: Learning skill development patterns, improving skill descriptions, organizing skill content, understanding progressive disclosure.
+  WHEN: MUST use when improving existing skills. Invoke with "/claude-skill-development" or "improve skill", "skill best practices", "organize skill content".
   WHEN NOT: Creating new skills from scratch (use claude-skill-creator), creating other plugin components.
 ---
 

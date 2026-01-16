@@ -2,8 +2,8 @@
 name: claude-skill-creator
 description: |
   Create and structure Claude Code skills with proper SKILL.md format, frontmatter, and progressive disclosure.
-  WHEN: Creating new skills, updating existing skill content, structuring skill directories, writing skill descriptions, organizing skill references/scripts/assets.
-  WHEN NOT: Using existing skills for tasks, general coding, creating agents or commands (use claude-agent-creator, claude-command-development).
+  WHEN: MUST use when creating new skills. Invoke with "/claude-skill-creator" or "create a skill", "new Claude skill", "write skill content".
+  WHEN NOT: Creating agents (use claude-agent-creator), creating commands (use claude-command-development).
 ---
 
 # Skill Creator

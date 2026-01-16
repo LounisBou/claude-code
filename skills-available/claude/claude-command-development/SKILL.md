@@ -2,8 +2,8 @@
 name: claude-command-development
 description: |
   Create slash commands for Claude Code with proper frontmatter, arguments, and bash execution.
-  WHEN: Creating new slash commands, defining command arguments, configuring command frontmatter, adding interactive prompts with AskUserQuestion, embedding bash scripts in commands.
-  WHEN NOT: Using existing commands, creating agents (use claude-agent-creator), creating skills (use claude-skill-creator).
+  WHEN: MUST use when creating new slash commands. Invoke with "/claude-command-development" or "create a command", "new slash command", "write a Claude command".
+  WHEN NOT: Creating agents (use claude-agent-creator), creating skills (use claude-skill-creator).
 ---
 
 # Command Development for Claude Code

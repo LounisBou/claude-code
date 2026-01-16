@@ -4,190 +4,190 @@
     {
       "skill": "claude-agent-creator",
       "category": "claude",
-      "triggers": ["create agent", "new agent", "agent development"],
+      "triggers": ["create an agent", "new Claude agent", "write agent prompt"],
       "test_prompts": [
-        "Help me create a new Claude Code agent",
-        "I want to build a custom agent for code analysis"
+        "Create an agent for automated code formatting",
+        "I need a new Claude agent for security scanning"
       ]
     },
     {
       "skill": "claude-command-development",
       "category": "claude",
-      "triggers": ["slash command", "create command", "command development"],
+      "triggers": ["create a command", "new slash command", "write a Claude command"],
       "test_prompts": [
-        "Help me create a new slash command",
-        "I want to develop a custom command with arguments"
+        "Create a command for running database migrations",
+        "I want a new slash command for deployment"
       ]
     },
     {
       "skill": "claude-hook-development",
       "category": "claude",
-      "triggers": ["create hook", "hook development", "PreToolUse hook"],
+      "triggers": ["create a hook", "new PreToolUse hook", "write PostToolUse handler"],
       "test_prompts": [
-        "Help me create a PreToolUse hook",
-        "I want to add a hook that validates commands"
+        "Create a hook to validate bash commands before execution",
+        "I need a new PreToolUse hook for file protection"
       ]
     },
     {
       "skill": "claude-hookify-rules",
       "category": "claude",
-      "triggers": ["hookify", "hook rules", "pattern matcher"],
+      "triggers": ["create hookify rule", "pattern-based hook", "hookify pattern"],
       "test_prompts": [
-        "Help me write hookify rules",
-        "I need to create pattern matchers for my hooks"
+        "Create hookify rule to warn about production commands",
+        "I need a pattern-based hook for sensitive files"
       ]
     },
     {
       "skill": "claude-plugin-settings",
       "category": "claude",
-      "triggers": ["plugin settings", "local.md", "plugin configuration"],
+      "triggers": ["create plugin settings", "configure plugin", "plugin configuration"],
       "test_prompts": [
-        "How do I store plugin settings?",
-        "Help me configure plugin settings in local.md"
+        "Create plugin settings for my custom tool",
+        "Help me configure plugin with .local.md"
       ]
     },
     {
       "skill": "claude-plugin-structure",
       "category": "claude",
-      "triggers": ["plugin structure", "plugin.json", "create plugin"],
+      "triggers": ["create a plugin", "scaffold plugin", "new Claude plugin"],
       "test_prompts": [
-        "Help me set up a new Claude Code plugin",
-        "What's the correct plugin directory structure?"
+        "Create a plugin for our team's workflow",
+        "Scaffold a new Claude plugin for code quality"
       ]
     },
     {
       "skill": "claude-skill-creator",
       "category": "claude",
-      "triggers": ["create skill", "new skill", "SKILL.md"],
+      "triggers": ["create a skill", "new Claude skill", "write skill content"],
       "test_prompts": [
-        "Help me create a new Claude Code skill",
-        "I want to build a custom skill for this domain"
+        "Create a skill for our deployment process",
+        "I need a new Claude skill for database operations"
       ]
     },
     {
       "skill": "claude-skill-development",
       "category": "claude",
-      "triggers": ["skill patterns", "improve skill", "skill organization"],
+      "triggers": ["improve skill", "skill best practices", "organize skill content"],
       "test_prompts": [
-        "How do I improve this skill's descriptions?",
-        "Help me organize skill content with progressive disclosure"
+        "Improve this skill's description and structure",
+        "Help me apply skill best practices to this content"
       ]
     },
     {
       "skill": "brainstorming",
       "category": "dev",
-      "triggers": ["brainstorm", "explore ideas", "design discussion"],
+      "triggers": ["let's brainstorm", "help me design", "explore approaches"],
       "test_prompts": [
-        "Let's brainstorm approaches for this feature",
-        "I want to explore different design options"
+        "Let's brainstorm the architecture for this new feature",
+        "Help me design the authentication system - explore approaches"
       ]
     },
     {
       "skill": "dispatching-parallel-agents",
       "category": "dev",
-      "triggers": ["parallel agents", "multiple agents", "concurrent tasks"],
+      "triggers": ["run in parallel", "multiple independent failures", "parallel investigation"],
       "test_prompts": [
-        "I have multiple independent tasks, can we run agents in parallel?",
-        "Dispatch parallel agents to fix these different issues"
+        "Run in parallel - I have 3 independent test failures to investigate",
+        "Multiple independent failures in different subsystems - parallel investigation needed"
       ]
     },
     {
       "skill": "executing-plans",
       "category": "dev",
-      "triggers": ["execute plan", "follow plan", "run plan"],
+      "triggers": ["execute this plan", "implement this plan", "follow the plan"],
       "test_prompts": [
-        "Execute the plan we created",
-        "Let's follow through on the implementation plan"
+        "Execute this plan in plans/2024-01-15-auth-feature.md",
+        "Implement this plan - start with the first batch of tasks"
       ]
     },
     {
       "skill": "finishing-a-development-branch",
       "category": "dev",
-      "triggers": ["finish branch", "merge branch", "complete feature"],
+      "triggers": ["finish this branch", "ready to merge", "what to do with this branch"],
       "test_prompts": [
-        "I'm done with this feature branch, what are my options?",
-        "Help me finish this development branch"
+        "Finish this branch - tests pass, ready to merge",
+        "What to do with this branch? Implementation complete"
       ]
     },
     {
       "skill": "receiving-code-review",
       "category": "dev",
-      "triggers": ["received review", "review feedback", "respond to review"],
+      "triggers": ["handle this review feedback", "respond to review", "address review"],
       "test_prompts": [
-        "I received code review feedback, how should I respond?",
-        "Help me address this review comment"
+        "Handle this review feedback from the senior dev",
+        "Respond to review - the reviewer wants changes to error handling"
       ]
     },
     {
       "skill": "requesting-code-review",
       "category": "dev",
-      "triggers": ["request review", "pre-review checklist", "before review"],
+      "triggers": ["request code review", "get review before merge", "pre-review"],
       "test_prompts": [
-        "I'm about to request code review, what should I check first?",
-        "Give me a pre-review checklist"
+        "Request code review for my authentication changes",
+        "Get review before merge - what should I check first?"
       ]
     },
     {
       "skill": "sql-optimization-patterns",
       "category": "dev",
-      "triggers": ["SQL optimization", "slow query", "EXPLAIN plan", "index"],
+      "triggers": ["optimize this query", "analyze EXPLAIN", "fix slow query"],
       "test_prompts": [
-        "This SQL query is slow, help me optimize it",
-        "How do I analyze this EXPLAIN plan?"
+        "Optimize this query - it takes 5 seconds on production",
+        "Analyze EXPLAIN output for this slow SELECT statement"
       ]
     },
     {
       "skill": "subagent-driven-development",
       "category": "dev",
-      "triggers": ["subagent", "two-stage review", "fresh subagent"],
+      "triggers": ["execute with subagents", "implement with review", "subagent per task"],
       "test_prompts": [
-        "Let's use subagent-driven development for this complex task",
-        "I want fresh subagents with two-stage review for each task"
+        "Execute with subagents - fresh agent per task with review",
+        "Implement with review after each task"
       ]
     },
     {
       "skill": "systematic-debugging",
       "category": "dev",
-      "triggers": ["trace execution", "root cause", "debug systematically"],
+      "triggers": ["debug systematically", "find root cause", "trace this bug"],
       "test_prompts": [
-        "Help me trace through this code to find the issue",
-        "I need to find the root cause of this bug systematically"
+        "Debug systematically - multiple failed fixes already attempted",
+        "Find root cause of this intermittent failure"
       ]
     },
     {
       "skill": "test-driven-development",
       "category": "dev",
-      "triggers": ["TDD", "test first", "red-green-refactor"],
+      "triggers": ["use TDD", "test first", "red-green-refactor"],
       "test_prompts": [
-        "Let's implement this feature using TDD",
-        "I want to follow red-green-refactor for this"
+        "Use TDD to implement this user registration feature",
+        "Follow red-green-refactor for the payment module"
       ]
     },
     {
       "skill": "using-git-worktrees",
       "category": "dev",
-      "triggers": ["git worktree", "worktree", "parallel branches"],
+      "triggers": ["create worktree", "isolated workspace", "work on multiple branches"],
       "test_prompts": [
-        "Set up a git worktree for this feature",
-        "I want to work on multiple branches in parallel using worktrees"
+        "Create worktree for this feature - need isolated workspace",
+        "Work on multiple branches simultaneously with worktrees"
       ]
     },
     {
       "skill": "verification-before-completion",
       "category": "dev",
-      "triggers": ["verify completion", "verification checklist", "evidence-based"],
+      "triggers": ["verify this works", "run verification", "before claiming done"],
       "test_prompts": [
-        "Before marking this done, let's run verification",
-        "I need an evidence-based verification checklist"
+        "Verify this works before I mark it complete",
+        "Run verification checklist - need evidence it's working"
       ]
     },
     {
       "skill": "writing-plans",
       "category": "dev",
-      "triggers": ["write a plan", "implementation plan", "create roadmap"],
+      "triggers": ["write a plan", "create implementation plan", "plan the implementation"],
       "test_prompts": [
-        "Write an implementation plan for this feature",
-        "Create a step-by-step plan for the migration"
+        "Write a plan for implementing the notification system",
+        "Create implementation plan for the API migration"
       ]
     },
     {

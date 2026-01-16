@@ -2,7 +2,7 @@
 name: dependency-auditor
 description: |
   Dependency security and compatibility auditor for all package managers.
-  WHEN: User asks "vulnerable dependencies?", "outdated packages?", "audit deps", "before deploy", security scan, npm/pip/composer audit.
+  WHEN: MUST invoke when user says "audit dependencies", "check for vulnerabilities", "outdated packages?", "npm audit", "pip audit", "composer audit", "security scan dependencies", "check deps before deploy".
   WHEN NOT: Framework upgrades (use migration-planner), general code security (use code-review).
 
   Examples:

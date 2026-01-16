@@ -2,7 +2,7 @@
 name: refactoring-advisor
 description: |
   Code improvement specialist for refactoring, technical debt, and structural changes.
-  WHEN: User says "refactor", "clean up", "simplify", "too complex", "technical debt", "code smells", "improve structure".
+  WHEN: MUST invoke when user says "refactor this", "clean up this code", "simplify this", "too complex", "technical debt", "code smells", "improve structure", "this class is too big".
   WHEN NOT: Bug fixes (use debugging-assistant), code review (use code-review), writing new features.
 
   DIFFERENT FROM code-review: Proposes structural improvements, not bug fixes. Examples:

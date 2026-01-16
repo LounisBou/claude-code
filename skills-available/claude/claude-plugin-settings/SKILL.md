@@ -2,7 +2,7 @@
 name: claude-plugin-settings
 description: |
   Configure plugin settings using .local.md files with YAML frontmatter for Claude Code plugins.
-  WHEN: Storing plugin configuration, creating user-configurable settings, reading/writing .local.md files, implementing per-project plugin state.
+  WHEN: MUST use for plugin settings/configuration. Invoke with "/claude-plugin-settings" or "create plugin settings", "configure plugin".
   WHEN NOT: Creating plugin structure (use claude-plugin-structure), creating agents/commands/hooks.
 ---
 

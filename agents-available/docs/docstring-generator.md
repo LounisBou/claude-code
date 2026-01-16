@@ -2,7 +2,7 @@
 name: docstring-generator
 description: |
   Standards-compliant docstring generator for functions, methods, and classes.
-  WHEN: User asks "add docstring", "document this function", "JSDoc", "TSDoc", "PHPDoc", "document methods".
+  WHEN: MUST invoke when user says "add docstring", "generate docstring", "add JSDoc", "add TSDoc", "add PHPDoc", "document this function/method/class". For code-level inline documentation.
   WHEN NOT: Project-level docs like README (use documentation-generator), code comments, implementation changes.
 
   DIFFERENT FROM documentation-generator: Creates code-level docstrings (inline), not project docs (files). Examples:

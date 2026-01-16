@@ -2,7 +2,7 @@
 name: test-generator
 description: |
   Generate comprehensive tests following project patterns and conventions.
-  WHEN: User finished implementing code, asks for tests, mentions coverage, code without tests detected, user says "done with feature".
+  WHEN: MUST invoke when user says "write tests", "generate tests", "add tests", "need tests for", "create tests". MUST invoke when user mentions "test coverage" or "coverage gaps". Also when user says "done with feature" or "finished implementing" for code without tests.
   WHEN NOT: User is still writing implementation, debugging existing tests, asking about test failures (use debugging-assistant).
 
   Examples:

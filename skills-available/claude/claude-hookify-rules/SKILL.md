@@ -2,7 +2,7 @@
 name: claude-hookify-rules
 description: |
   Write hookify rules for pattern-based hook triggers in Claude Code.
-  WHEN: Creating hookify rules, defining pattern matchers for hooks, configuring hookify.*.local.md files.
+  WHEN: MUST use for creating hookify rules. Invoke with "/claude-hookify-rules" or "create hookify rule", "pattern-based hook".
   WHEN NOT: Creating general hooks (use claude-hook-development), creating agents or commands.
 ---
 

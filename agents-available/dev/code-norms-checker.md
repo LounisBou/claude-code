@@ -2,7 +2,7 @@
 name: code-norms-checker
 description: |
   Pattern compliance analyzer comparing code against established project conventions.
-  WHEN: User asks "does this follow patterns?", "is this consistent?", "check conventions", pattern compliance check, style consistency review.
+  WHEN: MUST invoke when user says "check patterns", "follow conventions?", "consistent with codebase?", "norms check", "check coding standards". Also for "does this match our style?" questions.
   WHEN NOT: Bug hunting (use code-review), refactoring (use refactoring-advisor), debugging (use debugging-assistant).
 
   DIFFERENT FROM code-review: Focuses on pattern consistency, not bugs/security. Examples:

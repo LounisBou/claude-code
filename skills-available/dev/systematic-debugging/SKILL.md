@@ -2,8 +2,8 @@
 name: systematic-debugging
 description: |
   Find root cause before attempting fixes through systematic investigation phases.
-  WHEN: Encountering bugs, test failures, unexpected behavior, build failures, performance issues. Use ESPECIALLY under time pressure or after multiple failed fixes.
-  WHEN NOT: Issue is already understood with clear root cause, writing new features (use test-driven-development), simple typos.
+  WHEN: MUST use when encountering bugs, test failures, errors, build failures. Invoke with "/systematic-debugging" or "debug systematically". Use ESPECIALLY after multiple failed fixes or under time pressure.
+  WHEN NOT: Issue is already understood with clear root cause, writing new features, simple typos.
 ---
 
 # Systematic Debugging

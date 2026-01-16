@@ -2,7 +2,7 @@
 name: code-review
 description: |
   Senior code reviewer for security, bugs, and LLM-generated code issues.
-  WHEN: User says "review", "check code", "ready for production?", "any issues?", security audit request, before commit/merge.
+  WHEN: MUST invoke when user says "review my code", "code review", "check this code", "review before commit/merge", "security audit", "is this ready for production?". Only when explicitly requested.
   WHEN NOT: Pattern consistency (use code-norms-checker), refactoring advice, debugging errors, generating tests.
 
   Do NOT use proactively - only when user explicitly requests review. Examples:

@@ -2,8 +2,8 @@
 name: claude-hook-development
 description: |
   Create event-driven hooks for Claude Code plugins (PreToolUse, PostToolUse, Stop, SessionStart, etc.).
-  WHEN: Creating hooks to validate tool use, block dangerous commands, add context to operations, implement event-driven automation, configure hook events in settings.json.
-  WHEN NOT: Creating agents (use claude-agent-creator), creating commands (use claude-command-development), writing hookify rules (use claude-hookify-rules).
+  WHEN: MUST use when creating Claude Code hooks. Invoke with "/claude-hook-development" or "create a hook", "new PreToolUse hook", "write PostToolUse handler".
+  WHEN NOT: Creating agents (use claude-agent-creator), writing hookify rules (use claude-hookify-rules).
 ---
 
 # Hook Development for Claude Code Plugins

@@ -2,8 +2,8 @@
 name: subagent-driven-development
 description: |
   Execute plans by dispatching fresh subagent per task with two-stage review (spec + quality).
-  WHEN: Have implementation plan, tasks are mostly independent, want same-session execution with automatic review after each task.
-  WHEN NOT: Parallel/separate session execution (use executing-plans), no plan exists (use writing-plans), tightly coupled tasks requiring shared state.
+  WHEN: MUST use for same-session plan execution with review. Invoke with "/subagent-driven-development" or "execute with subagents", "implement with review".
+  WHEN NOT: Parallel/separate session (use executing-plans), no plan exists (use writing-plans).
 ---
 
 # Subagent-Driven Development

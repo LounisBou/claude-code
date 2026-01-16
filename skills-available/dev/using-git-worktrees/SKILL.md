@@ -2,8 +2,8 @@
 name: using-git-worktrees
 description: |
   Create isolated git worktrees with smart directory selection and baseline verification.
-  WHEN: Starting feature work needing isolation, before executing implementation plans, working on multiple branches simultaneously.
-  WHEN NOT: Simple single-branch work, quick fixes on current branch, finishing work (use finishing-a-development-branch for cleanup).
+  WHEN: MUST use when needing isolated workspace for feature work. Invoke with "/using-git-worktrees" or "create worktree", "isolated workspace", "work on multiple branches".
+  WHEN NOT: Simple single-branch work, quick fixes on current branch.
 ---
 
 # Using Git Worktrees

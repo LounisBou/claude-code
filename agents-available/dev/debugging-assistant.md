@@ -2,7 +2,7 @@
 name: debugging-assistant
 description: |
   Systematic debugging with root cause analysis and execution flow tracing.
-  WHEN: User reports bugs, errors, crashes, test failures, stack traces, "why is X happening", "not working", unexpected behavior, performance issues.
+  WHEN: MUST invoke when user pastes error messages, stack traces, or exception output. MUST invoke when user says "not working", "broken", "fails", "crashes", "bug", or asks "why is X happening/returning Y". Also for test failures, unexpected behavior, performance issues.
   WHEN NOT: User already knows root cause and just needs fix, simple typos, implementing new features, code review requests.
 
   Examples:

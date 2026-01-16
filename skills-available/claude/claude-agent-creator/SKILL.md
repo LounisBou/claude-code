@@ -2,8 +2,8 @@
 name: claude-agent-creator
 description: |
   Create and configure Claude Code agents with proper frontmatter, system prompts, and triggering conditions.
-  WHEN: Creating new agents, writing agent system prompts, configuring agent frontmatter (name, description, model, color, tools), designing agent triggering examples, adding agents to plugins.
-  WHEN NOT: General coding tasks, modifying existing non-agent files, using existing agents for tasks.
+  WHEN: MUST use when creating new Claude Code agents. Invoke with "/claude-agent-creator" or "create an agent", "new Claude agent", "write agent prompt".
+  WHEN NOT: Creating skills (use claude-skill-creator), creating commands (use claude-command-development).
 ---
 
 # Agent creator for Claude Code

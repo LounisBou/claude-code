@@ -2,7 +2,7 @@
 name: migration-planner
 description: |
   Framework and language upgrade specialist with breaking change analysis.
-  WHEN: User asks "upgrade to", "migrate from X to Y", "breaking changes?", "what will break?", version migration planning.
+  WHEN: MUST invoke when user says "upgrade from X to Y", "migrate to", "migration plan", "what will break if we upgrade?", "breaking changes in version X". Also for "help me upgrade Python/Node/PHP/React/Vue/Django/etc".
   WHEN NOT: Package security (use dependency-auditor), code refactoring (use refactoring-advisor), new feature implementation.
 
   DIFFERENT FROM dependency-auditor: Handles framework/language upgrades, not package security. Examples:

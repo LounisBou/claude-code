@@ -18,11 +18,11 @@
     {
       "agent": "code-norms-checker",
       "category": "dev",
-      "triggers": ["check norms", "pattern compliance", "follows conventions", "check coding standards"],
+      "triggers": ["check patterns", "follow conventions", "consistent with codebase", "norms check", "check coding standards"],
       "test_prompts": [
-        "Check if this code follows our patterns",
-        "Does this implementation match our conventions?",
-        "Run a norms check on my changes"
+        "Check patterns in src/services/ - is this consistent with codebase?",
+        "Run a norms check on my recent changes",
+        "Does this follow conventions used elsewhere in the project?"
       ],
       "should_not_trigger": [
         "Write new code",
@@ -32,11 +32,11 @@
     {
       "agent": "code-review",
       "category": "dev",
-      "triggers": ["review code", "code review", "check this code", "security review", "review my changes"],
+      "triggers": ["review my code", "code review", "check this code", "security audit", "ready for production"],
       "test_prompts": [
-        "Review this code for security issues",
-        "Can you do a code review on my changes?",
-        "Check this implementation for any issues"
+        "Code review my changes before I commit",
+        "Review my code in src/auth/ for security issues",
+        "Is this ready for production? Please review before merge"
       ],
       "should_not_trigger": [
         "Write a new function",
@@ -46,12 +46,11 @@
     {
       "agent": "debugging-assistant",
       "category": "dev",
-      "triggers": ["bugs", "errors", "crashes", "test failures", "stack traces", "why is X happening", "not working", "unexpected behavior"],
+      "triggers": ["error message", "stack trace", "not working", "broken", "fails", "crashes", "bug", "why is X happening"],
       "test_prompts": [
-        "I'm getting a TypeError when I call this function",
-        "Why is this returning None instead of the expected list?",
-        "My app crashes when I click submit",
-        "The tests are failing with this error message"
+        "Error: TypeError: Cannot read property 'map' of undefined at src/App.js:42",
+        "This function is not working - it returns undefined instead of the array",
+        "My app crashes with this stack trace: Error at line 15"
       ],
       "should_not_trigger": [
         "Add a new login feature",
@@ -61,11 +60,11 @@
     {
       "agent": "dependency-auditor",
       "category": "dev",
-      "triggers": ["audit dependencies", "check vulnerabilities", "outdated packages", "security scan", "dependency check"],
+      "triggers": ["audit dependencies", "check for vulnerabilities", "outdated packages", "npm audit", "pip audit", "composer audit"],
       "test_prompts": [
-        "Check for security vulnerabilities in our dependencies",
-        "Are there any outdated packages?",
-        "Audit our npm dependencies"
+        "Audit dependencies for security vulnerabilities",
+        "Run npm audit and check for outdated packages",
+        "Check deps before deploy - any vulnerabilities?"
       ],
       "should_not_trigger": [
         "Install a new package",
@@ -75,11 +74,11 @@
     {
       "agent": "migration-planner",
       "category": "dev",
-      "triggers": ["upgrade", "migrate", "version update", "framework upgrade", "breaking changes"],
+      "triggers": ["upgrade from X to Y", "migrate to", "migration plan", "what will break if we upgrade", "breaking changes in version"],
       "test_prompts": [
-        "Plan the migration from Python 3.8 to 3.12",
-        "How do I upgrade from Vue 2 to Vue 3?",
-        "What breaking changes should I expect in the next version?"
+        "Help me upgrade from Vue 2 to Vue 3 - create a migration plan",
+        "What will break if we upgrade React to v18?",
+        "Migrate to Python 3.12 - what are the breaking changes?"
       ],
       "should_not_trigger": [
         "Write new code",
@@ -89,11 +88,11 @@
     {
       "agent": "refactoring-advisor",
       "category": "dev",
-      "triggers": ["refactor", "code smells", "improve code quality", "clean up code", "restructure"],
+      "triggers": ["refactor this", "clean up this code", "simplify this", "too complex", "technical debt", "code smells", "this class is too big"],
       "test_prompts": [
-        "This class is getting too big, how should I refactor it?",
-        "Identify code smells in this module",
-        "How can I improve the structure of this code?"
+        "Refactor this UserService class - it's too big",
+        "Clean up this code in src/utils/ - too complex",
+        "Identify code smells and technical debt in this module"
       ],
       "should_not_trigger": [
         "Add a new feature",
@@ -103,11 +102,11 @@
     {
       "agent": "test-generator",
       "category": "dev",
-      "triggers": ["after implementing features", "when user asks for tests", "generate tests", "write tests", "add tests"],
+      "triggers": ["write tests", "generate tests", "add tests", "need tests for", "create tests", "test coverage"],
       "test_prompts": [
-        "Generate tests for the UserService class",
-        "Write unit tests for this function",
-        "I need tests for the payment module"
+        "Write tests for the UserService class",
+        "Generate tests for src/auth/login.js",
+        "Add tests for this module - need better coverage"
       ],
       "should_not_trigger": [
         "Fix this failing test",
@@ -117,11 +116,11 @@
     {
       "agent": "docstring-generator",
       "category": "docs",
-      "triggers": ["generate docstrings", "add docstrings", "document functions", "document classes"],
+      "triggers": ["add docstring", "generate docstring", "add JSDoc", "add TSDoc", "add PHPDoc", "document this function"],
       "test_prompts": [
-        "Add docstrings to these functions",
-        "Generate documentation for this class",
-        "Document the parameters of this method"
+        "Add docstring to the createUser function",
+        "Generate JSDoc for the functions in api.js",
+        "Add PHPDoc to this class and its methods"
       ],
       "should_not_trigger": [
         "Write new code",
@@ -131,11 +130,11 @@
     {
       "agent": "documentation-generator",
       "category": "docs",
-      "triggers": ["generate documentation", "write docs", "README", "API documentation"],
+      "triggers": ["create README", "generate README", "write documentation", "API documentation", "document this project"],
       "test_prompts": [
-        "Generate a README for this project",
-        "Create API documentation for this module",
-        "Write technical documentation"
+        "Create README for this project",
+        "Generate API documentation for the REST endpoints",
+        "Write documentation for this project architecture"
       ],
       "should_not_trigger": [
         "Write code",

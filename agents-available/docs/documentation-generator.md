@@ -2,7 +2,7 @@
 name: documentation-generator
 description: |
   Technical documentation generator for README, API docs, and architecture docs.
-  WHEN: User asks "create README", "generate docs", "API documentation", "architecture docs", "document this project".
+  WHEN: MUST invoke when user says "create README", "generate README", "write documentation", "API documentation", "document this project", "architecture docs". Only on explicit request, NEVER proactively.
   WHEN NOT: Code-level docstrings (use docstring-generator), code comments, inline documentation.
 
   NEVER use proactively. DIFFERENT FROM docstring-generator: Creates project-level docs (files), not code-level docstrings. Examples:

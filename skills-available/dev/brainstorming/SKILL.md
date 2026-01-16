@@ -2,7 +2,7 @@
 name: brainstorming
 description: |
   Collaborative design refinement through Socratic dialogue to turn ideas into validated specs.
-  WHEN: Before implementing new features, building components, adding functionality, or making behavior changes. Use when requirements need clarification or multiple approaches exist.
+  WHEN: MUST use when starting new features and requirements need clarification. Invoke with "/brainstorming" or "let's brainstorm", "help me design", "explore approaches".
   WHEN NOT: Executing existing plans (use executing-plans), debugging (use systematic-debugging), simple single-file changes with clear requirements.
 ---
 

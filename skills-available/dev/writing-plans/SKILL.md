@@ -2,8 +2,8 @@
 name: writing-plans
 description: |
   Create comprehensive implementation plans with bite-sized tasks, exact paths, and inline TODOs.
-  WHEN: Have spec/requirements for multi-step task, before writing any implementation code, after brainstorming design is approved.
-  WHEN NOT: Simple single-file changes, debugging (use systematic-debugging), executing existing plans (use executing-plans or subagent-driven-development).
+  WHEN: MUST use for complex multi-step implementations. Invoke with "/writing-plans" or "write a plan", "create implementation plan". Use after design is approved.
+  WHEN NOT: Simple single-file changes, debugging (use systematic-debugging), executing existing plans (use executing-plans).
 ---
 
 # Writing Plans

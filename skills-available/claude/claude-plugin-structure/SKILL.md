@@ -2,8 +2,8 @@
 name: claude-plugin-structure
 description: |
   Scaffold and organize Claude Code plugins with proper directory structure and plugin.json manifest.
-  WHEN: Creating new plugins, setting up plugin directory layout, configuring plugin.json, organizing components (agents/commands/skills/hooks), understanding auto-discovery.
-  WHEN NOT: Configuring plugin settings (use claude-plugin-settings), creating individual components (use specific skill for agents/commands/skills/hooks).
+  WHEN: MUST use when creating new plugins. Invoke with "/claude-plugin-structure" or "create a plugin", "scaffold plugin", "new Claude plugin".
+  WHEN NOT: Configuring plugin settings (use claude-plugin-settings), creating individual components.
 ---
 
 # Plugin Structure for Claude Code
