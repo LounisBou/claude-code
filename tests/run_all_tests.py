@@ -21,15 +21,13 @@ import argparse
 import json
 import os
 import re
-import shutil
 import signal
 import subprocess
 import sys
-import tempfile
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 
 # =============================================================================
@@ -55,6 +53,10 @@ LOGS_DIR = CLAUDE_DIR / "logs"
 AGENT_LOG = LOGS_DIR / "agent-invocations.log"
 SKILL_LOG = LOGS_DIR / "skills.log"
 
+# Get Claude config dir from current environment (inherit from parent process)
+CLAUDE_CONFIG_DIR = os.environ.get("CLAUDE_CONFIG_DIR")
+# Claude command - only set CLAUDE_CONFIG_DIR if it's defined
+CLAUDE_CMD = f"CLAUDE_CONFIG_DIR={CLAUDE_CONFIG_DIR} claude" if CLAUDE_CONFIG_DIR else "claude"
 # Test timeout in seconds
 CLAUDE_TIMEOUT = 30
 
@@ -88,7 +90,7 @@ def invoke_claude(prompt: str, timeout: int = CLAUDE_TIMEOUT) -> Tuple[bool, str
     Uses process groups to ensure all child processes are killed on timeout.
     """
     cmd = [
-        "claude",
+        CLAUDE_CMD,
         "-p", prompt,
         "--dangerously-skip-permissions",
         "--output-format", "text",
