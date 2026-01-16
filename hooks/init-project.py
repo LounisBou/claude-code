@@ -240,7 +240,30 @@ def update_claude_md(claude_dir: Path, project_root: Path, categories: list) -> 
 
 <!-- END:SKILLS -->"""
 
+    mandatory_rules = """## MANDATORY INVOCATION RULES
+
+**CRITICAL: When ANY agent or skill WHEN condition matches, you MUST invoke it. DO NOT respond directly.**
+
+### Agent Invocation Rules
+- When a WHEN condition says "MUST invoke", you are REQUIRED to use the Task tool with the specified subagent_type
+- DO NOT attempt to handle the request yourself
+- DO NOT provide a direct text response
+- ALWAYS delegate to the appropriate agent
+- If unsure, invoke the agent - let the specialist handle it
+
+### Skill Invocation Rules
+- When a skill WHEN condition matches, invoke it via the Skill tool
+- Skills provide specialized workflows - use them instead of improvising
+
+### Why This Matters
+- Agents have specialized tools, context, and expertise you lack
+- Direct responses bypass quality controls and specialized knowledge
+- The user configured these agents/skills for a reason - respect that choice
+
+"""
+
     guidelines_section = f"""
+{mandatory_rules}
 ## Agent and Skill Guidelines
 
 {agent_section}
