@@ -56,7 +56,7 @@ AGENT_LOG = LOGS_DIR / "agent-invocations.log"
 SKILL_LOG = LOGS_DIR / "skills.log"
 
 # Test timeout in seconds
-CLAUDE_TIMEOUT = 120
+CLAUDE_TIMEOUT = 30
 
 
 # =============================================================================
@@ -91,8 +91,11 @@ def invoke_claude(prompt: str, timeout: int = CLAUDE_TIMEOUT) -> Tuple[bool, str
         "claude",
         "-p", prompt,
         "--dangerously-skip-permissions",
-        "--output-format", "text"
+        "--output-format", "text",
+        "--max-turns", "1"  # Limit to single turn for faster tests
     ]
+
+    print(f"    [DEBUG] Starting claude (timeout={timeout}s)...", flush=True)
 
     try:
         # Start in new process group so we can kill all children
@@ -105,17 +108,21 @@ def invoke_claude(prompt: str, timeout: int = CLAUDE_TIMEOUT) -> Tuple[bool, str
             text=True,
             start_new_session=True  # Creates new process group
         )
+        print(f"    [DEBUG] Process started (pid={proc.pid}), waiting...", flush=True)
         try:
             stdout, stderr = proc.communicate(timeout=timeout)
             output = stdout + stderr
+            print(f"    [DEBUG] Process completed (rc={proc.returncode})", flush=True)
             return proc.returncode == 0, output
         except subprocess.TimeoutExpired:
+            print(f"    [DEBUG] Timeout! Killing process group...", flush=True)
             # Kill entire process group
             try:
                 os.killpg(proc.pid, signal.SIGKILL)
             except ProcessLookupError:
                 pass  # Already dead
             proc.wait()  # Clean up
+            print(f"    [DEBUG] Process killed", flush=True)
             return False, f"Timeout after {timeout}s"
     except FileNotFoundError:
         return False, "Claude CLI not found"
