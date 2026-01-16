@@ -5,6 +5,7 @@ Logs all skill invocations to .claude/logs/skills.log
 """
 import json
 import sys
+import select
 from datetime import datetime
 from pathlib import Path
 
@@ -40,6 +41,12 @@ def log_skill_usage(skill_name: str, args: str, log_file: Path) -> None:
 def main():
     """Main function to process PreToolUse hook for Skill invocations."""
     try:
+        # Check if stdin has data (timeout after 5 seconds)
+        if not select.select([sys.stdin], [], [], 5)[0]:
+            # No data on stdin, exit gracefully
+            print(json.dumps({"continue": True}))
+            sys.exit(0)
+
         # Read input JSON from stdin
         input_data = json.load(sys.stdin)
 

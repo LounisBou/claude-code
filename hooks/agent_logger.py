@@ -5,6 +5,7 @@ Logs all agent invocations to .claude/logs/agent-invocations.log
 """
 import json
 import sys
+import select
 from datetime import datetime
 from pathlib import Path
 
@@ -44,6 +45,12 @@ def log_agent_usage(agent_type: str, description: str, prompt: str, log_file: Pa
 def main():
     """Main function to process PreToolUse hook for Task (agent) invocations."""
     try:
+        # Check if stdin has data (timeout after 5 seconds)
+        if not select.select([sys.stdin], [], [], 5)[0]:
+            # No data on stdin, exit gracefully
+            print(json.dumps({"continue": True}))
+            sys.exit(0)
+
         # Read input JSON from stdin
         input_data = json.load(sys.stdin)
 
