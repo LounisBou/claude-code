@@ -94,9 +94,6 @@
       "Bash(mv:*)",
       "Bash(npm:*)",
       "Bash(npx:*)",
-      "Bash(php:*)",
-      "Bash(python:*)",
-      "Bash(python3:*)",
       "Bash(pip install:*)",
       "Bash(pip uninstall:*)",
       "Bash(pip3 install:*)",
@@ -104,7 +101,6 @@
       "Bash(py:*)",
       "Bash(redis-cli:*)",
       "Bash(sed:*)",
-      "Bash(symfony:*)",
       "Bash(uv:*)",
       "Bash(yarn:*)"
     ],

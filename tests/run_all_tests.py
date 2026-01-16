@@ -84,6 +84,7 @@ def print_result(name: str, passed: bool, message: str = ""):
 def invoke_claude(prompt: str, timeout: int = CLAUDE_TIMEOUT) -> Tuple[bool, str]:
     """
     Invoke Claude CLI with a prompt and return success status and output.
+    Uses Popen with communicate() for more reliable timeout handling.
     """
     cmd = [
         "claude",
@@ -93,18 +94,22 @@ def invoke_claude(prompt: str, timeout: int = CLAUDE_TIMEOUT) -> Tuple[bool, str
     ]
 
     try:
-        result = subprocess.run(
+        proc = subprocess.Popen(
             cmd,
             cwd=str(PROJECT_ROOT),
             stdin=subprocess.DEVNULL,
-            capture_output=True,
-            text=True,
-            timeout=timeout
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
         )
-        output = result.stdout + result.stderr
-        return result.returncode == 0, output
-    except subprocess.TimeoutExpired:
-        return False, f"Timeout after {timeout}s"
+        try:
+            stdout, stderr = proc.communicate(timeout=timeout)
+            output = stdout + stderr
+            return proc.returncode == 0, output
+        except subprocess.TimeoutExpired:
+            proc.kill()
+            proc.communicate()  # Clean up
+            return False, f"Timeout after {timeout}s"
     except FileNotFoundError:
         return False, "Claude CLI not found"
     except Exception as e:
