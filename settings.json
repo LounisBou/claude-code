@@ -5,9 +5,7 @@
     "pr": ""
   },
   "autoUpdatesChannel": "stable",
-  "env": {
-    "CLAUDE_CONFIG_DIR": "~/.claude-work"
-  },
+  "env": {},
   "hooks": {
     "PreToolUse": [
       {
