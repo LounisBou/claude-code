@@ -64,21 +64,21 @@ CLAUDE_TIMEOUT = 120
 
 def print_header(title: str):
     """Print a formatted header."""
-    print("\n" + "=" * 70)
-    print(f" {title}")
-    print("=" * 70)
+    print("\n" + "=" * 70, flush=True)
+    print(f" {title}", flush=True)
+    print("=" * 70, flush=True)
 
 
 def print_subheader(title: str):
     """Print a formatted subheader."""
-    print(f"\n--- {title} ---")
+    print(f"\n--- {title} ---", flush=True)
 
 
 def print_result(name: str, passed: bool, message: str = ""):
     """Print a test result."""
     status = "✓ PASS" if passed else "✗ FAIL"
     msg = f" - {message}" if message else ""
-    print(f"  [{status}] {name}{msg}")
+    print(f"  [{status}] {name}{msg}", flush=True)
 
 
 def invoke_claude(prompt: str, timeout: int = CLAUDE_TIMEOUT) -> Tuple[bool, str]:
@@ -442,7 +442,7 @@ def run_visibility_tests() -> Dict:
     ]
 
     for name, test_fn in tests:
-        print(f"\n  Testing: {name}...")
+        print(f"\n  Testing: {name}...", flush=True)
         passed, message = test_fn()
         print_result(name, passed, message)
         if passed:
@@ -560,8 +560,8 @@ def run_agent_trigger_tests(verbose: bool = False) -> Dict:
     active_agents = get_active_items("agents")
     agent_defs = load_test_definitions("agents")
 
-    print(f"\n  Active agents: {len(active_agents)}")
-    print(f"  Test definitions: {len(agent_defs.get('tests', []))}")
+    print(f"\n  Active agents: {len(active_agents)}", flush=True)
+    print(f"  Test definitions: {len(agent_defs.get('tests', []))}", flush=True)
 
     for test in agent_defs.get("tests", []):
         agent_name = test["agent"]
@@ -581,8 +581,8 @@ def run_agent_trigger_tests(verbose: bool = False) -> Dict:
 
         # Run test with first prompt
         test_prompt = test_prompts[0]
-        print(f"\n  Testing: {agent_name}")
-        print(f"    Prompt: \"{test_prompt[:50]}...\"" if len(test_prompt) > 50 else f"    Prompt: \"{test_prompt}\"")
+        print(f"\n  Testing: {agent_name}", flush=True)
+        print(f"    Prompt: \"{test_prompt[:50]}...\"" if len(test_prompt) > 50 else f"    Prompt: \"{test_prompt}\"", flush=True)
 
         # Record time before test
         before_time = datetime.now()
@@ -640,8 +640,8 @@ def run_skill_trigger_tests(verbose: bool = False) -> Dict:
     active_skills = get_active_items("skills")
     skill_defs = load_test_definitions("skills")
 
-    print(f"\n  Active skills: {len(active_skills)}")
-    print(f"  Test definitions: {len(skill_defs.get('tests', []))}")
+    print(f"\n  Active skills: {len(active_skills)}", flush=True)
+    print(f"  Test definitions: {len(skill_defs.get('tests', []))}", flush=True)
 
     for test in skill_defs.get("tests", []):
         skill_name = test["skill"]
@@ -661,8 +661,8 @@ def run_skill_trigger_tests(verbose: bool = False) -> Dict:
 
         # Run test with first prompt
         test_prompt = test_prompts[0]
-        print(f"\n  Testing: {skill_name}")
-        print(f"    Prompt: \"{test_prompt[:50]}...\"" if len(test_prompt) > 50 else f"    Prompt: \"{test_prompt}\"")
+        print(f"\n  Testing: {skill_name}", flush=True)
+        print(f"    Prompt: \"{test_prompt[:50]}...\"" if len(test_prompt) > 50 else f"    Prompt: \"{test_prompt}\"", flush=True)
 
         # Record time before test
         before_time = datetime.now()
@@ -749,6 +749,7 @@ def print_final_summary(all_results: Dict):
 
 
 def main():
+    print("[DEBUG] Test runner starting...", flush=True)
     parser = argparse.ArgumentParser(description="Run all tests for /init-project")
     parser.add_argument("--unit", action="store_true", help="Run only unit tests")
     parser.add_argument("--init", action="store_true", help="Run only init-project tests")
@@ -767,14 +768,14 @@ def main():
 
     all_results = {}
 
-    print("\n" + "=" * 70)
-    print(" COMPREHENSIVE TEST SUITE FOR /init-project")
-    print("=" * 70)
-    print(f"\n  Project root: {PROJECT_ROOT}")
-    print(f"  Logs dir: {LOGS_DIR}")
-    print(f"  Active agents: {len(get_active_items('agents'))}")
-    print(f"  Active skills: {len(get_active_items('skills'))}")
-    print(f"  Active commands: {len(get_active_items('commands'))}")
+    print("\n" + "=" * 70, flush=True)
+    print(" COMPREHENSIVE TEST SUITE FOR /init-project", flush=True)
+    print("=" * 70, flush=True)
+    print(f"\n  Project root: {PROJECT_ROOT}", flush=True)
+    print(f"  Logs dir: {LOGS_DIR}", flush=True)
+    print(f"  Active agents: {len(get_active_items('agents'))}", flush=True)
+    print(f"  Active skills: {len(get_active_items('skills'))}", flush=True)
+    print(f"  Active commands: {len(get_active_items('commands'))}", flush=True)
 
     # Run requested test suites
     if run_all or args.unit:

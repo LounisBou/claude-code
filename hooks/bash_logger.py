@@ -6,7 +6,6 @@ Logs all bash commands with descriptions to .claude/logs/bash-commands.log
 import json
 import sys
 import os
-import select
 from datetime import datetime
 from pathlib import Path
 
@@ -37,12 +36,6 @@ def log_bash_command(command: str, description: str, log_file: Path) -> None:
 def main():
     """Main function to process PreToolUse hook for Bash commands."""
     try:
-        # Check if stdin has data (timeout after 5 seconds)
-        if not select.select([sys.stdin], [], [], 5)[0]:
-            # No data on stdin, exit gracefully
-            print(json.dumps({"continue": True}))
-            sys.exit(0)
-
         # Read input JSON from stdin
         input_data = json.load(sys.stdin)
 
