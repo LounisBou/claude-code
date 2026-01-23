@@ -46,27 +46,77 @@ PROJECT CONFIGURATION DETECTED:
 
 ## STEP 0: Initialize Audit Checklist
 
-**IMMEDIATELY upon starting this skill, call TodoWrite:**
+**IMMEDIATELY upon starting this skill, create tasks using TaskCreate:**
 
-```
-TodoWrite with todos:
-[
-  {"content": "AUDIT 1: Verify GATE compliance (all 11 gates)", "status": "pending", "activeForm": "Auditing gate compliance"},
-  {"content": "AUDIT 2: Verify mandatory skill invocations", "status": "pending", "activeForm": "Checking skill invocations"},
-  {"content": "AUDIT 3: Verify implementation completeness", "status": "pending", "activeForm": "Checking implementation"},
-  {"content": "AUDIT 4: Verify quality checks passed", "status": "pending", "activeForm": "Verifying quality checks"},
-  {"content": "AUDIT 5: Verify PR review compliance", "status": "pending", "activeForm": "Checking PR review compliance"},
-  {"content": "AUDIT 6: Generate audit report", "status": "pending", "activeForm": "Generating audit report"}
-]
-```
+Create each audit task individually:
+
+1. `TaskCreate` with:
+   - subject: "AUDIT 1: Verify GATE compliance (all 11 gates)"
+   - description: "Check all 11 gates were completed with proper evidence"
+   - activeForm: "Auditing gate compliance"
+
+2. `TaskCreate` with:
+   - subject: "AUDIT 2: Verify mandatory skill invocations"
+   - description: "Verify all 3 mandatory skills were invoked with proper artifacts"
+   - activeForm: "Checking skill invocations"
+
+3. `TaskCreate` with:
+   - subject: "AUDIT 3: Verify implementation completeness"
+   - description: "Check all tasks from phase plan were implemented"
+   - activeForm: "Checking implementation"
+
+4. `TaskCreate` with:
+   - subject: "AUDIT 4: Verify quality checks passed"
+   - description: "Run all quality commands and verify they pass"
+   - activeForm: "Verifying quality checks"
+
+5. `TaskCreate` with:
+   - subject: "AUDIT 5: Verify PR review compliance"
+   - description: "Check all review issues were properly addressed"
+   - activeForm: "Checking PR review compliance"
+
+6. `TaskCreate` with:
+   - subject: "AUDIT 6: Generate audit report"
+   - description: "Compile and present final audit report"
+   - activeForm: "Generating audit report"
+
+Use `TaskUpdate` with `status: "in_progress"` when starting each audit and `status: "completed"` when finishing.
 
 ---
 
 ## AUDIT 1: Verify GATE Compliance
 
-**Mark "AUDIT 1" as `in_progress`.**
+**Use `TaskUpdate` to mark "AUDIT 1" as `in_progress`.**
 
-### 1.1 Identify Current Phase
+### 1.1 Validate Project Root
+
+**IMPORTANT:** Before proceeding, verify that the project root from the original execution matches the current working directory.
+
+```bash
+# Verify project root exists and is accessible
+ls -la <detected-project-root>
+
+# Verify .git directory exists at project root
+ls -la <detected-project-root>/.git
+```
+
+**If project root has changed or is inaccessible:** STOP and report the discrepancy.
+
+### 1.2 Validate Directory Structure
+
+**Before auditing, verify required directories exist:**
+
+```bash
+# Check docs/plans/ directory exists
+ls -la docs/plans/ 2>/dev/null || echo "ERROR: docs/plans/ directory not found"
+
+# Check docs/reviews/ directory exists
+ls -la docs/reviews/ 2>/dev/null || echo "ERROR: docs/reviews/ directory not found"
+```
+
+**If directories are missing:** The workflow was not followed correctly. Mark as FAILED.
+
+### 1.3 Identify Current Phase
 
 ```bash
 # Get current branch
@@ -78,7 +128,7 @@ gh pr list --state all --limit 5
 # Find phase from branch name or recent PR
 ```
 
-### 1.2 Check Each GATE
+### 1.4 Check Each GATE
 
 **For each gate, verify evidence exists:**
 
@@ -93,25 +143,34 @@ gh pr list --state all --limit 5
 | GATE 7 | Fixes applied | All issues in review marked FIXED |
 | GATE 8 | Review saved | `docs/reviews/phase-X.Y-*.md` exists |
 | GATE 9 | Final checks passed | All quality commands pass now |
-| GATE 10 | PR created | `gh pr view` returns PR info |
+| GATE 10 | PR created | `gh pr view` returns PR info **for the correct phase** |
 | GATE 11 | Approval requested | PR is open or merged |
 
-### 1.3 Gate Compliance Checklist
+### 1.5 Gate Compliance Checklist
 
 Run these verifications:
 
 ```bash
-# Check branch pattern
-git branch --show-current | grep -E "feat/[0-9]+\.[0-9]+-"
+# Check branch pattern and extract phase number
+CURRENT_BRANCH=$(git branch --show-current)
+echo "Current branch: $CURRENT_BRANCH"
+echo "$CURRENT_BRANCH" | grep -E "feat/[0-9]+\.[0-9]+-"
+
+# Extract phase number from branch (e.g., "feat/1.2-name" -> "1.2")
+PHASE_NUM=$(echo "$CURRENT_BRANCH" | grep -oE "[0-9]+\.[0-9]+")
+echo "Phase number: $PHASE_NUM"
 
 # Check commits exist
 git log --oneline main..HEAD | head -5
 
-# Check review doc exists
-ls docs/reviews/phase-*.md 2>/dev/null || echo "NO REVIEW DOC FOUND"
+# Check review doc exists for THIS phase
+ls docs/reviews/phase-${PHASE_NUM}-*.md 2>/dev/null || echo "NO REVIEW DOC FOUND FOR PHASE $PHASE_NUM"
 
-# Check PR exists
+# Check PR exists AND is for the correct branch/phase
 gh pr view 2>/dev/null || echo "NO PR FOUND"
+
+# Verify PR is for the current branch (correct phase)
+gh pr view --json headRefName --jq '.headRefName' 2>/dev/null | grep -q "$CURRENT_BRANCH" && echo "PR is for correct branch" || echo "WARNING: PR may be for different branch"
 ```
 
 **Record findings:**
@@ -124,16 +183,16 @@ gh pr view 2>/dev/null || echo "NO PR FOUND"
 - [ ] GATE 7: Pass or Fail (verify in AUDIT 5)
 - [ ] GATE 8: Pass or Fail
 - [ ] GATE 9: Pass or Fail (verify in AUDIT 4)
-- [ ] GATE 10: Pass or Fail
+- [ ] GATE 10: Pass or Fail (verify PR is for THIS phase branch)
 - [ ] GATE 11: Pass or Fail
 
-**Mark "AUDIT 1" as `completed`.**
+**Use `TaskUpdate` to mark "AUDIT 1" as `completed`.**
 
 ---
 
 ## AUDIT 2: Verify Mandatory Skill Invocations
 
-**Mark "AUDIT 2" as `in_progress`.**
+**Use `TaskUpdate` to mark "AUDIT 2" as `in_progress`.**
 
 ### 2.1 Required Skill Invocations
 
@@ -147,60 +206,160 @@ The `/plan:execute-next-phase` workflow REQUIRES these skill invocations:
 
 ### 2.2 Evidence Check
 
-**GATE 3 - Executing Plans:**
-- Look for structured task breakdown in implementation
-- Check if TDD pattern was followed (tests before code)
-- Verify step-by-step execution evidence
+**For each skill, distinguish between:**
+- **Not Invoked:** No artifacts or evidence exist
+- **Started But Not Completed:** Partial artifacts exist but workflow incomplete
+- **Fully Completed:** All required artifacts present
 
-**GATE 5 - Brainstorming:**
-- Check review doc for "Test Coverage Analysis" or "Brainstorming Results" section
-- Verify test coverage was analyzed against specifications
-- Look for gap analysis
+#### GATE 3 - Executing Plans (`superpowers:executing-plans`)
 
-**GATE 6 - PR Review:**
-- Check review doc for multiple agent results:
-  - code-reviewer
-  - comment-analyzer
-  - silent-failure-hunter
-  - type-design-analyzer (if types added)
-  - pr-test-analyzer (if tests added)
-- Verify "Critical Issues", "Important Issues", "Suggestions" sections exist
+**Required Artifacts:**
+- Commit messages showing incremental, task-by-task implementation
+- Test files created BEFORE implementation files (TDD pattern)
+- Structured progression visible in git history
+
+**Verification Commands:**
+```bash
+# Check commit history for structured execution pattern
+git log --oneline main..HEAD | head -20
+
+# Check if test files were committed before implementation
+# (Look for test commits preceding implementation commits)
+git log --oneline --name-only main..HEAD | grep -E "(test|spec)\." | head -10
+```
+
+**Evidence Status:**
+- [ ] **FULLY COMPLETED:** Multiple structured commits, TDD pattern visible
+- [ ] **STARTED BUT NOT COMPLETED:** Some commits exist but no clear structure
+- [ ] **NOT INVOKED:** No structured execution evidence, all changes in single commit
+
+#### GATE 5 - Brainstorming (`superpowers:brainstorming`)
+
+**Required Artifacts:**
+- "Test Coverage Analysis" section in review document
+- Gap analysis between specifications and tests
+- Coverage assessment with specific findings
+
+**Verification Commands:**
+```bash
+# Check review doc for brainstorming evidence
+grep -l "Test Coverage" docs/reviews/phase-*.md 2>/dev/null
+grep -l "Brainstorming" docs/reviews/phase-*.md 2>/dev/null
+grep -l "Coverage Analysis" docs/reviews/phase-*.md 2>/dev/null
+```
+
+**Evidence Status:**
+- [ ] **FULLY COMPLETED:** Coverage analysis section with specific findings
+- [ ] **STARTED BUT NOT COMPLETED:** Section header exists but content incomplete
+- [ ] **NOT INVOKED:** No coverage analysis section in review document
+
+#### GATE 6 - PR Review (`pr-review-toolkit:review-pr`)
+
+**Required Artifacts:**
+- Multi-agent review sections in review document
+- At minimum: code-reviewer, comment-analyzer, silent-failure-hunter results
+- Categorized issues: Critical, Important, Suggestions
+
+**Verification Commands:**
+```bash
+# Check review doc for multi-agent review evidence
+grep -l "code-reviewer" docs/reviews/phase-*.md 2>/dev/null
+grep -l "Critical Issues" docs/reviews/phase-*.md 2>/dev/null
+grep -l "silent-failure" docs/reviews/phase-*.md 2>/dev/null
+```
+
+**Evidence Status:**
+- [ ] **FULLY COMPLETED:** All agent sections present with categorized issues
+- [ ] **STARTED BUT NOT COMPLETED:** Some agent sections but incomplete
+- [ ] **NOT INVOKED:** No multi-agent review sections in document
 
 ### 2.3 Skill Invocation Checklist
 
-- [ ] GATE 3 skill invoked: Evidence of `/superpowers:executing-plans`
-- [ ] GATE 5 skill invoked: Evidence of `/superpowers:brainstorming`
-- [ ] GATE 6 skill invoked: Evidence of `/pr-review-toolkit:review-pr`
+| Skill | Status | Evidence Found |
+|-------|--------|----------------|
+| `superpowers:executing-plans` | Fully Completed / Started / Not Invoked | [describe evidence] |
+| `superpowers:brainstorming` | Fully Completed / Started / Not Invoked | [describe evidence] |
+| `pr-review-toolkit:review-pr` | Fully Completed / Started / Not Invoked | [describe evidence] |
 
-**If ANY skill was NOT invoked:** Mark as FAILED.
+**Failure Conditions:**
+- If ANY skill is "Not Invoked": Mark as FAILED
+- If ANY skill is "Started But Not Completed": Mark as FAILED with remediation note
 
-**Mark "AUDIT 2" as `completed`.**
+**Use `TaskUpdate` to mark "AUDIT 2" as `completed`.**
 
 ---
 
 ## AUDIT 3: Verify Implementation Completeness
 
-**Mark "AUDIT 3" as `in_progress`.**
+**Use `TaskUpdate` to mark "AUDIT 3" as `in_progress`.**
 
 ### 3.1 Read Phase Plan
 
 ```bash
-# Find phase plan file
-ls docs/plans/phase-*/
+# Find phase plan file (using phase number from AUDIT 1)
+ls docs/plans/ | grep -i "phase"
+
+# Read the specific phase plan
+cat docs/plans/phase-X.Y-*.md
 ```
 
 Read the relevant phase plan file.
 
 ### 3.2 Extract Required Tasks
 
-List ALL tasks from the phase plan:
+**Task Extraction Patterns:**
+
+Phase plans may use different formats. Extract tasks using these patterns:
+
+1. **Checkbox format:** Lines starting with `- [ ]` or `- [x]`
+   ```
+   - [ ] Implement user authentication
+   - [ ] Add input validation
+   ```
+
+2. **Numbered tasks:** Lines starting with numbers followed by `.` or `)`
+   ```
+   1. Implement user authentication
+   2) Add input validation
+   ```
+
+3. **Task headers:** Sections with `## Task:` or `### Task` or `**Task:**`
+   ```
+   ## Task: Implement Authentication
+   ### Task 1: Add Validation
+   ```
+
+4. **Deliverables section:** Items under "Deliverables", "Requirements", or "Implementation" headers
+   ```
+   ## Deliverables
+   - User auth module
+   - Validation helper
+   ```
+
+**Extraction Command:**
+```bash
+# Extract checkbox tasks
+grep -E "^\s*-\s*\[.\]" docs/plans/phase-X.Y-*.md
+
+# Extract numbered tasks
+grep -E "^\s*[0-9]+[\.\)]" docs/plans/phase-X.Y-*.md
+
+# Extract task headers
+grep -E "^#+\s*(Task|Deliverable)" docs/plans/phase-X.Y-*.md
+```
+
+**Compile extracted tasks:**
 
 ```markdown
 ## Tasks from Phase X.Y Plan:
-1. [ ] Task 1 description
-2. [ ] Task 2 description
-3. [ ] Task 3 description
-...
+
+Source: docs/plans/phase-X.Y-name.md
+
+| # | Task Description | Source Line |
+|---|------------------|-------------|
+| 1 | [task description] | Line XX |
+| 2 | [task description] | Line XX |
+| 3 | [task description] | Line XX |
 ```
 
 ### 3.3 Verify Each Task Implementation
@@ -224,22 +383,24 @@ ls -la <expected-file-path>
 ### 3.4 Implementation Completeness Checklist
 
 For each task:
-- [ ] Task 1: Implemented / Missing / Incomplete
-- [ ] Task 2: Implemented / Missing / Incomplete
-- [ ] Task 3: Implemented / Missing / Incomplete
-...
+
+| Task | Status | Evidence |
+|------|--------|----------|
+| Task 1 | Implemented / Missing / Incomplete | [file path or commit] |
+| Task 2 | Implemented / Missing / Incomplete | [file path or commit] |
+| Task 3 | Implemented / Missing / Incomplete | [file path or commit] |
 
 **Calculate completion percentage:** X/Y tasks = Z%
 
 **If < 100%:** Mark as FAILED with list of missing/incomplete tasks.
 
-**Mark "AUDIT 3" as `completed`.**
+**Use `TaskUpdate` to mark "AUDIT 3" as `completed`.**
 
 ---
 
 ## AUDIT 4: Verify Quality Checks Passed
 
-**Mark "AUDIT 4" as `in_progress`.**
+**Use `TaskUpdate` to mark "AUDIT 4" as `in_progress`.**
 
 ### 4.1 Run All Quality Commands
 
@@ -270,38 +431,120 @@ git status
 | Code Style | `<detected-format-check-command>` | PASS / FAIL / N/A |
 | Git Clean | `git status` | Clean / Dirty |
 
-### 4.3 Coverage Check (if available)
+### 4.3 Coverage Check (Optional)
+
+**Note:** Coverage is checked as part of the test command if the project supports it.
+
+Coverage may be available via:
+- Jest: `--coverage` flag (often included in test script)
+- pytest: `--cov` flag (requires pytest-cov)
+- Go: `-cover` flag
+- Other: Check project's package.json, pytest.ini, or similar config
 
 ```bash
-<detected-test-command-with-coverage> || echo "Coverage driver not available"
+# Check if test command already includes coverage
+# Look for coverage output in test results
+# This is informational - not a failure condition if unavailable
 ```
+
+**If the test command produces coverage output, note it in the report. Coverage availability is optional and depends on project configuration.**
 
 **If tests fail:** Mark as FAILED.
 **If configured checks (analyse/format) fail:** Mark as FAILED.
 
-**Mark "AUDIT 4" as `completed`.**
+**Use `TaskUpdate` to mark "AUDIT 4" as `completed`.**
 
 ---
 
 ## AUDIT 5: Verify PR Review Compliance
 
-**Mark "AUDIT 5" as `in_progress`.**
+**Use `TaskUpdate` to mark "AUDIT 5" as `in_progress`.**
 
 ### 5.1 Read Review Document
 
 ```bash
-cat docs/reviews/phase-*.md
+# Read the review document for this phase
+cat docs/reviews/phase-X.Y-*.md
 ```
 
-### 5.2 Extract All Issues
+### 5.2 Expected Review Document Structure
+
+The review document created by GATE 8 should follow this structure:
+
+```markdown
+# Phase X.Y Review: [Phase Name]
+
+## Summary
+- Date: YYYY-MM-DD
+- Branch: feat/X.Y-name
+- Reviewer: pr-review-toolkit
+
+## Agent Results
+
+### code-reviewer
+[findings]
+
+### comment-analyzer
+[findings]
+
+### silent-failure-hunter
+[findings]
+
+### type-design-analyzer (if applicable)
+[findings]
+
+### pr-test-analyzer (if applicable)
+[findings]
+
+## Issues
+
+### Critical Issues
+| # | Issue | Location | Status |
+|---|-------|----------|--------|
+| 1 | [description] | [file:line] | FIXED / OPEN |
+
+### Important Issues
+| # | Issue | Location | Status |
+|---|-------|----------|--------|
+| 1 | [description] | [file:line] | FIXED / OPEN |
+
+### Other Issues
+| # | Issue | Location | Status |
+|---|-------|----------|--------|
+| 1 | [description] | [file:line] | FIXED / OPEN |
+
+## Suggestions
+| # | Suggestion | Status | Notes |
+|---|------------|--------|-------|
+| 1 | [description] | APPLIED / DECLINED | [reason if declined] |
+
+## Test Coverage Analysis
+[From brainstorming skill]
+```
+
+**If review document does not follow this structure:** Note what sections are missing but continue audit with available information.
+
+### 5.3 Extract All Issues
 
 Parse the review document for:
-- **Critical Issues** (must be 0 remaining)
+- **Critical Issues** (must be 0 remaining OPEN)
 - **Important Issues** (must all be FIXED)
 - **Other Issues** (must all be FIXED)
-- **Suggestions** (must all be EVALUATED)
+- **Suggestions** (must all be EVALUATED - either APPLIED or DECLINED with reason)
 
-### 5.3 Verify Issue Resolution
+**Extraction Commands:**
+```bash
+# Find Critical Issues section and count OPEN items
+grep -A 20 "Critical Issues" docs/reviews/phase-*.md | grep -c "OPEN" || echo "0"
+
+# Find Important Issues section and count OPEN items
+grep -A 20 "Important Issues" docs/reviews/phase-*.md | grep -c "OPEN" || echo "0"
+
+# Find Suggestions and check for unevaluated items
+grep -A 30 "## Suggestions" docs/reviews/phase-*.md | grep -c "PENDING" || echo "0"
+```
+
+### 5.4 Verify Issue Resolution
 
 **For Critical Issues:**
 | Issue | Status Required | Actual Status |
@@ -323,25 +566,25 @@ Parse the review document for:
 **For Suggestions:**
 | Suggestion | Required | Actual |
 |------------|----------|--------|
-| Suggestion 1 | APPLIED or DOCUMENTED | Pass/Fail |
-| Suggestion 2 | APPLIED or DOCUMENTED | Pass/Fail |
+| Suggestion 1 | APPLIED or DECLINED with reason | Pass/Fail |
+| Suggestion 2 | APPLIED or DECLINED with reason | Pass/Fail |
 
-### 5.4 PR Review Compliance Checklist
+### 5.5 PR Review Compliance Checklist
 
-- [ ] All Critical issues: FIXED
+- [ ] All Critical issues: FIXED (0 remaining OPEN)
 - [ ] All Important issues: FIXED
 - [ ] All Other issues: FIXED
-- [ ] All Suggestions: EVALUATED (applied or documented why not)
+- [ ] All Suggestions: EVALUATED (APPLIED or DECLINED with documented reason)
 
 **If ANY issue not properly addressed:** Mark as FAILED.
 
-**Mark "AUDIT 5" as `completed`.**
+**Use `TaskUpdate` to mark "AUDIT 5" as `completed`.**
 
 ---
 
 ## AUDIT 6: Generate Audit Report
 
-**Mark "AUDIT 6" as `in_progress`.**
+**Use `TaskUpdate` to mark "AUDIT 6" as `in_progress`.**
 
 ### 6.1 Compile Results
 
@@ -481,7 +724,7 @@ Re-run /plan:execute-next-phase to complete missing steps.
 ===============================================================
 ```
 
-**Mark "AUDIT 6" as `completed`.**
+**Use `TaskUpdate` to mark "AUDIT 6" as `completed`.**
 
 ---
 
@@ -521,7 +764,7 @@ git status
 | GATE 5 | Run `/superpowers:brainstorming` for test coverage |
 | GATE 6 | Run `/pr-review-toolkit:review-pr` |
 | GATE 7 | Fix all issues from review |
-| GATE 8 | Create `docs/reviews/phase-X.Y-*.md` |
+| GATE 8 | Create `docs/reviews/phase-X.Y-*.md` (ensure `docs/reviews/` directory exists first) |
 
 ### If Quality Checks Fail
 
