@@ -1,8 +1,8 @@
 ---
-name: pr-review-process-comments
+name: pr-review-toolkit-process-comments
 description: |
   Process GitHub PR review comments and change requests - answer questions, make corrections, resolve threads.
-  WHEN: Use after PR is created and has review comments. Invoke with "/pr-review-process-comments".
+  WHEN: Use after PR is created and has review comments. Invoke with "/pr-review-toolkit:process-comments".
   WHEN NOT: When PR has no comments or before PR is created.
 ---
 
@@ -17,7 +17,7 @@ This skill processes GitHub PR review comments and change requests:
 4. Make code corrections for change requests
 5. Mark threads as resolved after addressing
 
-**Announce at start:** "I'm using the pr-review-process-comments skill to process PR feedback."
+**Announce at start:** "I'm using the pr-review-toolkit:process-comments skill to process PR feedback."
 
 ---
 
@@ -206,7 +206,7 @@ gh pr edit {pr_number} --add-reviewer {reviewer_username}
 PR_NUM=$(gh pr view --json number -q '.number')
 
 # 2. Fetch comments
-gh api repos/LounisBou/ScreenBuddies/pulls/$PR_NUM/comments
+gh api repos/{owner}/{repo}/pulls/$PR_NUM/comments
 
 # 3. Process each comment (done manually with tools)
 
