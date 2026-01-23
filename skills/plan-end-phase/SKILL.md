@@ -1,8 +1,8 @@
 ---
-name: end-plan-phase
+name: plan-end-phase
 description: |
   Finalize a completed phase after PR approval. Checks if current branch PR is merged, then returns to main.
-  WHEN: Use after user approves PR to close out current phase. Invoke with "/end-plan-phase".
+  WHEN: Use after user approves PR to close out current phase. Invoke with "/plan:end-phase".
   WHEN NOT: When PR is not yet created or still under review.
 ---
 
@@ -80,7 +80,7 @@ PR: #<number> - MERGED
 
 Main branch is now up to date.
 
-Ready to start next phase with /execute-next-plan
+Ready to start next phase with /plan:execute-next-phase
 ═══════════════════════════════════════════════════════════════
 ```
 
@@ -97,7 +97,7 @@ PR: #<number> - OPEN
 The PR has not been merged yet. Please:
 1. Review the PR on GitHub
 2. Approve and merge the PR
-3. Run /end-plan-phase again
+3. Run /plan:end-phase again
 
 PR URL: <url>
 ═══════════════════════════════════════════════════════════════
@@ -108,6 +108,6 @@ PR URL: <url>
 | Situation | Response |
 |-----------|----------|
 | On main branch | "Run this from a feature branch after PR approval" |
-| No PR exists | "No PR found for branch. Create PR first with /execute-next-plan" |
+| No PR exists | "No PR found for branch. Create PR first with /plan:execute-next-phase" |
 | PR closed (not merged) | "PR was closed without merging. Check PR status on GitHub" |
 | Network error | "Cannot reach GitHub. Check connectivity and try again" |
