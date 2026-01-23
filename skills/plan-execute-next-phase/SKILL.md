@@ -1,12 +1,58 @@
 ---
-name: execute-next-plan
+name: plan-execute-next-phase
 description: |
   Execute the next phase from the project plan with full TDD workflow, 100% coverage, PR review, and quality gates.
-  WHEN: Use to continue development on ScreenBuddies project. Invoke with "/execute-next-plan".
+  WHEN: Use to continue development on a project with phase-based plans. Invoke with "/plan:execute-next-phase".
   WHEN NOT: When debugging specific issues or exploring codebase.
 ---
 
 # Execute Next Plan Phase
+
+## Project Detection (RUN FIRST)
+
+Before starting any gate, detect the project type and available commands.
+
+### Step 0.1: Identify Project Root
+
+```bash
+# Find project root (look for common markers)
+git rev-parse --show-toplevel
+```
+
+Use this as the project root for all commands.
+
+### Step 0.2: Detect Project Type and Commands
+
+Check for project markers and set commands accordingly:
+
+| Marker File | Project Type | Test Command | Analyse Command | Format Command |
+|-------------|--------------|--------------|-----------------|----------------|
+| `composer.json` | PHP/Laravel | `php artisan test` or `./vendor/bin/phpunit` | `composer analyse` or `./vendor/bin/phpstan analyse` | `composer format` or `./vendor/bin/pint` |
+| `package.json` | Node.js | `npm test` or `yarn test` | `npm run lint` or `yarn lint` | `npm run format` or `yarn format` |
+| `Cargo.toml` | Rust | `cargo test` | `cargo clippy` | `cargo fmt` |
+| `go.mod` | Go | `go test ./...` | `golangci-lint run` | `gofmt -w .` |
+| `pyproject.toml` / `setup.py` | Python | `pytest` or `python -m pytest` | `ruff check .` or `pylint` | `ruff format .` or `black .` |
+| `Gemfile` | Ruby | `bundle exec rspec` | `bundle exec rubocop` | `bundle exec rubocop -a` |
+
+**Check `package.json` / `composer.json` scripts section for project-specific commands.**
+
+### Step 0.3: Store Detected Commands
+
+Announce the detected configuration:
+
+```
+PROJECT CONFIGURATION DETECTED:
+- Project Root: <path>
+- Project Type: <type>
+- Test Command: <command>
+- Analyse Command: <command or "not available">
+- Format Command: <command or "not available">
+- Format Check Command: <command or "not available">
+```
+
+**Use these detected commands throughout the workflow.**
+
+---
 
 ## CRITICAL: MANDATORY ENFORCEMENT SYSTEM
 
@@ -16,7 +62,7 @@ description: |
 
 **IMMEDIATELY upon starting this skill, before ANY other action, you MUST:**
 
-1. **Announce:** "I'm using the execute-next-plan skill. Initializing mandatory workflow checklist."
+1. **Announce:** "I'm using the plan:execute-next-phase skill. Initializing mandatory workflow checklist."
 
 2. **Call TodoWrite with this EXACT checklist:**
 
@@ -69,8 +115,9 @@ ls docs/plans/phase-*/
 ### 1.2 Find Next Phase
 
 Read the main plan file to understand phase order:
-- `docs/plans/phase-0-infrastructure.md` → Sub-phases 0.1 to 0.8
-- `docs/plans/phase-1-backend-foundation.md` → Sub-phases 1.1 to 1.x
+- Look for `docs/plans/` directory structure
+- Check for phase files like `phase-0-*.md`, `phase-1-*.md`, etc.
+- Identify sub-phases within each phase
 
 **Output:** "Next phase to execute: X.Y - <name>"
 
@@ -99,7 +146,7 @@ git checkout -b feat/<sub-phase-name>
 
 **Mark todo "GATE 3" as `in_progress` before starting.**
 
-### ⚠️ MANDATORY SKILL INVOCATION ⚠️
+### MANDATORY SKILL INVOCATION
 
 **YOU MUST USE THE SKILL TOOL TO INVOKE:**
 ```
@@ -122,15 +169,15 @@ The `/superpowers:executing-plans` skill guides you through:
 
 **TDD PATTERN (MANDATORY for code changes):**
 1. Write test FIRST
-2. Run test → MUST FAIL (red)
+2. Run test -> MUST FAIL (red)
 3. Write minimal code to pass
-4. Run test → MUST PASS (green)
+4. Run test -> MUST PASS (green)
 5. Verify coverage
 
 **After each task:**
 ```bash
-cd /Users/lounis/dev/ScreenBuddies/backend
-php artisan test
+cd <project-root>
+<detected-test-command>
 ```
 
 **If infrastructure/config only:** Verify by running the tool/config directly.
@@ -145,28 +192,28 @@ php artisan test
 
 **Mark todo "GATE 4" as `in_progress` before starting.**
 
-Run ALL of these:
+Run ALL available quality checks for the detected project type:
 
 ```bash
-cd /Users/lounis/dev/ScreenBuddies/backend
+cd <project-root>
 
-# 1. Tests
-php artisan test
+# 1. Tests (REQUIRED)
+<detected-test-command>
 
-# 2. Coverage (if PCOV/Xdebug available)
-php artisan test --coverage || echo "Coverage driver not installed"
+# 2. Coverage (if available)
+<detected-test-command-with-coverage> || echo "Coverage not configured"
 
-# 3. Static analysis
-composer analyse
+# 3. Static analysis (if available)
+<detected-analyse-command> || echo "Static analysis not configured"
 
-# 4. Code style check
-composer format:check
+# 4. Code style check (if available)
+<detected-format-check-command> || echo "Format check not configured"
 
-# 5. Fix style if needed
-composer format
+# 5. Fix style if needed (if available)
+<detected-format-command>
 ```
 
-**LOOP until ALL pass.** Do NOT proceed with failures.
+**LOOP until ALL configured checks pass.** Do NOT proceed with failures.
 
 **Mark todo "GATE 4" as `completed`.**
 
@@ -176,7 +223,7 @@ composer format
 
 **Mark todo "GATE 5" as `in_progress` before starting.**
 
-### ⚠️ MANDATORY SKILL INVOCATION ⚠️
+### MANDATORY SKILL INVOCATION
 
 **YOU MUST USE THE SKILL TOOL TO INVOKE:**
 ```
@@ -192,7 +239,7 @@ Question: Do our tests fully cover the Phase X.Y specifications?
 
 Context:
 - Phase plan: docs/plans/phase-X/X.Y-<name>.md
-- Current tests: backend/tests/
+- Current tests: <project-test-directory>
 - Specifications: docs/specifications/
 
 Deliverable:
@@ -222,7 +269,7 @@ git push -u origin feat/<sub-phase-name>
 
 ### 6.2 Invoke PR Review
 
-### ⚠️ MANDATORY SKILL INVOCATION ⚠️
+### MANDATORY SKILL INVOCATION
 
 **YOU MUST USE THE SKILL TOOL TO INVOKE:**
 ```
@@ -243,7 +290,7 @@ Wait for ALL review agents to complete.
 
 **Mark todo "GATE 7" as `in_progress` before starting.**
 
-### ⚠️ MANDATORY CORRECTION RULES ⚠️
+### MANDATORY CORRECTION RULES
 
 **YOU MUST FIX EVERY ISSUE. THIS IS NOT OPTIONAL.**
 
@@ -327,7 +374,7 @@ TodoWrite: Add one todo per issue found in the review:
 
 **Example of documenting rejected suggestion:**
 ```markdown
-### Suggestion: Add PHPStan baseline file
+### Suggestion: Add baseline file for static analysis
 **Decision:** NOT APPLIED
 **Reason:** Project is new with zero existing errors. Baseline not needed until legacy code exists.
 ```
@@ -367,8 +414,6 @@ git push
 
 **Mark todo "GATE 7" as `completed`.**
 
-**Mark todo "GATE 7" as `completed`.**
-
 ---
 
 ## GATE 8: Save Review Summary
@@ -404,12 +449,12 @@ git push
 **Run FULL quality check again:**
 
 ```bash
-cd /Users/lounis/dev/ScreenBuddies/backend
+cd <project-root>
 
-# ALL must pass
-php artisan test
-composer analyse
-composer format:check
+# ALL configured checks must pass
+<detected-test-command>
+<detected-analyse-command>  # if available
+<detected-format-check-command>  # if available
 
 # Verify clean working directory
 git status
@@ -437,8 +482,8 @@ gh pr create \
 
 ## Quality Checks
 - [x] All tests passing
-- [x] Static analysis passing
-- [x] Code style passing
+- [x] Static analysis passing (if configured)
+- [x] Code style passing (if configured)
 
 ## Review
 See docs/reviews/phase-X.Y-<name>.md
@@ -519,7 +564,7 @@ Before marking a gate complete, ask yourself:
 | 1 | Did I identify the specific phase number and name? |
 | 2 | Am I on a new feature branch from main? |
 | 3 | **Did I call `Skill(skill: "superpowers:executing-plans")` and implement ALL tasks?** |
-| 4 | Did tests, analyse, and format:check ALL pass? |
+| 4 | Did all configured quality checks pass? |
 | 5 | **Did I call `Skill(skill: "superpowers:brainstorming")`?** |
 | 6 | **Did I call `Skill(skill: "pr-review-toolkit:review-pr")`?** |
 | 7 | Did I fix ALL Critical, ALL Important, ALL other issues, and evaluate ALL suggestions? |
@@ -552,10 +597,10 @@ Before marking a gate complete, ask yourself:
 
 | Issue Type | Action Required | Skip Allowed? |
 |------------|-----------------|---------------|
-| **Critical Issues** | FIX ALL | ❌ NEVER |
-| **Important Issues** | FIX ALL | ❌ NEVER |
-| **Other Issues** | FIX ALL | ❌ NEVER |
-| **Suggestions** | EVALUATE ALL | ❌ NEVER (must apply OR document why not) |
+| **Critical Issues** | FIX ALL | NEVER |
+| **Important Issues** | FIX ALL | NEVER |
+| **Other Issues** | FIX ALL | NEVER |
+| **Suggestions** | EVALUATE ALL | NEVER (must apply OR document why not) |
 
 **GATE 7 FAILS if:**
 - Any Critical issue is not fixed
