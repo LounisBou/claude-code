@@ -104,6 +104,22 @@ Identify from user input:
 1. **Type**: The file type category (e.g., `service`, `test`, `controller`)
 2. **Feature** (optional): Specific feature to focus on (e.g., `api`, `auth`)
 
+### How the Feature Parameter Works
+
+When a `[feature]` is provided, it narrows the search scope:
+
+| Without Feature | With Feature |
+|-----------------|--------------|
+| `find . -path "*services*" -name "*.ts"` | `find . -path "*services*" -name "*auth*.ts"` |
+| All service files | Only auth-related service files |
+| Broad pattern discovery | Feature-specific conventions |
+
+**Impact on analysis:**
+- **Search paths**: Adds feature keyword to path/name filters
+- **Example selection**: Prioritizes files containing the feature keyword
+- **Pattern focus**: Highlights feature-specific conventions (e.g., auth decorators, API versioning)
+- **Output**: Groups patterns by feature relevance
+
 ---
 
 ## STEP 2: Locate Example Files
@@ -111,14 +127,20 @@ Identify from user input:
 Based on project type and requested type:
 
 ```bash
-# Example: Find service files in a TypeScript project
-find . -type f -name "*.ts" -path "*services*" | head -5
+# TypeScript: Find service files
+find src -type f -name "*.service.ts" -o -name "*Service.ts" 2>/dev/null | head -5
 
-# Example: Find test files
-find . -type f \( -name "*test*" -o -name "*spec*" \) | head -5
+# TypeScript: Find test files for a specific feature
+find src -type f \( -name "*.spec.ts" -o -name "*.test.ts" \) -path "*user*" 2>/dev/null | head -5
 
-# Example: Find controller files in PHP
-find . -type f -name "*Controller.php" | head -5
+# PHP: Find controller files in Symfony project
+find src/Controller -type f -name "*Controller.php" 2>/dev/null | head -5
+
+# Python: Find Django view files
+find . -path "*/views.py" -o -path "*/views/*.py" 2>/dev/null | head -5
+
+# Go: Find handler files
+find . -type f -name "*_handler.go" 2>/dev/null | head -5
 ```
 
 **Selection criteria:**
@@ -126,6 +148,38 @@ find . -type f -name "*Controller.php" | head -5
 2. Prioritize recent, well-structured files
 3. Select 3-5 diverse examples
 4. Prefer files with good coverage of patterns
+
+### When No Examples Are Found
+
+If no files match the requested type:
+
+1. **Verify the type mapping**: Check if the project uses different naming conventions
+2. **Broaden the search**: Remove path constraints, search by content patterns
+3. **Suggest alternatives**: Recommend similar types that do exist
+4. **Report clearly**: Inform the user with actionable next steps
+
+**Example output when no examples exist:**
+
+```markdown
+# Pattern Examples: [Type Name]
+
+**Project Type**: TypeScript (Next.js)
+**Found**: 0 examples
+
+## No Examples Found
+
+The project does not appear to have existing `[type]` files.
+
+**Possible reasons:**
+- Different naming convention used (checked: `*Service.ts`, `*.service.ts`)
+- Files located in unexpected paths
+- This pattern type hasn't been established yet
+
+**Suggestions:**
+1. Check if similar logic exists under a different name: `find src -name "*.ts" | xargs grep -l "class.*Service"`
+2. Look for related patterns: `/norms:find-pattern utility` or `/norms:find-pattern repository`
+3. Establish the pattern by creating the first example following project conventions
+```
 
 ---
 
@@ -187,8 +241,27 @@ Format the output as follows:
 
 **Code Sample**:
 ```[language]
-[Most illustrative code snippet, 10-15 lines]
+[Most illustrative code snippet]
 ```
+
+### Code Sample Extraction Rules
+
+| File Size | Extraction Strategy |
+|-----------|---------------------|
+| < 30 lines | Show complete file (excluding imports if needed) |
+| 30-100 lines | Extract 15-25 lines covering key patterns |
+| > 100 lines | Extract 2-3 focused excerpts (10-15 lines each) |
+
+**What to include in samples:**
+- Class/function signature with decorators/attributes
+- Constructor or initialization pattern
+- One representative method showing the main pattern
+- Error handling if it's a notable pattern
+
+**What to exclude:**
+- Lengthy import blocks (summarize as `// ... imports`)
+- Repetitive methods (show one, note "similar pattern for X, Y, Z")
+- Auto-generated code or boilerplate comments
 
 ## 2. [Another file...]
 [Same breakdown]
@@ -217,13 +290,13 @@ Format the output as follows:
 
 ## Quick Reference
 
-| Aspect | Pattern |
-|--------|---------|
-| File naming | [pattern] |
-| Class naming | [pattern] |
-| Method naming | [pattern] |
-| Dependencies | [pattern] |
-| Error handling | [pattern] |
+| Aspect | Pattern | Example |
+|--------|---------|---------|
+| File naming | `{feature}.{type}.ts` | `user.service.ts` |
+| Class naming | `PascalCase{Type}` | `UserService` |
+| Method naming | `camelCase` with verb prefix | `createUser`, `findById` |
+| Dependencies | Constructor injection | `constructor(private repo: UserRepository)` |
+| Error handling | Custom domain exceptions | `throw new UserNotFoundException(id)` |
 ```
 
 ---
@@ -289,6 +362,32 @@ When invoked:
 1. Use `/norms:find-pattern [type]` to understand existing patterns
 2. Implement your new code following those patterns
 3. Use `/norms:check` to validate your implementation
+
+---
+
+## Monorepo Handling
+
+For projects with multiple technology stacks:
+
+1. **Detect monorepo structure**: Check for `packages/`, `apps/`, `services/`, or workspace config files
+2. **Identify relevant package**: Ask user or infer from current working directory
+3. **Scope the search**: Limit pattern discovery to the relevant package/app
+
+```bash
+# Detect monorepo indicators
+ls -d packages apps services modules 2>/dev/null
+
+# Search within specific package
+find packages/api -type f -name "*.service.ts" | head -5
+
+# Or scope by workspace
+find apps/web -type f -name "*.tsx" -path "*components*" | head -5
+```
+
+**When multiple stacks exist:**
+- Report which package/app the patterns are from
+- Note if conventions differ between packages
+- Suggest checking specific packages if results are mixed
 
 ---
 
