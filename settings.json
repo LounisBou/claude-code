@@ -1,11 +1,33 @@
 {
   "additionalDirectories": ["/tmp/claude-work"],
   "attribution": {
-    "commit": "", 
+    "commit": "",
     "pr": ""
   },
   "autoUpdatesChannel": "stable",
   "env": {},
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "code-review@anthropics-claude-code": true,
+    "commit-commands@anthropics-claude-code": true,
+    "feature-dev@anthropics-claude-code": true,
+    "explanatory-output-style@anthropics-claude-code": true,
+    "agent-sdk-dev@anthropics-claude-code": true,
+    "frontend-design@anthropics-claude-code": true,
+    "plugin-dev@anthropics-claude-code": true,
+    "pr-review-toolkit@anthropics-claude-code": true,
+    "security-guidance@anthropics-claude-code": true,
+    "alph-wiggum@anthropics-claude-code": true,
+    "hookify@anthropics-claude-code": true,
+    "superpowers@superpowers-marketplace": true
+  },
   "hooks": {
     "PreToolUse": [
       {
@@ -29,7 +51,7 @@
   "language": "english",
   "permissions": {
     "allow": [
-      "Read", 
+      "Read",
       "WebSearch",
       "Bash(awk:*)",
       "Bash(black:*)",
@@ -60,9 +82,7 @@
       "Bash(pytest:*)",
       "Bash(python -m pytest:*)",
       "Bash(python3 -m pytest:*)",
-      "Bash(python3 hooks/init-project.py:*)",
       "Bash(python -m unittest:*)",
-      "Bash(python tests/run_all_tests.py:*)",
       "Bash(sort:*)",
       "Bash(tail:*)",
       "Bash(time:*)",

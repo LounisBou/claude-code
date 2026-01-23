@@ -1,6 +1,0 @@
-{
-  "name": "fullstack-symfony",
-  "categories": ["dev", "php", "symfony", "html", "js", "ts", "vue", "tailwind", "api", "docs"],
-  "exclude": [],
-  "description": "Full-stack Symfony + Vue.js development"
-}
