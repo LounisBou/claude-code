@@ -1,30 +1,18 @@
-# Ignore claude local settings
+# Local settings (machine-specific, not committed)
 settings.local.json
 
-# Project-specific config (each project customizes this)
-# Located in project.json
-project.json
+# Logs
+logs/*.log
 
-# Target directories (symlinks only, git ignored)
-# Claude scans these directories - we create symlinks here from *-available/
-skills/
-agents/
-commands/
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
 
-# Keep directory structure even if empty
-!skills/.gitkeep
+# OS files
+.DS_Store
+
+# Keep directory structure
 !agents/.gitkeep
 !commands/.gitkeep
-
-# BUT keep default commands (must exist - they can't create themselves)
-!commands/init-project.md
-!commands/test-agents-skills.md
-
-# Source files in *-available/ directories are tracked
-# These are NOT scanned by Claude (only skills/, agents/, commands/ are)
-
-# Local project-specific additions (git ignored except .gitkeep)
-skills-available/local/*
-agents-available/local/*
-!skills-available/local/.gitkeep
-!agents-available/local/.gitkeep
+!skills/.gitkeep
