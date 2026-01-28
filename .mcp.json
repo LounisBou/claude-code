@@ -1,0 +1,32 @@
+{
+  "_readme": "MCP server preferences for this configuration. Use 'claude mcp list' to see active servers.",
+  "mcpServers": {
+    "chrome-devtools": {
+      "_status": "enabled",
+      "_description": "Chrome DevTools automation and debugging"
+    },
+    "claude-in-chrome": {
+      "_status": "enabled",
+      "_description": "Browser automation via Claude in Chrome extension"
+    },
+    "notion": {
+      "_status": "enabled",
+      "_description": "Notion integration via claude.ai remote MCP",
+      "_auth": "Requires /mcp authentication"
+    },
+    "context7": {
+      "_status": "enabled",
+      "_description": "Up-to-date library documentation lookup",
+      "_source": "plugin:context7:context7"
+    }
+  },
+  "_disabled": {
+    "stdio": {
+      "_reason": "Generic stdio server - not needed"
+    },
+    "laravel-boost": {
+      "_reason": "Laravel-specific tooling - enable when working on Laravel projects",
+      "_source": "plugin:laravel-boost:laravel-boost"
+    }
+  }
+}

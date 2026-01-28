@@ -131,6 +131,7 @@
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:docs.claude.ai)",
       "WebFetch(domain:api.anthropic.com)",
+      "WebFetch(domain:mcp-proxy.anthropic.com)",
       "WebFetch(domain:developer.mozilla.org)",
       "WebFetch(domain:w3schools.com)",
       "WebFetch(domain:nodejs.org)",
