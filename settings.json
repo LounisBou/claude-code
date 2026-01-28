@@ -15,17 +15,17 @@
     }
   },
   "enabledPlugins": {
-    "code-review@anthropic-claude-code": true,
-    "commit-commands@anthropic-claude-code": true,
-    "feature-dev@anthropic-claude-code": true,
-    "explanatory-output-style@anthropic-claude-code": true,
-    "agent-sdk-dev@anthropic-claude-code": true,
-    "frontend-design@anthropic-claude-code": true,
-    "plugin-dev@anthropic-claude-code": true,
-    "pr-review-toolkit@anthropic-claude-code": true,
-    "security-guidance@anthropic-claude-code": true,
-    "alph-wiggum@anthropic-claude-code": true,
-    "hookify@anthropic-claude-code": true,
+    "code-review@claude-plugin-directory": true,
+    "commit-commands@claude-plugin-directory": true,
+    "feature-dev@claude-plugin-directory": true,
+    "explanatory-output-style@claude-plugin-directory": true,
+    "agent-sdk-dev@claude-plugin-directory": true,
+    "frontend-design@claude-plugin-directory": true,
+    "plugin-dev@claude-plugin-directory": true,
+    "pr-review-toolkit@claude-plugin-directory": true,
+    "security-guidance@claude-plugin-directory": true,
+    "alph-wiggum@claude-plugin-directory": true,
+    "hookify@claude-plugin-directory": true,
     "superpowers@superpowers-marketplace": true
   },
   "hooks": {
