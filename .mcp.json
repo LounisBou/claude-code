@@ -20,9 +20,9 @@
       "args": ["-y", "@benborla29/mcp-server-mysql"],
       "env": {
         "MYSQL_HOST": "${MYSQL_HOST:-localhost}",
-        "MYSQL_USER": "${MYSQL_USER}",
-        "MYSQL_PASSWORD": "${MYSQL_PASSWORD}",
-        "MYSQL_DATABASE": "${MYSQL_DATABASE}"
+        "MYSQL_USER": "${MYSQL_USER:-root}",
+        "MYSQL_PASSWORD": "${MYSQL_PASSWORD:-}",
+        "MYSQL_DATABASE": "${MYSQL_DATABASE:-mysql}"
       }
     },
     "postgresql": {
@@ -30,7 +30,7 @@
       "command": "npx",
       "args": ["-y", "mcp-postgres"],
       "env": {
-        "DATABASE_URL": "${POSTGRES_URL}"
+        "DATABASE_URL": "${POSTGRES_URL:-postgresql://localhost:5432/postgres}"
       }
     },
     "redis": {
