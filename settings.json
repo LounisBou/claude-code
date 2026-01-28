@@ -251,7 +251,6 @@
       "Read(**/*.pfx)",
       "Read(**/*.jks)",
       "Read(**/*credentials*.json)",
-      "Read(**/*secret*)",
       "Read(**/firebase-adminsdk*.json)",
       "Read(**/serviceAccount*.json)",
       "Read(**/*-service-account.json)",
