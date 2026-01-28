@@ -237,12 +237,6 @@
     "deny": [
       "Bash(rm:*)",
       "Bash(sudo:*)",
-      "Read(.env)",
-      "Read(.env.*)",
-      "Read(.envrc)",
-      "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(**/.envrc)",
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
       "Read(~/.config/gcloud/**)",
