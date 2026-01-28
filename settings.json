@@ -91,6 +91,7 @@
       "Bash(killall pytest:*)",
       "Bash(less:*)",
       "Bash(ls:*)",
+      "Bash(npm search:*)",
       "Bash(pwd)",
       "Bash(pylint:*)",
       "Bash(pytest:*)",
