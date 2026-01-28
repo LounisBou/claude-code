@@ -15,17 +15,17 @@
     }
   },
   "enabledPlugins": {
-    "code-review@anthropics-claude-code": true,
-    "commit-commands@anthropics-claude-code": true,
-    "feature-dev@anthropics-claude-code": true,
-    "explanatory-output-style@anthropics-claude-code": true,
-    "agent-sdk-dev@anthropics-claude-code": true,
-    "frontend-design@anthropics-claude-code": true,
-    "plugin-dev@anthropics-claude-code": true,
-    "pr-review-toolkit@anthropics-claude-code": true,
-    "security-guidance@anthropics-claude-code": true,
-    "alph-wiggum@anthropics-claude-code": true,
-    "hookify@anthropics-claude-code": true,
+    "code-review@anthropic-claude-code": true,
+    "commit-commands@anthropic-claude-code": true,
+    "feature-dev@anthropic-claude-code": true,
+    "explanatory-output-style@anthropic-claude-code": true,
+    "agent-sdk-dev@anthropic-claude-code": true,
+    "frontend-design@anthropic-claude-code": true,
+    "plugin-dev@anthropic-claude-code": true,
+    "pr-review-toolkit@anthropic-claude-code": true,
+    "security-guidance@anthropic-claude-code": true,
+    "alph-wiggum@anthropic-claude-code": true,
+    "hookify@anthropic-claude-code": true,
     "superpowers@superpowers-marketplace": true
   },
   "hooks": {
