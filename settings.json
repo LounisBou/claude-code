@@ -187,6 +187,7 @@
       "Bash(allowedHosts:claude.ai)",
       "Bash(awk:*)",
       "Bash(black:*)",
+      "Bash(bin/console dbal:run-sql:*)",
       "Bash(cat:*)",
       "Bash(cut:*)",
       "Bash(date:*)",
