@@ -246,7 +246,6 @@
       "Read(~/.netrc)",
       "Read(~/.git-credentials)",
       "Read(**/*.key)",
-      "Read(**/*.pem)",
       "Read(**/*.p12)",
       "Read(**/*.pfx)",
       "Read(**/*.jks)",
