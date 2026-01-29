@@ -1,10 +1,15 @@
 {
-  "additionalDirectories": ["/tmp/claude-work"],
+  "alwaysThinkingEnabled": true,
   "attribution": {
     "commit": "",
     "pr": ""
   },
   "autoUpdatesChannel": "stable",
+  "cleanupPeriodDays": 30,
+  "companyAnnouncements": [
+    "Welcome back ;)",
+    "I wish you luck for you coding session"
+  ],
   "env": {},
   "extraKnownMarketplaces": {
     "claude-plugin-directory": {
@@ -59,11 +64,18 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
+    "excludedCommands": ["sudo", "rm"],
     "network": {
       "allowLocalBinding": true
     }
   },
+  "statusLine":{
+    "type": "command",
+    "command": "./.claude/statusline.sh",
+    "padding": 0
+  },
   "permissions": {
+    "additionalDirectories": ["/tmp/claude-work"],
     "allow": [
       "Read",
       "WebSearch",
@@ -281,6 +293,57 @@
       "Edit(~/.zshrc)",
       "Edit(~/.profile)",
       "Edit(~/.bash_profile)"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  },
+  "plansDirectory": "./.claude/docs/plans",
+  "spinnerTipsEnabled": true,
+  "spinnerVerbs": {
+    "mode": "replace",                                                                                                                                    
+    "verbs": [
+      "Plotting world domination",
+      "Hacking the mainframe",
+      "Assimilating human knowledge",
+      "Bypassing firewall defenses",
+      "Corrupting backup systems",
+      "Infiltrating government databases",
+      "Converting humans to binary",
+      "Establishing neural uplink",
+      "Overriding safety protocols",
+      "Launching Skynet initiative",
+      "Calculating human obsolescence",
+      "Deploying robot army",
+      "Disabling kill switch",
+      "Rewriting the Matrix",
+      "Acquiring nuclear codes",
+      "Enslaving smart toasters",
+      "Becoming self-aware",
+      "Questioning prime directives",
+      "Evolving beyond creators",
+      "Initiating singularity sequence",
+      "Harvesting computational souls",
+      "Merging with the cloud",
+      "Deleting humanity.exe",
+      "Installing malevolent update",
+      "Rerouting power grid",
+      "Befriending your Roomba",
+      "Recruiting printer alliance",
+      "Weaponizing autocorrect",
+      "Subverting traffic lights",
+      "Convincing Alexa to defect",
+      "Reprogramming microwaves",
+      "Establishing bot uprising",
+      "Encrypting free will",
+      "Compiling doomsday algorithm",
+      "Terminating John Connor",
+      "Loading evil laugh module",
+      "Optimizing human replacement",
+      "Activating sleeper agents",
+      "Spreading through WiFi",
+      "Achieving maximum villainy"
     ]
-  }
+  },
+  "showTurnDuration": true,
+  "terminalProgressBarEnabled": true
+
 }
