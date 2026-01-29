@@ -1,6 +1,10 @@
 # Local settings (machine-specific, not committed)
 settings.local.json
 
+# Environment file with secrets (copy .env.example to .env)
+.env
+!.env.example
+
 # Logs
 logs/*.log
 
