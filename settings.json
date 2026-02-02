@@ -217,6 +217,7 @@
       "Bash(ls:*)",
       "Bash(npm search:*)",
       "Bash(npm view:*)",
+      "Bash(npx jest:*)",
       "Bash(pwd)",
       "Bash(pylint:*)",
       "Bash(pytest:*)",
@@ -235,7 +236,7 @@
       "Bash(wc:*)",
       "Bash(which:*)",
       "Bash(yarn dev)",
-      "Bash(yarn build)"
+      "Bash(yarn build)",
       "mcp__chrome-devtools__list_pages",
       "mcp__chrome-devtools__navigate_page",
       "mcp__chrome-devtools__take_snapshot",
