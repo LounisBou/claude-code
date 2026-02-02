@@ -1,5 +1,5 @@
 ---
-name: norms-check
+name: norms:check
 description: |
   Analyze code against established project patterns and conventions.
   WHEN: Use after implementing features to verify code follows project norms. Invoke with "/norms:check".

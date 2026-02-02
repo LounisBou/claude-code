@@ -1,5 +1,5 @@
 ---
-name: plan-check-execution
+name: plan:check-execution
 description: |
   Verify that /plan:execute-next-phase workflow was followed correctly with all gates, skill invocations, and quality checks.
   WHEN: Use after completing a phase to audit workflow compliance. Invoke with "/plan:check-execution".

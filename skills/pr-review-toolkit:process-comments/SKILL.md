@@ -1,5 +1,5 @@
 ---
-name: pr-review-toolkit-process-comments
+name: pr-review-toolkit:process-comments
 description: |
   Process GitHub PR review comments and change requests - answer questions, make corrections, resolve threads.
   WHEN: Use after PR is created and has review comments. Invoke with "/pr-review-toolkit:process-comments".

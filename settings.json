@@ -180,7 +180,10 @@
     "padding": 0
   },
   "permissions": {
-    "additionalDirectories": ["/tmp/claude-work"],
+    "additionalDirectories": [
+      "/tmp",
+      "/tmp/claude-work"
+    ],
     "allow": [
       "Read",
       "WebSearch",
@@ -189,6 +192,8 @@
       "Bash(black:*)",
       "Bash(bin/console dbal:run-sql:*)",
       "Bash(cat:*)",
+      "Bash(composer require:*)",
+      "Bash(composer update:*)",
       "Bash(cut:*)",
       "Bash(date:*)",
       "Bash(diff:*)",
@@ -230,6 +235,7 @@
       "Bash(wc:*)",
       "Bash(which:*)",
       "Bash(yarn dev)",
+      "Bash(yarn build)"
       "mcp__chrome-devtools__list_pages",
       "mcp__chrome-devtools__navigate_page",
       "mcp__chrome-devtools__take_snapshot",
@@ -253,6 +259,7 @@
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:*.githubusercontent.com)",
       "WebFetch(domain:api.githubcopilot.com)",
+      "WebFetch(domain:codeload.github.com)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:docs.claude.ai)",
       "WebFetch(domain:*.claude.ai)",

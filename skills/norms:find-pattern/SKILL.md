@@ -1,5 +1,5 @@
 ---
-name: norms-find-pattern
+name: norms:find-pattern
 description: |
   Find and analyze existing code patterns in the project for a specific file type.
   WHEN: Use before implementing new features to discover established patterns. Invoke with "/norms:find-pattern [type]".

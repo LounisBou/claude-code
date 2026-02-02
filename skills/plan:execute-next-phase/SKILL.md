@@ -1,5 +1,5 @@
 ---
-name: plan-execute-next-phase
+name: plan:execute-next-phase
 description: |
   Execute the next phase from the project plan with full TDD workflow, 100% coverage, PR review, and quality gates.
   WHEN: Use to continue development on a project with phase-based plans. Invoke with "/plan:execute-next-phase".

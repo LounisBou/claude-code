@@ -1,5 +1,5 @@
 ---
-name: plan-end-phase
+name: plan:end-phase
 description: |
   Finalize a completed phase after PR approval. Checks if current branch PR is merged, then returns to main.
   WHEN: Use after user approves PR to close out current phase. Invoke with "/plan:end-phase".
