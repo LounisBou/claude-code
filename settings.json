@@ -185,6 +185,7 @@
       "/tmp/claude-work"
     ],
     "allow": [
+      "Read(~/.ssh/known_hosts)",
       "Read",
       "WebSearch",
       "Bash(allowedHosts:claude.ai)",
