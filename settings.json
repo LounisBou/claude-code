@@ -169,7 +169,7 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
-    "excludedCommands": ["git", "python", "python3", "py", "node", "pip", "pip3", "npm", "npx", "yarn", "composer", "uv", "sqlite3", "brew", "mysql", "redis-cli", "psql"],
+    "excludedCommands": ["sudo", "rm"],
     "network": {
       "allowLocalBinding": true
     }
@@ -398,8 +398,6 @@
       "Read(**/.idea/**/workspace.xml)",
       "Read(**/.vscode/settings.json)",
       "Read(**/.vscode/launch.json)",
-      "Read(**/*.sqlite)",
-      "Read(**/*.db)",
       "Read(**/database.yml)",
       "Read(~/.gnupg/**)",
       "Read(~/.gradle/gradle.properties)",
