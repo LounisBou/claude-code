@@ -169,7 +169,7 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
-    "excludedCommands": ["sudo", "rm"],
+    "excludedCommands": ["git", "python", "python3", "py", "node", "pip", "pip3", "npm", "npx", "yarn", "composer", "uv", "sqlite3", "brew", "mysql", "redis-cli", "psql"],
     "network": {
       "allowLocalBinding": true
     }
